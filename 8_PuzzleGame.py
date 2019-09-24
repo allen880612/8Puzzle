@@ -2,6 +2,7 @@
 from PyQt5.QtWidgets import QMainWindow, QPushButton, QApplication, QDialog
 from View import MenuWindow, InitialWindow, GamingWindow, CompleteDialog
 from View import MenuWindow2 as mw2
+from Model import DataModel as DM
 
 class First(QMainWindow):
 
@@ -50,6 +51,8 @@ def showAnotherWindow(openIndex, closeIndex):
     GameStates[closeIndex].hide()
 
 if __name__ == '__main__':
+    data = DM.DataModel()
+
     GameStates = []
     gameState = 0
 
@@ -57,7 +60,7 @@ if __name__ == '__main__':
     GameStates = [QMainWindow() for i in range(4)]   # 3個遊戲視窗 type = PyQt5.QtWidgets.QMainWindow
 
     # Menu Window
-    menuWindow = MenuWindow.Menu()
+    menuWindow = MenuWindow.Menu(data)
     menuWindow.setupUi(GameStates[0])
 
     # test directly use QMainwindow instead of object as View
@@ -65,7 +68,7 @@ if __name__ == '__main__':
     # GameStates[3].show()
 
     # Choose Begin Block Window
-    preGamingWindow = InitialWindow.PreGamingWindow()
+    preGamingWindow = InitialWindow.PreGamingWindow(data)
     preGamingWindow.setupUi(GameStates[1])
 
     # Gaming Window
