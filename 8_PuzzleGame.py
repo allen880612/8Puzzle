@@ -72,7 +72,7 @@ if __name__ == '__main__':
     preGamingWindow.setupUi(GameStates[1])
 
     # Gaming Window
-    gameWindow = GamingWindow.GameWindow()
+    gameWindow = GamingWindow.GameWindow(data)
     gameWindow.setupUi(GameStates[2])
 
     # Complete Dialog

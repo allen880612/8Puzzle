@@ -11,16 +11,11 @@ class Signal(QtCore.QObject):
     def Shoot(self, message):
         self.signal.emit(message)
 
-    def Connect(self):
-        self.signal.connect(self.Revice)
-
-    def Revice(self, message):
-        print(message)
-
 class DataModel():
     def __init__(self):
-        self.rowButtonCount = 0
-        self.signal = Signal()
+        self.rowButtonCount = 0 # 每一列的button個數
+        self.nowNullButtonIndex = 0 # 空格按鈕的索引
+        self.dataSignal = Signal() # 毫無反應 只是個信號
 
         self.sourceImage = None
         self.sourceQPixmap = None
@@ -42,3 +37,9 @@ class DataModel():
 
     def GetQPixmap(self):
         return self.sourceQPixmap
+
+    def SetNowNullButtonIndex(self, btnIndex):
+        self.nowNullButtonIndex = btnIndex
+
+    def GetNowNullButtonIndex(self):
+        return self.nowNullButtonIndex

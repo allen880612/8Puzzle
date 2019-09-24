@@ -1,4 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PIL import Image
 from Model import DataModel as DM
 from Controller import FileDialog as FD
 from Controller import ImageControl as IMG_CONTROL
@@ -71,11 +72,11 @@ class Menu(object):
         return self._isStart
 
     def Start(self):
+        message = "Goto2"
         self._isStart = True
-        self.data.SetButtonCount(int(self.textBoxPuzzleSize.toPlainText()))
-        self.data.SetSourceImage(self.labelPreviewImage)
-        print("Shoot!")
-        self.data.signal.Shoot("Fuck you ! ")
+        self.data.SetButtonCount(self.GetInputNumber(self.textBoxPuzzleSize.toPlainText()))
+        print("Shoot!" + message)
+        self.data.dataSignal.Shoot(message)
 
     def ImportImage(self):
         selectImage = self.fileDialog.openFileNameDialog()
@@ -85,5 +86,8 @@ class Menu(object):
         # self.labelPreviewImage.setPixmap(self.imgCtrl.sourceQPixmap)
         # self.labelPreviewImage.setPixmap(self.data.GetQPixmap())
 
-
-
+    def GetInputNumber(self, inputString):
+        try:
+            return int(inputString)
+        except:
+            return 2
