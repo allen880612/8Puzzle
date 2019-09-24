@@ -6,6 +6,7 @@ class PreGamingWindow(object):
         self.data = data
         #self.signal = DM.Signal()
         self.data.dataSignal.signal.connect(self.ReviceMessage)
+        self.buttonList = []
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -67,7 +68,7 @@ class PreGamingWindow(object):
 
     def AddButtonList(self, addRowButtonCount):
         totalButtonCount = addRowButtonCount ** 2
-        self.buttonList = []
+        self.ClearButton()
         for i in range(addRowButtonCount):
             rowButtonList = []
             for j in range(addRowButtonCount):
@@ -76,16 +77,24 @@ class PreGamingWindow(object):
 
     def AddButton(self, row, column, buttonIndex):
         size = 100
+        dButtonPos = (100, 10)
         font = QtGui.QFont()
         font.setPointSize(20)
         font.setBold(True)
         font.setWeight(75)
         newButton = QtWidgets.QPushButton(self.centralwidget)
-        newButton.setGeometry(QtCore.QRect(row * size, column * size, size, size))
+        newButton.setGeometry(QtCore.QRect(dButtonPos[0] + row * size, dButtonPos[1] + column * size, size, size))
         newButton.setText(str(buttonIndex))
         newButton.setFont(font)
         newButton.clicked.connect(lambda: self.ClickButton(buttonIndex))
         return newButton
+
+    def ClearButton(self):
+        print(self.buttonList)
+        for rowBtn in self.buttonList:
+            for btn in rowBtn:
+                btn.deleteLater()
+        self.buttonList.clear()
 
     def ClickButton(self, buttonIndex):
         self.buttonDynamic.click()
