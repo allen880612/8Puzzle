@@ -14,6 +14,7 @@ class Menu(object):
         self._isStart = False
         self.isOpen = False
         self.data = data
+        #self.signal = DM.Signal()
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -75,7 +76,8 @@ class Menu(object):
 
     def Start(self):
         self._isStart = True
-        self.data.SetButtonCount(5)
-
+        self.data.SetButtonCount(int(self.textBoxPuzzleSize.toPlainText()))
+        print("Shoot!")
+        self.data.signal.Shoot("Fuck you ! ")
 
 

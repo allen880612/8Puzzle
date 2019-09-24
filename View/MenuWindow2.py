@@ -70,4 +70,3 @@ class Menu(QMainWindow):
 
     def Start(self):
         self._isStart = True
-

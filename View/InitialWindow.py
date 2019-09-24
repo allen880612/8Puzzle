@@ -1,8 +1,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from Model import DataModel as DM
 
 class PreGamingWindow(object):
     def __init__(self, data):
         self.data = data
+        #self.signal = DM.Signal()
+        self.data.signal.signal.connect(self.ReviceMessage)
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -76,3 +79,8 @@ class PreGamingWindow(object):
         newButton = QtWidgets.QPushButton(self.centralwidget)
         newButton.setGeometry(QtCore.QRect(row * size, column * size, size, size))
         return newButton
+
+    def ReviceMessage(self, message):
+        print("Revice!")
+        print(message)
+        self.AddButtonList(self.data.GetButtonCount())
