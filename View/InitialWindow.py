@@ -67,7 +67,7 @@ class PreGamingWindow(object):
 
         for i in range(addRowButtonCount):
             for j in range(addRowButtonCount):
-                self.buttonList[i][j].setText(str(i * 5 + j))
+                self.buttonList[i][j].setText(str(i * addRowButtonCount + j))
                 font = QtGui.QFont()
                 font.setPointSize(20)
                 font.setBold(True)
@@ -83,4 +83,5 @@ class PreGamingWindow(object):
     def ReviceMessage(self, message):
         print("Revice!")
         print(message)
+        self.AddIconList(self.data.GetButtonCount())  # PIL -> QImage -> Pixmal
         self.AddButtonList(self.data.GetButtonCount())

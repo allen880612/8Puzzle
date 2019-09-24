@@ -1,19 +1,14 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'MenuWindow.ui'
-#
-# Created by: PyQt5 UI code generator 5.11.3
-#
-# WARNING! All changes made in this file will be lost!
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Model import DataModel as DM
-
+from Controller import FileDialog as FD
+from Controller import ImageControl as IMG_CONTROL
 class Menu(object):
-    def __init__(self, data):
+    def __init__(self, _data):
         self._isStart = False
         self.isOpen = False
-        self.data = data
+        self.data = _data
+        self.fileDialog = FD.FileControl()
+        self.imgCtrl = IMG_CONTROL.ImageControl(_data)
         #self.signal = DM.Signal()
 
     def setupUi(self, MainWindow):
@@ -56,6 +51,7 @@ class Menu(object):
 
         #  自定義功能區
         self.buttonStart.clicked.connect(self.Start)
+        self.buttonImportImage.clicked.connect(self.ImportImage)
         #
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -77,7 +73,17 @@ class Menu(object):
     def Start(self):
         self._isStart = True
         self.data.SetButtonCount(int(self.textBoxPuzzleSize.toPlainText()))
+        self.data.SetSourceImage(self.labelPreviewImage)
         print("Shoot!")
         self.data.signal.Shoot("Fuck you ! ")
+
+    def ImportImage(self):
+        selectImage = self.fileDialog.openFileNameDialog()
+        print("開啟圖片 : " + selectImage)
+        self.imgCtrl.LoadImage(selectImage)
+
+        # self.labelPreviewImage.setPixmap(self.imgCtrl.sourceQPixmap)
+        # self.labelPreviewImage.setPixmap(self.data.GetQPixmap())
+
 
 
