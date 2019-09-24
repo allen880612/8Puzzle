@@ -1,17 +1,14 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QImage, QPixmap
 from PIL import Image
 from PIL.ImageQt import ImageQt
 
 class ImageControl():
     def __init__(self, dataModel):
         self.sourceImage = None # PIL
-        self.sourceQImage = None  # default image
         self.sourceQPixmap = None
 
-        self.imageList_PIL = []
-        self.qImageList = []
         self.pixmapList = []
-        self.iconList = []
         self.data = dataModel
 
     def LoadImage(self, image):
@@ -23,19 +20,20 @@ class ImageControl():
 
         # cropPIL.show()
         self.sourceImage = cropPIL
-        self.sourceQImage = self.ConvertPILtoQImage(cropPIL)
-        self.sourceQPixmap = QtGui.QPixmap(self.sourceQImage)
-        self.data.SetSourceImage(self.sourceQImage)
-        self.data.SetSourcePixmap(self.sourceQPixmap)
+        self.sourceQPixmap = self.ConvertPILtoPixmap(cropPIL)
 
+        self.data.SetSourceImage(cropPIL)
+        self.data.SetPixmap(self.sourceQPixmap)
 
     def ConvertPILtoQImage(self, imagePIL):
-        im = imagePIL.convert("RGB")
-        data = im.tobytes("raw", "RGB")
-        qim = QtCore.QtGui.QImage(data, im.size[0], im.size[1], QtGui.QImage.Format_RGB888)
-        return qim
+        imgRGB = imagePIL.convert("RGB")
+        imgByte = imgRGB.tobytes("raw", "RGB")
+        qImage = QImage(imgByte, imgRGB.size[0], imgRGB.size[1], QtGui.QImage.Format_RGB888)
+        return qImage
 
-
+    def ConvertPILtoPixmap(self, imagePIL):
+        qImage = self.ConvertPILtoQImage(imagePIL)
+        return QPixmap(qImage)
 
     def cropImage(self, image, cropNum):
         width, height = image.size
@@ -49,7 +47,8 @@ class ImageControl():
                 box_list.append(box)
 
         image_list = [image.crop(box) for box in box_list]
-        return image_list
+        pixmapList = [self.ConvertPILtoPixmap(img) for img in image_list]
+        return pixmapList
 
     def save_img(self, imageList):
         index = 0
@@ -59,4 +58,5 @@ class ImageControl():
             index += 1
 
     def SetImageList(self, count):
-        self.rowButtonCount = count
+        self.pixmapList = self.cropImage(self.sourceImage, count)
+        self.data.SetPixmapList(self.pixmapList)
