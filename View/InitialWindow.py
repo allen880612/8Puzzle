@@ -1,6 +1,9 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class PreGamingWindow(object):
+    def __init__(self, data):
+        self.data = data
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(640, 480)
@@ -49,7 +52,6 @@ class PreGamingWindow(object):
         self.labelHint.setText(_translate("MainWindow", "點擊任意一格來開始遊戲!"))
         self.labelHint.adjustSize(); #QLabel 自適應大小
         self.buttonDynamic.setText(_translate("MainWindow", "PushButton"))
-        self.AddButtonList(5)
 
     def AddButtonList(self, addRowButtonCount):
         totalButtonCount = addRowButtonCount ** 2
@@ -57,16 +59,20 @@ class PreGamingWindow(object):
         for i in range(addRowButtonCount):
             rowButtonList = []
             for j in range(addRowButtonCount):
-                rowButtonList.append(self.AddButton(i, j))
+                rowButtonList.append(self.AddButton(j, i))
             self.buttonList.append(rowButtonList)
 
+        for i in range(addRowButtonCount):
+            for j in range(addRowButtonCount):
+                self.buttonList[i][j].setText(str(i * 5 + j))
+                font = QtGui.QFont()
+                font.setPointSize(20)
+                font.setBold(True)
+                font.setWeight(75)
+                self.buttonList[i][j].setFont(font)
+
     def AddButton(self, row, column):
+        size = 100
         newButton = QtWidgets.QPushButton(self.centralwidget)
-        newButton.setGeometry(QtCore.QRect(row * 50, column * 50, 50, 50))
-        newButton.setText(str(row) + ", " + str(column))
-        font = QtGui.QFont()
-        font.setPointSize(20)
-        font.setBold(True)
-        font.setWeight(75)
-        newButton.setFont(font)
+        newButton.setGeometry(QtCore.QRect(row * size, column * size, size, size))
         return newButton

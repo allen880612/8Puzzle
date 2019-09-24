@@ -7,12 +7,13 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from Model import DataModel as DM
 
 class Menu(object):
-
-    def __init__(self):
+    def __init__(self, data):
         self._isStart = False
         self.isOpen = False
+        self.data = data
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -74,4 +75,7 @@ class Menu(object):
 
     def Start(self):
         self._isStart = True
+        self.data.SetButtonCount(5)
+
+
 
