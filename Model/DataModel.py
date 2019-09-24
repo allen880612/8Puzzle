@@ -8,16 +8,10 @@ class Signal(QtCore.QObject):
     def Shoot(self, message):
         self.signal.emit(message)
 
-    def Connect(self):
-        self.signal.connect(self.Revice)
-
-    def Revice(self, message):
-        print(message)
-
 class DataModel():
     def __init__(self):
         self.rowButtonCount = 0
-        self.signal = Signal()
+        self.dataSignal = Signal()
 
     def SetButtonCount(self, count):
         self.rowButtonCount = count

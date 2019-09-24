@@ -5,7 +5,7 @@ class PreGamingWindow(object):
     def __init__(self, data):
         self.data = data
         #self.signal = DM.Signal()
-        self.data.signal.signal.connect(self.ReviceMessage)
+        self.data.dataSignal.signal.connect(self.ReviceMessage)
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -39,6 +39,7 @@ class PreGamingWindow(object):
         self.gridLayout.setObjectName("gridLayout")
         self.buttonDynamic = QtWidgets.QPushButton(self.gridLayoutWidget)
         self.buttonDynamic.setObjectName("buttonDynamic")
+        self.buttonDynamic.setVisible(False)
         self.gridLayout.addWidget(self.buttonDynamic, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -56,31 +57,33 @@ class PreGamingWindow(object):
         self.labelHint.adjustSize(); #QLabel 自適應大小
         self.buttonDynamic.setText(_translate("MainWindow", "PushButton"))
 
+    def ReviceMessage(self, message):
+        print("Revice! " + message)
+        if message == "Goto2":
+            self.AddButtonList(self.data.GetButtonCount())
+
     def AddButtonList(self, addRowButtonCount):
         totalButtonCount = addRowButtonCount ** 2
         self.buttonList = []
         for i in range(addRowButtonCount):
             rowButtonList = []
             for j in range(addRowButtonCount):
-                rowButtonList.append(self.AddButton(j, i))
+                rowButtonList.append(self.AddButton(j, i, i * addRowButtonCount + j))
             self.buttonList.append(rowButtonList)
 
-        for i in range(addRowButtonCount):
-            for j in range(addRowButtonCount):
-                self.buttonList[i][j].setText(str(i * 5 + j))
-                font = QtGui.QFont()
-                font.setPointSize(20)
-                font.setBold(True)
-                font.setWeight(75)
-                self.buttonList[i][j].setFont(font)
-
-    def AddButton(self, row, column):
+    def AddButton(self, row, column, buttonIndex):
         size = 100
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(75)
         newButton = QtWidgets.QPushButton(self.centralwidget)
         newButton.setGeometry(QtCore.QRect(row * size, column * size, size, size))
+        newButton.setText(str(buttonIndex))
+        newButton.setFont(font)
+        newButton.clicked.connect(lambda: self.ClickButton(buttonIndex))
         return newButton
 
-    def ReviceMessage(self, message):
-        print("Revice!")
-        print(message)
-        self.AddButtonList(self.data.GetButtonCount())
+    def ClickButton(self, buttonIndex):
+        self.buttonDynamic.click()
+        print(buttonIndex)

@@ -75,9 +75,14 @@ class Menu(object):
         return self._isStart
 
     def Start(self):
+        message = "Goto2"
         self._isStart = True
-        self.data.SetButtonCount(int(self.textBoxPuzzleSize.toPlainText()))
-        print("Shoot!")
-        self.data.signal.Shoot("Fuck you ! ")
+        self.data.SetButtonCount(self.GetInputNumber(self.textBoxPuzzleSize.toPlainText()))
+        print("Shoot!" + message)
+        self.data.dataSignal.Shoot(message)
 
-
+    def GetInputNumber(self, inputString):
+        try:
+            return int(inputString)
+        except:
+            return 2

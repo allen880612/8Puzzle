@@ -1,6 +1,10 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class GameWindow(object):
+    def __init__(self, data):
+        self.data = data
+        self.data.dataSignal.signal.connect(self.ReviceMessage)
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(640, 480)
@@ -103,4 +107,7 @@ class GameWindow(object):
         self.buttonLoad.setText(_translate("MainWindow", "讀入"))
         self.buttonRestart.setText(_translate("MainWindow", "重新開始"))
         self.buttonMenu.setText(_translate("MainWindow", "回選單"))
+
+    def ReviceMessage(self, message):
+        return False
 
