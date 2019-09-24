@@ -47,5 +47,26 @@ class PreGamingWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.buttonBack.setText(_translate("MainWindow", "Back"))
         self.labelHint.setText(_translate("MainWindow", "點擊任意一格來開始遊戲!"))
+        self.labelHint.adjustSize(); #QLabel 自適應大小
         self.buttonDynamic.setText(_translate("MainWindow", "PushButton"))
+        self.AddButtonList(5)
 
+    def AddButtonList(self, addRowButtonCount):
+        totalButtonCount = addRowButtonCount ** 2
+        self.buttonList = []
+        for i in range(addRowButtonCount):
+            rowButtonList = []
+            for j in range(addRowButtonCount):
+                rowButtonList.append(self.AddButton(i, j))
+            self.buttonList.append(rowButtonList)
+
+    def AddButton(self, row, column):
+        newButton = QtWidgets.QPushButton(self.centralwidget)
+        newButton.setGeometry(QtCore.QRect(row * 50, column * 50, 50, 50))
+        newButton.setText(str(row) + ", " + str(column))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(75)
+        newButton.setFont(font)
+        return newButton
