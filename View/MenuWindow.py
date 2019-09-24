@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QIcon, QPixmap, QImage
 from PIL import Image
-from Model import DataModel as DM
 from Controller import FileDialog as FD
 from Controller import ImageControl as IMG_CONTROL
 class Menu(object):
@@ -53,7 +53,8 @@ class Menu(object):
         #  自定義功能區
         self.buttonStart.clicked.connect(self.Start)
         self.buttonImportImage.clicked.connect(self.ImportImage)
-        #
+        self.labelPreviewImage.setScaledContents(True)  #  圖片能符合label大小ˋ
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -73,18 +74,23 @@ class Menu(object):
 
     def Start(self):
         message = "Goto2"
+        matrixSize = self.GetInputNumber(self.textBoxPuzzleSize.toPlainText())
         self._isStart = True
-        self.data.SetButtonCount(self.GetInputNumber(self.textBoxPuzzleSize.toPlainText()))
+        self.data.SetButtonCount(matrixSize)
         print("Shoot!" + message)
+        self.imgCtrl.SetImageList(matrixSize)
         self.data.dataSignal.Shoot(message)
 
     def ImportImage(self):
-        selectImage = self.fileDialog.openFileNameDialog()
-        print("開啟圖片 : " + selectImage)
-        self.imgCtrl.LoadImage(selectImage)
+        #  強迫要選到圖
+        while True:
+            selectImage = self.fileDialog.openFileNameDialog()
+            print("開啟圖片 : " + str(selectImage))
+            if selectImage:
+                break
 
-        # self.labelPreviewImage.setPixmap(self.imgCtrl.sourceQPixmap)
-        # self.labelPreviewImage.setPixmap(self.data.GetQPixmap())
+        self.imgCtrl.LoadImage(selectImage)
+        self.labelPreviewImage.setPixmap(self.data.GetPixmap())
 
     def GetInputNumber(self, inputString):
         try:

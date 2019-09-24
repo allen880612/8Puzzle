@@ -1,4 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QIcon
 from Model import DataModel as DM
 
 class PreGamingWindow(object):
@@ -69,23 +70,15 @@ class PreGamingWindow(object):
     def AddButtonList(self, addRowButtonCount):
         totalButtonCount = addRowButtonCount ** 2
         self.ClearButton()
+        pixmapList = self.data.GetPixmapList()
         for i in range(addRowButtonCount):
             rowButtonList = []
             for j in range(addRowButtonCount):
-                rowButtonList.append(self.AddButton(j, i, i * addRowButtonCount + j))
+                buttonIndex = i * addRowButtonCount + j
+                rowButtonList.append(self.AddButton(j, i, buttonIndex, pixmapList[buttonIndex]))
             self.buttonList.append(rowButtonList)
 
-
-        # for i in range(addRowButtonCount):
-        #     for j in range(addRowButtonCount):
-        #         self.buttonList[i][j].setText(str(i * addRowButtonCount + j))
-        #         font = QtGui.QFont()
-        #         font.setPointSize(20)
-        #         font.setBold(True)
-        #         font.setWeight(75)
-        #         self.buttonList[i][j].setFont(font)
-
-    def AddButton(self, row, column, buttonIndex):
+    def AddButton(self, row, column, buttonIndex, pixmap):
 
         size = 100
         dButtonPos = (100, 10)
@@ -98,6 +91,13 @@ class PreGamingWindow(object):
         newButton.setText(str(buttonIndex))
         newButton.setFont(font)
         newButton.clicked.connect(lambda: self.ClickButton(buttonIndex))
+        # icon
+        buttonIcon = QIcon(pixmap)
+        # newButton.setFixedSize(buttonIcon.availableSizes()[0])
+        # newButton.setIconSize(buttonIcon.actualSize(availableSizes()[0]))
+        newButton.setIcon(buttonIcon)
+        newButton.setIconSize(QtCore.QSize(newButton.width(), newButton.height()))
+        # newButton.setStyleSheet('QPushButton{border: 0px solid;}')
         return newButton
 
 

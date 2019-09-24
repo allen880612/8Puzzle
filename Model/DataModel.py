@@ -19,6 +19,7 @@ class DataModel():
 
         self.sourceImage = None
         self.sourceQPixmap = None
+        self.pixmapList = []
 
     def SetButtonCount(self, count):
         self.rowButtonCount = count
@@ -32,10 +33,10 @@ class DataModel():
     def GetSourceImage(self):
         return self.sourceImage
 
-    def SetQPixmap(self, image):
+    def SetPixmap(self, image):
         self.sourceQPixmap = image
 
-    def GetQPixmap(self):
+    def GetPixmap(self):
         return self.sourceQPixmap
 
     def SetNowNullButtonIndex(self, btnIndex):
@@ -43,3 +44,9 @@ class DataModel():
 
     def GetNowNullButtonIndex(self):
         return self.nowNullButtonIndex
+
+    def SetPixmapList(self, pixmapList):
+        self.pixmapList = pixmapList
+
+    def GetPixmapList(self):
+        return self.pixmapList
