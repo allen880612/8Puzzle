@@ -1,4 +1,5 @@
 import random
+from Controller import FuntionTools
 def RandomPuzzle(n):
     puzzle = [[] for i in range(n)]
     step = n * n * 1000
@@ -36,7 +37,9 @@ def RandomPuzzle(n):
                 col += 1
     return puzzle
 
+# puzzle = RandomPuzzle(5)
+# for i in puzzle:
+#     print(i)
+#
+# print(FuntionTools.FindNumberFormMatrix(puzzle, 0))
 
-puzzle = RandomPuzzle(10)
-for i in puzzle:
-    print(i)

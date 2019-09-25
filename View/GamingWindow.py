@@ -1,9 +1,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from Controller import RandomPuzzle
+from Controller import FuntionTools
 
 class GameWindow(object):
     def __init__(self, data):
         self.data = data
         self.data.dataSignal.signal.connect(self.ReviceMessage)
+        self.puzzle = [] #add
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -108,6 +111,28 @@ class GameWindow(object):
         self.buttonRestart.setText(_translate("MainWindow", "重新開始"))
         self.buttonMenu.setText(_translate("MainWindow", "回選單"))
 
+    # Add
     def ReviceMessage(self, message):
-        return False
+        if message == "Goto3":
+            print("Revice! " + message)
+            self.CreateRandomPuzzle()
+
+    # Add
+    def CreateRandomPuzzle(self):
+        buttonCount = self.data.GetButtonCount()
+        buttonNullIndex = self.data.GetNowNullButtonIndex()
+        print("nullIndex: " + str(buttonNullIndex))
+        print("modori: ")
+        self.puzzle = RandomPuzzle.RandomPuzzle(buttonCount)
+        print(self.puzzle)
+
+        print("after swap: ")
+        zeroRow, zeroColumn = FuntionTools.FindNumberFormMatrix(self.puzzle, 0)
+        selectedRow, selectedColumn = buttonNullIndex // buttonCount, buttonNullIndex % buttonCount
+        print(zeroRow, zeroColumn)
+        print(selectedRow, selectedColumn)
+        self.puzzle[zeroRow][zeroColumn], self.puzzle[selectedRow][selectedColumn] = FuntionTools.Swap(self.puzzle[zeroRow][zeroColumn], self.puzzle[selectedRow][selectedColumn])
+        print(self.puzzle)
+
+
 

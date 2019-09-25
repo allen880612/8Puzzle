@@ -75,11 +75,29 @@ class PreGamingWindow(object):
             rowButtonList = []
             for j in range(addRowButtonCount):
                 buttonIndex = i * addRowButtonCount + j
-                rowButtonList.append(self.AddButton(j, i, buttonIndex, pixmapList[buttonIndex]))
+                if pixmapList: # test 用
+                    rowButtonList.append(self.AddButton(j, i, buttonIndex, pixmapList[buttonIndex]))
+                else:
+                    rowButtonList.append(self.AddButton2(j, i, buttonIndex))
+
             self.buttonList.append(rowButtonList)
 
-    def AddButton(self, row, column, buttonIndex, pixmap):
+    #test - no image
+    def AddButton2(self, row, column, buttonIndex):
+        size = 100
+        dButtonPos = (100, 10)
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(75)
+        newButton = QtWidgets.QPushButton(self.centralwidget)
+        newButton.setGeometry(QtCore.QRect(dButtonPos[0] + row * size, dButtonPos[1] + column * size, size, size))
+        newButton.setText(str(buttonIndex))
+        newButton.setFont(font)
+        newButton.clicked.connect(lambda: self.ClickButton(buttonIndex))
+        return newButton
 
+    def AddButton(self, row, column, buttonIndex, pixmap):
         size = 100
         dButtonPos = (100, 10)
         font = QtGui.QFont()
@@ -113,7 +131,6 @@ class PreGamingWindow(object):
         self.AddButtonList(self.data.GetButtonCount())
 
     def ClearButton(self):
-        print(self.buttonList)
         for rowBtn in self.buttonList:
             for btn in rowBtn:
                 btn.deleteLater()
@@ -121,5 +138,6 @@ class PreGamingWindow(object):
 
     def ClickButton(self, buttonIndex):
         self.buttonDynamic.click()
-        print(buttonIndex)
+        self.data.SetNowNullButtonIndex(buttonIndex)
+        self.data.dataSignal.Shoot("Goto3")
 
