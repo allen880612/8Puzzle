@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QImage, QPixmap
 from PIL import Image
 from PIL.ImageQt import ImageQt
+import os
 
 class ImageControl():
     def __init__(self, dataModel):
@@ -47,6 +48,7 @@ class ImageControl():
                 box_list.append(box)
 
         image_list = [image.crop(box) for box in box_list]
+        self.save_img(image_list)
         pixmapList = [self.ConvertPILtoPixmap(img) for img in image_list]
         return pixmapList
 
@@ -54,7 +56,7 @@ class ImageControl():
         index = 0
         for im in imageList:
             # cv2.imwrite(str(index) + ".png", im)
-            # im.save(os.path.join(os.getcwd(), "subImg", str(index) + ".jpg"))
+            im.save(os.path.join(os.getcwd(), "subImage", str(index) + ".jpg"))
             index += 1
 
     def SetImageList(self, count):

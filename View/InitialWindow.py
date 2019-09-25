@@ -96,10 +96,12 @@ class PreGamingWindow(object):
         # newButton.setFixedSize(buttonIcon.availableSizes()[0])
         # newButton.setIconSize(buttonIcon.actualSize(availableSizes()[0]))
         newButton.setFlat(True)
-        newButton.setIconSize(QtCore.QSize(newButton.width(), newButton.height()))
-        newButton.setIcon(buttonIcon)
-        # newButton.setStyleSheet('QPushButton{border: 0px solid;}')
+        # newButton.setIconSize(QtCore.QSize(newButton.width(), newButton.height()))
+        # newButton.setIcon(buttonIcon)
+
+        newButton.setStyleSheet('QPushButton{border: 0px solid;}')
         # newButton.autofillbackground(True)  # 並沒有，拉機pyQt
+        newButton.setStyleSheet("border-image: url(subImage/" + str(buttonIndex) + ".jpg);")
 
         return newButton
 
