@@ -1,4 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QIcon
 from Controller import RandomPuzzle
 from Controller import FuntionTools
 
@@ -7,6 +8,7 @@ class GameWindow(object):
         self.data = data
         self.data.dataSignal.signal.connect(self.ReviceMessage)
         self.puzzle = [] #add
+        self.buttonList = [] #add
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -134,5 +136,67 @@ class GameWindow(object):
         self.puzzle[zeroRow][zeroColumn], self.puzzle[selectedRow][selectedColumn] = FuntionTools.Swap(self.puzzle[zeroRow][zeroColumn], self.puzzle[selectedRow][selectedColumn])
         print(self.puzzle)
 
+        self.AddButtonList(buttonCount)
 
+    #test - 以下幾乎都重複程式碼 臭臭的喔
+    def AddButtonList(self, addRowButtonCount):
+        self.ClearButton()
+        #pixmapList = self.data.GetPixmapList()
+        for i in range(addRowButtonCount):
+            rowButtonList = []
+            for j in range(addRowButtonCount):
+                #buttonIndex = i * addRowButtonCount + j
+                # if pixmapList: # test 用
+                #     rowButtonList.append(self.AddButton(j, i, buttonIndex, pixmapList[buttonIndex]))
+                # else:
+                rowButtonList.append(self.AddButton2(j, i, self.puzzle[i][j]))
 
+            self.buttonList.append(rowButtonList)
+
+    #test - no image
+    def AddButton2(self, row, column, buttonIndex):
+        size = 100
+        dButtonPos = (10, 10)
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(75)
+        newButton = QtWidgets.QPushButton(self.centralwidget)
+        newButton.setGeometry(QtCore.QRect(dButtonPos[0] + row * size, dButtonPos[1] + column * size, size, size))
+        newButton.setText(str(buttonIndex))
+        newButton.setFont(font)
+        newButton.setVisible(buttonIndex != 0)
+        #newButton.clicked.connect(lambda: self.ClickButton(buttonIndex))
+        return newButton
+
+    def AddButton(self, row, column, buttonIndex, pixmap):
+        size = 100
+        dButtonPos = (100, 10)
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(75)
+        newButton = QtWidgets.QPushButton(self.centralwidget)
+        newButton.setGeometry(QtCore.QRect(dButtonPos[0] + row * size, dButtonPos[1] + column * size, size, size))
+        newButton.setText(str(buttonIndex))
+        newButton.setFont(font)
+        newButton.clicked.connect(lambda: self.ClickButton(buttonIndex))
+        # icon
+        buttonIcon = QIcon(pixmap)
+        # newButton.setFixedSize(buttonIcon.availableSizes()[0])
+        # newButton.setIconSize(buttonIcon.actualSize(availableSizes()[0]))
+        newButton.setFlat(True)
+        # newButton.setIconSize(QtCore.QSize(newButton.width(), newButton.height()))
+        # newButton.setIcon(buttonIcon)
+
+        newButton.setStyleSheet('QPushButton{border: 0px solid;}')
+        # newButton.autofillbackground(True)  # 並沒有，拉機pyQt
+        newButton.setStyleSheet("border-image: url(subImage/" + str(buttonIndex) + ".jpg);")
+
+        return newButton
+
+    def ClearButton(self):
+        for rowBtn in self.buttonList:
+            for btn in rowBtn:
+                btn.deleteLater()
+        self.buttonList.clear()
