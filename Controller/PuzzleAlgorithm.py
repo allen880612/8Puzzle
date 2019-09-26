@@ -35,9 +35,9 @@ class NPuzzle:
     def _creat_goal_matrix(size):
         """產生推盤目標狀態，回傳空格位置以及矩陣。"""
         x = y = size - 1
-        matrix = [[x + y * size for x in range(size)] for y in range(size)]
-        
-        return 0, 0, matrix
+        matrix = [[x + y * size + 1 for x in range(size)] for y in range(size)]
+        matrix[x][y] = 0
+        return x, y, matrix
     
     @property
     def goal(self):
@@ -232,8 +232,8 @@ def best_first_search(start, max_times):
         startRow, startColumn, moveStep = GetMove(startRow, startColumn, path[step].matrix)
         movePath.append(moveStep)
 
-    for state in movePath:
-        print(state)
+    # for state in movePath:
+    #     print(state)
 
     return final, path, movePath
 

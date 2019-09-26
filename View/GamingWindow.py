@@ -3,6 +3,7 @@ from PyQt5.QtGui import QIcon
 from Controller import RandomPuzzle
 from Controller import FuntionTools
 from Controller import PuzzleAlgorithm as PA
+import threading
 
 class GameWindow(object):
     def __init__(self, data):
@@ -107,7 +108,8 @@ class GameWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
 
-        self.buttonNextStep.clicked.connect(self.duck)
+        self.buttonNextStep.clicked.connect(self.AI_NextStep)
+        self.buttonAutoFinish.clicked.connect(lambda: self.AI_AutoComplete(0.05))
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -131,7 +133,7 @@ class GameWindow(object):
             self.CreateRandomPuzzle()
 
     #Add connect
-    def duck(self):
+    def AI_NextStep(self):
         print(self.nullBtnIndexRow, self.nullBtnIndexCol)
         self.nullBtnIndexRow, self.nullBtnIndexCol = self.MoveButton(self.nullBtnIndexRow, self.nullBtnIndexCol, self.movePath[self.step])
         self.UpdateButtonPosition()
@@ -140,11 +142,21 @@ class GameWindow(object):
         self.labelStep.setText("已用步數： " + str(self.step))
         self.buttonNextStep.setEnabled(self.step != self.totalStep)
 
+    def AI_AutoComplete(self, delayTime):
+        self.AI_NextStep()
+        if self.step != self.totalStep:
+            threading.Timer(delayTime, lambda: self.AI_AutoComplete(delayTime)).start()
+            # print("Fuck Qt")
+
     # Add
     def CreateRandomPuzzle(self):
         buttonCount = self.data.GetButtonCount()
         # region 接龍哥API
-        self.puzzle = self.data.GetPuzzle()
+        matrix = [[2, 3, 12, 8],
+                  [6, 13, 4, 5],
+                  [0, 10, 7, 1],
+                  [11, 14, 15, 9]]
+        self.puzzle = matrix
         print("Random Puzzle : ", self.puzzle)
         # buttonNullIndex = self.data.GetNowNullButtonIndex()
         #
@@ -156,7 +168,7 @@ class GameWindow(object):
 
         #region 接生佬API 得到每步走法
         self.nullBtnIndexRow, self.nullBtnIndexCol = FuntionTools.FindNumberFormMatrix(self.puzzle, 0)
-        puzzlePath = PA.NPuzzle(self.nullBtnIndexCol, self.nullBtnIndexRow, self.puzzle)
+        puzzlePath = PA.NPuzzle(0, 2, matrix)
         self.movePath, self.totalStep = PA.test_best_first_search(puzzlePath)  # 得到每步走法
         #endregion
 
@@ -164,7 +176,7 @@ class GameWindow(object):
 
     #目前空格所在位置, 移動走法
     def MoveButton(self, nullRow, nullCol, moveStep):
-        print(moveStep)
+        # print(moveStep)
         if moveStep == "up":
             self.buttonList[nullRow][nullCol], self.buttonList[nullRow - 1][nullCol] = self.buttonList[nullRow - 1][nullCol], self.buttonList[nullRow][nullCol]
             return nullRow - 1, nullCol
@@ -232,10 +244,15 @@ class GameWindow(object):
         newButton.setGeometry(QtCore.QRect(dButtonPos[0] + row * size, dButtonPos[1] + column * size, size, size))
         newButton.setText(str(buttonIndex))
         newButton.setFont(font)
+        newButton.setAutoFillBackground(True)
         newButton.clicked.connect(lambda: self.ClickButton(buttonIndex))
         newButton.setFlat(True)
+
+        colNum = self.data.GetButtonCount()
+        lastIndex = ((colNum ** 2) - 1)
         newButton.setStyleSheet('QPushButton{border: 0px solid;}')
-        newButton.setStyleSheet("border-image: url(subImage/" + str(buttonIndex) + ".jpg);")
+        if buttonIndex != 0:
+            newButton.setStyleSheet("border-image: url(subImage/" + str(buttonIndex - 1) + ".jpg);")
         newButton.setVisible(buttonIndex != 0)
         newButton.setEnabled(buttonIndex != 0)
 
