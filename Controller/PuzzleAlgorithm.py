@@ -225,6 +225,10 @@ def best_first_search(start, max_times):
     print("rref")
     print(startRow, startColumn)
 
+    # print("print step")
+    # for step in path:
+    #     print(step)
+
     #算走法
     for step in range(1, len(path)):
         startRow, startColumn, moveStep = GetMove(startRow, startColumn, path[step].matrix)
@@ -276,7 +280,7 @@ def test_best_first_search(start, max_times=10000):
         #     print(movePath)
     else:
         print('找不到目標狀態!')
-    return movePath
+    return movePath, len(path) - 1
 
 # In[55]:
 #test_best_first_search(puzzle)
