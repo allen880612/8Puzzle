@@ -257,28 +257,45 @@ def GetMove(row, col, compareMatrix):
     return zeroRow, zeroCol, move
 
 
-def test_best_first_search(start, max_times=10000):
-    """輸入開始狀態產生結果"""
-    print('start')
-    print(start)
-    print()
+class test_best_first_search():
+    def __init__(self, start, max_times=10000):
+        """輸入開始狀態產生結果"""
+        print('start')
+        print(start)
+        print()
 
-    print('goal')
-    print(start.goal)
-    print()
-    
-    final, path, movePath = best_first_search(start, max_times)
-    
-    if path[-1] == start.goal:
-        print(f'step: {len(path) - 1}')
-        print('path')
-        for state in path:
-            print(state)
-        # for state in path:
-        #     print(movePath)
-    else:
-        print('找不到目標狀態!')
-    return movePath, len(path) - 1
+        print('goal')
+        print(start.goal)
+        print()
+
+        self.haveSolution = False
+        self.path = None
+        self.movePath = None
+        final, self.path, self.movePath = best_first_search(start, max_times)
+
+        if self.path[-1] == start.goal:
+            print(f'step: {len(self.path) - 1}')
+            print('path')
+            for state in self.path:
+                print(state)
+            self.haveSolution = True
+            # for state in path:
+            #     print(movePath)
+        else:
+            self.haveSolution = False
+            print('找不到目標狀態!')
+
+    def GetMovePath(self):
+        return self.movePath
+
+    def GetTotalStep(self):
+        return len(self.path) - 1
+
+    def GetNowPuzzleState(self, step):
+        try:
+            return self.path[step].matrix
+        except:
+            return self.path[-1].matrix
 
 # In[55]:
 #test_best_first_search(puzzle)

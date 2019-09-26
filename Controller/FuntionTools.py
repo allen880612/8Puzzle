@@ -23,15 +23,18 @@ class UserJSONEncoder(json.JSONEncoder):
             return obj.__jsonencode__()
         return json.JSONEncoder.default(self, obj)
 
+#mudamuda
 def __dictToDataModel(dictionary):
     if isinstance(dictionary, dict):
-        return DM.DataModel(dictionary["rowButtonCount"], dictionary["movePath"], dictionary["step"], dictionary["totalStep"])
+        data = DM.DataModel(dictionary["rowButtonCount"], dictionary["movePath"], dictionary["step"], dictionary["totalStep"])
+        data.SetPuzzle(dictionary["puzzle"])
+        return data
 
 def writeJson(savePath, obj):
     print(json.dump(obj, open(savePath, "w"), cls=UserJSONEncoder))
     print("write json")
 
 def readJson(loadPath):
-    jsonData = json.load(open(loadPath), object_hook=__dictToDataModel)
+    jsonData = json.load(open(loadPath))
     print("load json")
     return jsonData

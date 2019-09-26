@@ -78,17 +78,23 @@ class Menu(object):
         font.setPointSize(20)
         font.setBold(True)
         font.setWeight(75)
-        newButton = QtWidgets.QPushButton(self.centralwidget)
-        newButton.setGeometry(QtCore.QRect(20, 300, 50, 50))
-        newButton.setText("讀檔")
-        newButton.setFont(font)
-        newButton.adjustSize()
-        newButton.clicked.connect(self.ClickLoadButton)
-        newButton.setVisible(True)
+        self.buttonLoad = QtWidgets.QPushButton(self.centralwidget)
+        self.buttonLoad.objectName = "buttonLoad"
+        self.buttonLoad.setGeometry(QtCore.QRect(20, 300, 50, 50))
+        self.buttonLoad.setText("讀檔")
+        self.buttonLoad.setFont(font)
+        self.buttonLoad.adjustSize()
+        self.buttonLoad.clicked.connect(self.ClickLoadButton)
+        self.buttonLoad.setVisible(True)
 
     def ClickLoadButton(self):
-        self.data = FuntionTools.readJson("data.json")
+        message = "Goto3"
+        dataDict = FuntionTools.readJson("data.json")
+        self.data.SetData(dataDict)
+        self.data.SetPuzzle(dataDict["puzzle"])
+        self.data.SetButtonCount(dataDict["rowButtonCount"])
         print("Click load")
+        self.data.dataSignal.Shoot(message)
 
     def IsStart(self):
         return self._isStart

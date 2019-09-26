@@ -30,6 +30,8 @@ class DataModel():
         self.step = _step # 儲存 - 現在的步數
         self.totalStep = _totalStep # 儲存 - 總共會走得總步數
 
+    #json編碼  (概念: 編碼: 轉換函式換成字典 > 儲存成Json)
+    #          (      解碼: 讀取Json > json.load換成字典 > 字典丟給dataModel.SetData 設置Data)
     def __jsonencode__(self):
         dataDict = {
             "rowButtonCount": self.rowButtonCount,
@@ -89,3 +91,7 @@ class DataModel():
         print(type(self.movePath))
         print(self.step)
         print(self.totalStep)
+
+    def SetData(self, dictionary):
+        if isinstance(dictionary, dict):
+            self.SaveData(dictionary["rowButtonCount"], dictionary["movePath"], dictionary["step"], dictionary["totalStep"])

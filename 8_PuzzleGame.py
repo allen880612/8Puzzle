@@ -82,6 +82,7 @@ if __name__ == '__main__':
 
     GameStates[0].show()
     menuWindow.buttonStart.clicked.connect(lambda: showAnotherWindow(1, 0))
+    menuWindow.buttonLoad.clicked.connect(lambda: showAnotherWindow(2, 0))
     preGamingWindow.buttonBack.clicked.connect(lambda: showAnotherWindow(0, 1))
     preGamingWindow.buttonDynamic.clicked.connect(lambda: showAnotherWindow(2, 1))
     gameWindow.buttonMenu.clicked.connect(lambda: showAnotherWindow(0, 2))

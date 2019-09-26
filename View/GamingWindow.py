@@ -13,6 +13,8 @@ class GameWindow(object):
         self.puzzle = [] #add
         self.buttonList = [] #add
 
+        self.bestSearch = None # 生佬的函式
+
         self.puzzlePath = None
         self.step = 0 # now step
         self.totalStep = 0 # 演算法總共要走的步數
@@ -159,6 +161,7 @@ class GameWindow(object):
     # Add
     def CreateRandomPuzzle(self):
         buttonCount = self.data.GetButtonCount()
+        print(buttonCount)
         # region 接龍哥API
         # matrix = [[2, 3, 12, 8],
         #           [6, 13, 4, 5],
@@ -177,7 +180,9 @@ class GameWindow(object):
         #region 接生佬API 得到每步走法
         self.nullBtnIndexRow, self.nullBtnIndexCol = FuntionTools.FindNumberFormMatrix(self.puzzle, 0)
         self.puzzlePath = PA.NPuzzle(self.nullBtnIndexCol, self.nullBtnIndexRow, self.puzzle)
-        self.movePath, self.totalStep = PA.test_best_first_search(self.puzzlePath)  # 得到每步走法
+        self.bestSearch = PA.test_best_first_search(self.puzzlePath)
+        self.movePath = self.bestSearch.GetMovePath()
+        self.totalStep = self.bestSearch.GetTotalStep()
         #endregion
 
         self.AddButtonList(buttonCount)
@@ -276,6 +281,9 @@ class GameWindow(object):
 
     def ClickSaveButton(self):
         self.data.SaveData(self.puzzlePath, self.movePath, self.step, self.totalStep)
-        self.data.SetPuzzle(self.puzzle)
+        self.data.SetPuzzle(self.bestSearch.GetNowPuzzleState(self.step))
+        print("test")
+        print(self.data.GetPuzzle())
+        print(type(self.data.GetPuzzle()))
         print("Click save data")
         FuntionTools.writeJson("data.json", self.data)
