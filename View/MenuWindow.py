@@ -78,7 +78,10 @@ class Menu(object):
         self._isStart = True
         self.data.SetButtonCount(matrixSize)
         print("Shoot!" + message + "\nsize: " + str(matrixSize))
-        self.imgCtrl.SetImageList(matrixSize)
+        try: #小防呆
+            self.imgCtrl.SetImageList(matrixSize)
+        except:
+            pass
         self.data.dataSignal.Shoot(message)
 
     def ImportImage(self):
@@ -96,4 +99,4 @@ class Menu(object):
         try:
             return int(inputString)
         except:
-            return 2
+            return 3
