@@ -40,7 +40,6 @@ class ImageControl():
         width, height = image.size
         item_width = int(width / cropNum)
         box_list = []
-
         for i in range(0, cropNum):
             for j in range(0, cropNum):
                 # print((i*item_width,j*item_width,(i+1)*item_width,(j+1)*item_width))

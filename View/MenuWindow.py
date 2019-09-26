@@ -77,7 +77,7 @@ class Menu(object):
         matrixSize = self.GetInputNumber(self.textBoxPuzzleSize.toPlainText())
         self._isStart = True
         self.data.SetButtonCount(matrixSize)
-        print("Shoot!" + message)
+        print("Shoot!" + message + "\nsize: " + str(matrixSize))
         self.imgCtrl.SetImageList(matrixSize)
         self.data.dataSignal.Shoot(message)
 

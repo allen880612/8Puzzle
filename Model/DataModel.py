@@ -21,6 +21,8 @@ class DataModel():
         self.sourceQPixmap = None
         self.pixmapList = []
 
+        self.puzzle = None  # 依照再initWindow按下的按鈕，建立之puzzle
+
     def SetButtonCount(self, count):
         self.rowButtonCount = count
 
@@ -50,3 +52,9 @@ class DataModel():
 
     def GetPixmapList(self):
         return self.pixmapList
+
+    def SetPuzzle(self, puzzle):
+        self.puzzle = puzzle
+
+    def GetPuzzle(self):
+        return self.puzzle
