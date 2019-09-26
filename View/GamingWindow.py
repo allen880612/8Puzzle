@@ -2,6 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIcon
 from Controller import RandomPuzzle
 from Controller import FuntionTools
+from Controller import PuzzleAlgorithm as PA
 
 class GameWindow(object):
     def __init__(self, data):
@@ -9,6 +10,9 @@ class GameWindow(object):
         self.data.dataSignal.signal.connect(self.ReviceMessage)
         self.puzzle = [] #add
         self.buttonList = [] #add
+        self.step = 0 # now step
+        self.movePath = None # 每步的移動
+        self.nullBtnIndexRow, self.nullBtnIndexCol = 0, 0 #目前的空按鈕位置
 
     def ReviceMessage(self, message):
         return False
@@ -101,8 +105,11 @@ class GameWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+
+        self.buttonNextStep.clicked.connect(self.duck)
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -122,6 +129,14 @@ class GameWindow(object):
             print("Revice! " + message)
             self.CreateRandomPuzzle()
 
+    #Add connect
+    def duck(self):
+        print(self.nullBtnIndexRow, self.nullBtnIndexCol)
+        self.nullBtnIndexRow, self.nullBtnIndexCol = self.MoveButton(self.nullBtnIndexRow, self.nullBtnIndexCol, self.movePath[self.step])
+        #self.UpdateButtonPosition()
+        QtWidgets.QApplication.processEvents()
+        self.step += 1 #步數+1
+
     # Add
     def CreateRandomPuzzle(self):
         buttonCount = self.data.GetButtonCount()
@@ -139,21 +154,61 @@ class GameWindow(object):
         # print(selectedRow, selectedColumn)
         # self.puzzle[zeroRow][zeroColumn], self.puzzle[selectedRow][selectedColumn] = FuntionTools.Swap(self.puzzle[zeroRow][zeroColumn], self.puzzle[selectedRow][selectedColumn])
         print(self.puzzle)
+        buttonNullIndex = self.data.GetNowNullButtonIndex()
+        #region 接龍哥API
+        print("nullIndex: " + str(buttonNullIndex))
+        print("modori: ")
+        self.puzzle = RandomPuzzle.RandomPuzzle(buttonCount)
+        print(self.puzzle)
+        #endregion
+
+        #region 接生佬API 得到每步走法
+        self.nullBtnIndexRow, self.nullBtnIndexCol = FuntionTools.FindNumberFormMatrix(self.puzzle, 0)
+        puzzlePath = PA.NPuzzle(self.nullBtnIndexRow, self.nullBtnIndexCol, self.puzzle)
+        self.movePath = PA.test_best_first_search(puzzlePath)  # 得到每步走法
+        #endregion
 
         self.AddButtonList(buttonCount)
+
+    #目前空格所在位置, 移動走法
+    def MoveButton(self, nullRow, nullCol, moveStep):
+        print(moveStep)
+        if moveStep == "up":
+            self.buttonList[nullRow][nullCol], self.buttonList[nullRow - 1][nullCol] = self.buttonList[nullRow - 1][nullCol], self.buttonList[nullRow][nullCol]
+            return nullRow - 1, nullCol
+
+        elif moveStep == "down":
+            self.buttonList[nullRow][nullCol], self.buttonList[nullRow + 1][nullCol] = self.buttonList[nullRow + 1][nullCol], self.buttonList[nullRow][nullCol]
+            return nullRow + 1, nullCol
+
+        elif moveStep == "left":
+            self.buttonList[nullRow][nullCol], self.buttonList[nullRow][nullCol - 1] = self.buttonList[nullRow][nullCol - 1], self.buttonList[nullRow][nullCol]
+            return nullRow, nullCol - 1
+
+        elif moveStep == "right":
+            self.buttonList[nullRow][nullCol], self.buttonList[nullRow][nullCol + 1] = self.buttonList[nullRow][nullCol + 1], self.buttonList[nullRow][nullCol]
+            return nullRow, nullCol + 1
+
+    def UpdateButtonPosition(self):
+        size = 100
+        dBtnSize = (10, 10)
+        count = self.data.GetButtonCount()
+        for i in range(count):
+            for j in range(count):
+                self.buttonList[i][j].move(dBtnSize[0] + j * size, dBtnSize[1] + i * size)
 
     #test - 以下幾乎都重複程式碼 臭臭的喔
     def AddButtonList(self, addRowButtonCount):
         self.ClearButton()
-        #pixmapList = self.data.GetPixmapList()
+        pixmapList = self.data.GetPixmapList()
         for i in range(addRowButtonCount):
             rowButtonList = []
             for j in range(addRowButtonCount):
-                #buttonIndex = i * addRowButtonCount + j
-                # if pixmapList: # test 用
-                #     rowButtonList.append(self.AddButton(j, i, buttonIndex, pixmapList[buttonIndex]))
-                # else:
-                rowButtonList.append(self.AddButton2(j, i, self.puzzle[i][j]))
+                buttonIndex = i * addRowButtonCount + j
+                if pixmapList: # test 用
+                    rowButtonList.append(self.AddButton(j, i, buttonIndex, pixmapList[buttonIndex]))
+                else:
+                    rowButtonList.append(self.AddButton2(j, i, self.puzzle[i][j]))
 
             self.buttonList.append(rowButtonList)
 

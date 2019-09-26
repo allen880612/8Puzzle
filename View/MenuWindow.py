@@ -78,7 +78,7 @@ class Menu(object):
         self._isStart = True
         self.data.SetButtonCount(matrixSize)
         print("Shoot!" + message + "\nsize: " + str(matrixSize))
-        self.imgCtrl.SetImageList(matrixSize)
+        #self.imgCtrl.SetImageList(matrixSize)
         self.data.dataSignal.Shoot(message)
 
     def ImportImage(self):
