@@ -133,6 +133,4 @@ class PreGamingWindow(object):
         self.puzzleControl.ResetPuzzleBlankLocation(buttonIndex)  # 依按下位置，改變亂數產生之puzzle
         #self.data.SetNowNullButtonIndex(buttonIndex)
         self.data.dataSignal.Shoot("Goto3")
-        self.data.SetButtonMatrix(self.buttonList)
-
 

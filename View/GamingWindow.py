@@ -152,23 +152,23 @@ class GameWindow(object):
     def CreateRandomPuzzle(self):
         buttonCount = self.data.GetButtonCount()
         # region 接龍哥API
-        matrix = [[2, 3, 12, 8],
-                  [6, 13, 4, 5],
-                  [0, 10, 7, 1],
-                  [11, 14, 15, 9]]
-        self.puzzle = matrix
+        # matrix = [[2, 3, 12, 8],
+        #           [6, 13, 4, 5],
+        #           [0, 10, 7, 1],
+        #           [11, 14, 15, 9]]
+        # self.puzzle = matrix
         print("Random Puzzle : ", self.puzzle)
-        # buttonNullIndex = self.data.GetNowNullButtonIndex()
-        #
-        # print("nullIndex: " + str(buttonNullIndex))
-        # print("modori: ")
-        # self.puzzle = RandomPuzzle.RandomPuzzle(buttonCount)
-        # print(self.puzzle)
+        buttonNullIndex = self.data.GetNowNullButtonIndex()
+
+        print("nullIndex: " + str(buttonNullIndex))
+        print("modori: ")
+        self.puzzle = RandomPuzzle.RandomPuzzle(buttonCount)
+        print(self.puzzle)
         #endregion
 
         #region 接生佬API 得到每步走法
         self.nullBtnIndexRow, self.nullBtnIndexCol = FuntionTools.FindNumberFormMatrix(self.puzzle, 0)
-        puzzlePath = PA.NPuzzle(0, 2, matrix)
+        puzzlePath = PA.NPuzzle(self.nullBtnIndexCol, self.nullBtnIndexRow, self.puzzle)
         self.movePath, self.totalStep = PA.test_best_first_search(puzzlePath)  # 得到每步走法
         #endregion
 
@@ -235,7 +235,7 @@ class GameWindow(object):
 
     def AddButton(self, row, column, buttonIndex, pixmap):
         size = 100
-        dButtonPos = (100, 10)
+        dButtonPos = (10, 10)
         font = QtGui.QFont()
         font.setPointSize(20)
         font.setBold(True)
@@ -253,6 +253,8 @@ class GameWindow(object):
         newButton.setStyleSheet('QPushButton{border: 0px solid;}')
         if buttonIndex != 0:
             newButton.setStyleSheet("border-image: url(subImage/" + str(buttonIndex - 1) + ".jpg);")
+        else:
+            newButton.setStyleSheet("border-image: url(subImage/" + str(lastIndex) + ".jpg);")
         newButton.setVisible(buttonIndex != 0)
         newButton.setEnabled(buttonIndex != 0)
 
