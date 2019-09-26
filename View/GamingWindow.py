@@ -11,6 +11,7 @@ class GameWindow(object):
         self.puzzle = [] #add
         self.buttonList = [] #add
         self.step = 0 # now step
+        self.totalStep = 0 # 演算法總共要走的步數
         self.movePath = None # 每步的移動
         self.nullBtnIndexRow, self.nullBtnIndexCol = 0, 0 #目前的空按鈕位置
 
@@ -115,7 +116,7 @@ class GameWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.buttonAutoFinish.setText(_translate("MainWindow", "AI 自動完成"))
-        self.labelStep.setText(_translate("MainWindow", "已用步數：20"))
+        self.labelStep.setText(_translate("MainWindow", "已用步數：0"))
         self.buttonNextStep.setText(_translate("MainWindow", "AI 解下一步"))
         self.labelHelp.setText(_translate("MainWindow", "幫助"))
         self.buttonSave.setText(_translate("MainWindow", "存檔"))
@@ -133,9 +134,11 @@ class GameWindow(object):
     def duck(self):
         print(self.nullBtnIndexRow, self.nullBtnIndexCol)
         self.nullBtnIndexRow, self.nullBtnIndexCol = self.MoveButton(self.nullBtnIndexRow, self.nullBtnIndexCol, self.movePath[self.step])
-        #self.UpdateButtonPosition()
-        QtWidgets.QApplication.processEvents()
+        self.UpdateButtonPosition()
+        #QtWidgets.QApplication.processEvents()
         self.step += 1 #步數+1
+        self.labelStep.setText("已用步數： " + str(self.step))
+        self.buttonNextStep.setEnabled(self.step != self.totalStep)
 
     # Add
     def CreateRandomPuzzle(self):
@@ -164,8 +167,8 @@ class GameWindow(object):
 
         #region 接生佬API 得到每步走法
         self.nullBtnIndexRow, self.nullBtnIndexCol = FuntionTools.FindNumberFormMatrix(self.puzzle, 0)
-        puzzlePath = PA.NPuzzle(self.nullBtnIndexRow, self.nullBtnIndexCol, self.puzzle)
-        self.movePath = PA.test_best_first_search(puzzlePath)  # 得到每步走法
+        puzzlePath = PA.NPuzzle(self.nullBtnIndexCol, self.nullBtnIndexRow, self.puzzle)
+        self.movePath, self.totalStep = PA.test_best_first_search(puzzlePath)  # 得到每步走法
         #endregion
 
         self.AddButtonList(buttonCount)
