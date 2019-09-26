@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
-    <height>480</height>
+    <width>632</width>
+    <height>477</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,14 +30,14 @@
      <rect>
       <x>440</x>
       <y>100</y>
-      <width>171</width>
-      <height>61</height>
+      <width>183</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>微軟正黑體</family>
-      <pointsize>20</pointsize>
+      <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -49,16 +49,16 @@
    <widget class="QLabel" name="labelStep">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>270</y>
-      <width>211</width>
-      <height>91</height>
+      <x>330</x>
+      <y>380</y>
+      <width>248</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>微軟正黑體</family>
-      <pointsize>24</pointsize>
+      <pointsize>20</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -71,15 +71,15 @@
     <property name="geometry">
      <rect>
       <x>440</x>
-      <y>190</y>
-      <width>171</width>
-      <height>61</height>
+      <y>160</y>
+      <width>183</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>微軟正黑體</family>
-      <pointsize>20</pointsize>
+      <pointsize>16</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
@@ -93,8 +93,8 @@
      <rect>
       <x>480</x>
       <y>10</y>
-      <width>81</width>
-      <height>91</height>
+      <width>80</width>
+      <height>50</height>
      </rect>
     </property>
     <property name="font">
@@ -114,8 +114,8 @@
      <rect>
       <x>20</x>
       <y>380</y>
-      <width>131</width>
-      <height>61</height>
+      <width>93</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
@@ -130,34 +130,13 @@
      <string>存檔</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="buttonLoad">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>380</y>
-      <width>131</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>微軟正黑體</family>
-      <pointsize>20</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>讀入</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="buttonRestart">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>140</x>
       <y>380</y>
-      <width>131</width>
-      <height>61</height>
+      <width>141</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
@@ -175,10 +154,10 @@
    <widget class="QPushButton" name="buttonMenu">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>380</y>
-      <width>131</width>
-      <height>61</height>
+      <x>440</x>
+      <y>300</y>
+      <width>108</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
@@ -191,6 +170,27 @@
     </property>
     <property name="text">
      <string>回選單</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="buttonNextStep_2">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>230</y>
+      <width>183</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微軟正黑體</family>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>演算法下一步</string>
     </property>
    </widget>
   </widget>

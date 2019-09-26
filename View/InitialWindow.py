@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIcon
-from Model import DataModel as DM
+from Controller import RandomPuzzle as RP
 
 class PreGamingWindow(object):
     def __init__(self, data):
@@ -8,6 +8,8 @@ class PreGamingWindow(object):
         #self.signal = DM.Signal()
         self.data.dataSignal.signal.connect(self.ReviceMessage)
         self.buttonList = []
+        self.puzzle = None
+        self.randomPuzzle = None
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -65,7 +67,9 @@ class PreGamingWindow(object):
     def ReviceMessage(self, message):
         print("Revice! " + message)
         if message == "Goto2":
-            self.AddButtonList(self.data.GetButtonCount())
+            colNum = self.data.GetButtonCount()
+            self.AddButtonList(colNum)
+            self.randomPuzzle = RP.RandomMatrix(colNum)
 
     def AddButtonList(self, addRowButtonCount):
         totalButtonCount = addRowButtonCount ** 2
@@ -105,13 +109,6 @@ class PreGamingWindow(object):
 
         return newButton
 
-
-    def ReviceMessage(self, message):
-        print("Revice!")
-        print(message)
-        # self.AddIconList(self.data.GetButtonCount())  # PIL -> QImage -> Pixmal
-        self.AddButtonList(self.data.GetButtonCount())
-
     def ClearButton(self):
         print(self.buttonList)
         for rowBtn in self.buttonList:
@@ -122,4 +119,5 @@ class PreGamingWindow(object):
     def ClickButton(self, buttonIndex):
         self.buttonDynamic.click()
         print(buttonIndex)
+        self.randomPuzzle.SetBlankIndex(buttonIndex)
 

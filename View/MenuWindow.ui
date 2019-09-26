@@ -40,11 +40,16 @@
    <widget class="QPushButton" name="buttonStart">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>320</y>
-      <width>230</width>
-      <height>100</height>
+      <x>400</x>
+      <y>370</y>
+      <width>169</width>
+      <height>49</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>24</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>開始遊戲</string>
@@ -53,11 +58,18 @@
    <widget class="QPushButton" name="buttonImportImage">
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>250</y>
+      <x>470</x>
+      <y>260</y>
       <width>81</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>匯入圖片</string>
@@ -89,6 +101,27 @@
      <string>請輸入圖片切成一列有幾張</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="buttonLoad">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>260</y>
+      <width>93</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>微軟正黑體</family>
+      <pointsize>10</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>讀入記錄檔</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -96,7 +129,7 @@
      <x>0</x>
      <y>0</y>
      <width>640</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu8_Puzzle_Initilize">

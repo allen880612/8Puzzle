@@ -6,3 +6,4 @@ Model/__pycache__/__init__.cpython-37.pyc
 Model/__pycache__/DataModel.cpython-37.pyc
 View/__pycache__/GamingWindow.cpython-37.pyc
 View/__pycache__/CompleteDialog.cpython-37.pyc
+Controller/__pycache__/RandomPuzzle.cpython-37.pyc
