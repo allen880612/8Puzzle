@@ -199,9 +199,9 @@ class GameWindow(object):
                 imgIndex = self.puzzle[i][j]
                 buttonIndex = i * addRowButtonCount + j
                 if pixmapList:  # test 用
-                    rowButtonList.append(self.AddButton(j, i, buttonIndex, pixmapList[imgIndex]))
+                    rowButtonList.append(self.AddButton(j, i, imgIndex, pixmapList[imgIndex]))
                 else:
-                    rowButtonList.append(self.AddButton2(j, i, self.puzzle[i][j]))
+                    rowButtonList.append(self.AddButton2(j, i, imgIndex))
 
             self.buttonList.append(rowButtonList)
 
@@ -236,6 +236,8 @@ class GameWindow(object):
         newButton.setFlat(True)
         newButton.setStyleSheet('QPushButton{border: 0px solid;}')
         newButton.setStyleSheet("border-image: url(subImage/" + str(buttonIndex) + ".jpg);")
+        newButton.setVisible(buttonIndex != 0)
+        newButton.setEnabled(buttonIndex != 0)
 
         return newButton
 
