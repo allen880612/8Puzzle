@@ -79,7 +79,7 @@ class PreGamingWindow(object):
             rowButtonList = []
             for j in range(addRowButtonCount):
                 buttonIndex = i * addRowButtonCount + j
-                if pixmapList: # test 用
+                if pixmapList:  # test 用
                     rowButtonList.append(self.AddButton(j, i, buttonIndex, pixmapList[buttonIndex]))
                 else:
                     rowButtonList.append(self.AddButton2(j, i, buttonIndex))

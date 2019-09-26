@@ -19,7 +19,7 @@ class DataModel():
 
         self.sourceImage = None
         self.sourceQPixmap = None
-        self.pixmapList = []
+        self.pixmapList = False
 
         self.puzzle = None  # 依照再initWindow按下的按鈕，建立之puzzle
 
