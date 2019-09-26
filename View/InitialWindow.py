@@ -80,7 +80,7 @@ class PreGamingWindow(object):
             rowButtonList = []
             for j in range(addRowButtonCount):
                 buttonIndex = i * addRowButtonCount + j
-                if pixmapList: # test 用
+                if pixmapList:  # test 用
                     rowButtonList.append(self.AddButton(j, i, buttonIndex, pixmapList[buttonIndex]))
                 else:
                     rowButtonList.append(self.AddButton2(j, i, buttonIndex))
@@ -114,16 +114,9 @@ class PreGamingWindow(object):
         newButton.setText(str(buttonIndex))
         newButton.setFont(font)
         newButton.clicked.connect(lambda: self.ClickButton(buttonIndex))
-        # icon
-        buttonIcon = QIcon(pixmap)
-        # newButton.setFixedSize(buttonIcon.availableSizes()[0])
-        # newButton.setIconSize(buttonIcon.actualSize(availableSizes()[0]))
         newButton.setFlat(True)
-        # newButton.setIconSize(QtCore.QSize(newButton.width(), newButton.height()))
-        # newButton.setIcon(buttonIcon)
 
         newButton.setStyleSheet('QPushButton{border: 0px solid;}')
-        # newButton.autofillbackground(True)  # 並沒有，拉機pyQt
         newButton.setStyleSheet("border-image: url(subImage/" + str(buttonIndex) + ".jpg);")
 
         return newButton

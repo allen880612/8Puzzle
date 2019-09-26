@@ -143,26 +143,15 @@ class GameWindow(object):
     # Add
     def CreateRandomPuzzle(self):
         buttonCount = self.data.GetButtonCount()
+        # region 接龍哥API
         self.puzzle = self.data.GetPuzzle()
+        print("Random Puzzle : ", self.puzzle)
         # buttonNullIndex = self.data.GetNowNullButtonIndex()
+        #
         # print("nullIndex: " + str(buttonNullIndex))
         # print("modori: ")
         # self.puzzle = RandomPuzzle.RandomPuzzle(buttonCount)
         # print(self.puzzle)
-        #
-        # print("after swap: ")
-        # zeroRow, zeroColumn = FuntionTools.FindNumberFormMatrix(self.puzzle, 0)
-        # selectedRow, selectedColumn = buttonNullIndex // buttonCount, buttonNullIndex % buttonCount
-        # print(zeroRow, zeroColumn)
-        # print(selectedRow, selectedColumn)
-        # self.puzzle[zeroRow][zeroColumn], self.puzzle[selectedRow][selectedColumn] = FuntionTools.Swap(self.puzzle[zeroRow][zeroColumn], self.puzzle[selectedRow][selectedColumn])
-        print(self.puzzle)
-        buttonNullIndex = self.data.GetNowNullButtonIndex()
-        #region 接龍哥API
-        print("nullIndex: " + str(buttonNullIndex))
-        print("modori: ")
-        self.puzzle = RandomPuzzle.RandomPuzzle(buttonCount)
-        print(self.puzzle)
         #endregion
 
         #region 接生佬API 得到每步走法
@@ -207,9 +196,10 @@ class GameWindow(object):
         for i in range(addRowButtonCount):
             rowButtonList = []
             for j in range(addRowButtonCount):
+                imgIndex = self.puzzle[i][j]
                 buttonIndex = i * addRowButtonCount + j
-                if pixmapList: # test 用
-                    rowButtonList.append(self.AddButton(j, i, buttonIndex, pixmapList[buttonIndex]))
+                if pixmapList:  # test 用
+                    rowButtonList.append(self.AddButton(j, i, buttonIndex, pixmapList[imgIndex]))
                 else:
                     rowButtonList.append(self.AddButton2(j, i, self.puzzle[i][j]))
 
@@ -243,16 +233,8 @@ class GameWindow(object):
         newButton.setText(str(buttonIndex))
         newButton.setFont(font)
         newButton.clicked.connect(lambda: self.ClickButton(buttonIndex))
-        # icon
-        buttonIcon = QIcon(pixmap)
-        # newButton.setFixedSize(buttonIcon.availableSizes()[0])
-        # newButton.setIconSize(buttonIcon.actualSize(availableSizes()[0]))
         newButton.setFlat(True)
-        # newButton.setIconSize(QtCore.QSize(newButton.width(), newButton.height()))
-        # newButton.setIcon(buttonIcon)
-
         newButton.setStyleSheet('QPushButton{border: 0px solid;}')
-        # newButton.autofillbackground(True)  # 並沒有，拉機pyQt
         newButton.setStyleSheet("border-image: url(subImage/" + str(buttonIndex) + ".jpg);")
 
         return newButton

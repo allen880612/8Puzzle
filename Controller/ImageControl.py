@@ -9,7 +9,7 @@ class ImageControl():
         self.sourceImage = None # PIL
         self.sourceQPixmap = None
 
-        self.pixmapList = []
+        self.pixmapList = False
         self.data = dataModel
 
     def LoadImage(self, image):
@@ -58,5 +58,7 @@ class ImageControl():
             index += 1
 
     def SetImageList(self, count):
-        self.pixmapList = self.cropImage(self.sourceImage, count)
-        self.data.SetPixmapList(self.pixmapList)
+        # 確認有匯入過
+        if self.sourceImage:
+            self.pixmapList = self.cropImage(self.sourceImage, count)
+            self.data.SetPixmapList(self.pixmapList)
