@@ -3,6 +3,7 @@ from PyQt5.QtGui import QIcon, QPixmap, QImage
 from PIL import Image
 from Controller import FileDialog as FD
 from Controller import ImageControl as IMG_CONTROL
+from Controller import FuntionTools
 class Menu(object):
     def __init__(self, _data):
         self._isStart = False
@@ -58,6 +59,8 @@ class Menu(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+        self.UISetting()
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
@@ -68,6 +71,24 @@ class Menu(object):
         self.labelTip.setText(_translate("MainWindow", "請輸入圖片切成一列有幾張"))
         self.menu8_Puzzle_Initilize.setTitle(_translate("MainWindow", "File"))
         self.menuRecord.setTitle(_translate("MainWindow", "Record"))
+
+
+    def UISetting(self):
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(75)
+        newButton = QtWidgets.QPushButton(self.centralwidget)
+        newButton.setGeometry(QtCore.QRect(20, 300, 50, 50))
+        newButton.setText("讀檔")
+        newButton.setFont(font)
+        newButton.adjustSize()
+        newButton.clicked.connect(self.ClickLoadButton)
+        newButton.setVisible(True)
+
+    def ClickLoadButton(self):
+        self.data = FuntionTools.readJson("data.json")
+        print("Click load")
 
     def IsStart(self):
         return self._isStart

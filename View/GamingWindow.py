@@ -4,6 +4,7 @@ from Controller import RandomPuzzle
 from Controller import FuntionTools
 from Controller import PuzzleAlgorithm as PA
 import threading
+import json
 
 class GameWindow(object):
     def __init__(self, data):
@@ -11,6 +12,8 @@ class GameWindow(object):
         self.data.dataSignal.signal.connect(self.ReviceMessage)
         self.puzzle = [] #add
         self.buttonList = [] #add
+
+        self.puzzlePath = None
         self.step = 0 # now step
         self.totalStep = 0 # 演算法總共要走的步數
         self.movePath = None # 每步的移動
@@ -111,6 +114,8 @@ class GameWindow(object):
         self.buttonNextStep.clicked.connect(self.AI_NextStep)
         self.buttonAutoFinish.clicked.connect(lambda: self.AI_AutoComplete(0.05))
         self.retranslateUi(MainWindow)
+
+        self.UISetting()
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
 
@@ -126,6 +131,9 @@ class GameWindow(object):
         self.buttonMenu.setText(_translate("MainWindow", "回選單"))
         self.buttonNextStep_2.setText(_translate("MainWindow", "演算法下一步"))
 
+    def UISetting(self):
+        self.buttonSave.clicked.connect(self.ClickSaveButton)
+
     # Add
     def ReviceMessage(self, message):
         if message == "Goto3":
@@ -134,7 +142,7 @@ class GameWindow(object):
 
     #Add connect
     def AI_NextStep(self):
-        print(self.nullBtnIndexRow, self.nullBtnIndexCol)
+        #print(self.nullBtnIndexRow, self.nullBtnIndexCol)
         self.nullBtnIndexRow, self.nullBtnIndexCol = self.MoveButton(self.nullBtnIndexRow, self.nullBtnIndexCol, self.movePath[self.step])
         self.UpdateButtonPosition()
         #QtWidgets.QApplication.processEvents()
@@ -162,14 +170,14 @@ class GameWindow(object):
 
         print("nullIndex: " + str(buttonNullIndex))
         print("modori: ")
-        self.puzzle = RandomPuzzle.RandomPuzzle(buttonCount)
+        self.puzzle = self.data.GetPuzzle()
         print(self.puzzle)
         #endregion
 
         #region 接生佬API 得到每步走法
         self.nullBtnIndexRow, self.nullBtnIndexCol = FuntionTools.FindNumberFormMatrix(self.puzzle, 0)
-        puzzlePath = PA.NPuzzle(self.nullBtnIndexCol, self.nullBtnIndexRow, self.puzzle)
-        self.movePath, self.totalStep = PA.test_best_first_search(puzzlePath)  # 得到每步走法
+        self.puzzlePath = PA.NPuzzle(self.nullBtnIndexCol, self.nullBtnIndexRow, self.puzzle)
+        self.movePath, self.totalStep = PA.test_best_first_search(self.puzzlePath)  # 得到每步走法
         #endregion
 
         self.AddButtonList(buttonCount)
@@ -265,3 +273,9 @@ class GameWindow(object):
             for btn in rowBtn:
                 btn.deleteLater()
         self.buttonList.clear()
+
+    def ClickSaveButton(self):
+        self.data.SaveData(self.puzzlePath, self.movePath, self.step, self.totalStep)
+        self.data.SetPuzzle(self.puzzle)
+        print("Click save data")
+        FuntionTools.writeJson("data.json", self.data)

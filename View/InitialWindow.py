@@ -130,7 +130,8 @@ class PreGamingWindow(object):
     def ClickButton(self, buttonIndex):
         self.buttonDynamic.click()
         print(buttonIndex)
-        self.puzzleControl.ResetPuzzleBlankLocation(buttonIndex)  # 依按下位置，改變亂數產生之puzzle
+        #self.puzzleControl.ResetPuzzleBlankLocation(buttonIndex)  # 依按下位置，改變亂數產生之puzzle
+        self.data.SetPuzzle(self.puzzleControl.GetPuzzle())
         #self.data.SetNowNullButtonIndex(buttonIndex)
         self.data.dataSignal.Shoot("Goto3")
 

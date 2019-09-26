@@ -1,3 +1,6 @@
+import json
+from Model import DataModel as DM
+
 # 在二維陣列中尋找 指定number (找不到回傳-1,-1)
 def FindNumberFormMatrix(matrix, number):
     row, column = -1, -1
@@ -13,3 +16,22 @@ def FindNumberFormMatrix(matrix, number):
 
 def Swap(a, b):
     return b, a
+
+class UserJSONEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if hasattr(obj, '__jsonencode__'):
+            return obj.__jsonencode__()
+        return json.JSONEncoder.default(self, obj)
+
+def __dictToDataModel(dictionary):
+    if isinstance(dictionary, dict):
+        return DM.DataModel(dictionary["rowButtonCount"], dictionary["movePath"], dictionary["step"], dictionary["totalStep"])
+
+def writeJson(savePath, obj):
+    print(json.dump(obj, open(savePath, "w"), cls=UserJSONEncoder))
+    print("write json")
+
+def readJson(loadPath):
+    jsonData = json.load(open(loadPath), object_hook=__dictToDataModel)
+    print("load json")
+    return jsonData

@@ -52,7 +52,7 @@ def showAnotherWindow(openIndex, closeIndex):
 
 if __name__ == '__main__':
     data = DM.DataModel()
-    
+
     GameStates = []
     gameState = 0
 
