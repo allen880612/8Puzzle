@@ -16,6 +16,7 @@ class DataModel():
         self.rowButtonCount = 0 # 每一列的button個數
         self.nowNullButtonIndex = 0 # 空格按鈕的索引
         self.dataSignal = Signal() # 毫無反應 只是個信號
+        self.buttonMatrix = None
 
         self.sourceImage = None
         self.sourceQPixmap = None
@@ -58,3 +59,9 @@ class DataModel():
 
     def GetPuzzle(self):
         return self.puzzle
+
+    def SetButtonMatrix(self, matrix):
+        self.buttonMatrix
+
+    def GetButtonMatrix(self):
+        return self.buttonMatrix

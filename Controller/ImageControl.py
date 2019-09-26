@@ -45,7 +45,6 @@ class ImageControl():
                 # print((i*item_width,j*item_width,(i+1)*item_width,(j+1)*item_width))
                 box = (j * item_width, i * item_width, (j + 1) * item_width, (i + 1) * item_width)
                 box_list.append(box)
-
         image_list = [image.crop(box) for box in box_list]
         self.save_img(image_list)
         pixmapList = [self.ConvertPILtoPixmap(img) for img in image_list]
