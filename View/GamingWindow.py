@@ -291,4 +291,4 @@ class GameWindow(QMainWindow):
 
 
     def IsFinished(self):
-        return self.step == self.totalStep
+        return self.puzzle == self.bestSearch.GetGoal()
