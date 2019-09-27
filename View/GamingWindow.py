@@ -202,7 +202,7 @@ class GameWindow(QMainWindow):
         for i in self.buttonList:
             btnl = []
             for j in i:
-                btnl.append(j.name())
+                btnl.append(j.objectName())
             buttonPuzzle.append(btnl)
         btnRow, btnCol = FuntionTools.FindNumberFormMatrix()
         print("{%d, %d}" %(self.nullBtnIndexRow, self.nullBtnIndexCol))
