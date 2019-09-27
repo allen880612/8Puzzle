@@ -75,7 +75,6 @@ class PreGamingWindow(object):
         totalButtonCount = addRowButtonCount ** 2
         self.ClearButton()
         pixmapList = self.data.GetPixmapList()
-        print(pixmapList)
         for i in range(addRowButtonCount):
             rowButtonList = []
             for j in range(addRowButtonCount):

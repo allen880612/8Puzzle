@@ -21,6 +21,7 @@ class DataModel():
         self.sourceImage = None
         self.sourceQPixmap = None
         self.pixmapList = False
+        self.imagePath = None
 
         self.puzzle = None  # 依照再initWindow按下的按鈕，建立之puzzle
 
@@ -39,7 +40,9 @@ class DataModel():
             "puzzle": self.puzzle,
             "movePath": self.movePath,
             "step": self.step,
-            "totalStep": self.totalStep
+            "totalStep": self.totalStep,
+            #"pixmapList": self.pixmapList != False
+            "imagePath": self.imagePath
         }
         return dataDict
 
@@ -54,6 +57,12 @@ class DataModel():
 
     def GetSourceImage(self):
         return self.sourceImage
+
+    def SetImagePath(self, _imagerPath):
+        self.imagePath = _imagerPath
+
+    def GetImagePath(self):
+        return self.imagePath
 
     def SetPixmap(self, image):
         self.sourceQPixmap = image
