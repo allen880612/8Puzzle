@@ -93,6 +93,11 @@ class Menu(object):
         self.data.SetData(dataDict)
         self.data.SetPuzzle(dataDict["puzzle"])
         self.data.SetButtonCount(dataDict["rowButtonCount"])
+        #self.data.SetPixmapList(dataDict["pixmapList"])
+        self.data.SetImagePath(dataDict["imagePath"])
+        if self.data.GetImagePath():
+            self.imgCtrl.LoadImage(self.data.GetImagePath())
+        self.imgCtrl.SetImageList(self.data.GetButtonCount())
         print("Click load")
         self.data.dataSignal.Shoot(message)
 
@@ -118,7 +123,7 @@ class Menu(object):
             print("開啟圖片 : " + str(selectImage))
             if selectImage:
                 break
-
+        self.data.SetImagePath(selectImage)
         self.imgCtrl.LoadImage(selectImage)
         self.labelPreviewImage.setPixmap(self.data.GetPixmap())
 

@@ -218,6 +218,7 @@ class GameWindow(object):
     def AddButtonList(self, addRowButtonCount):
         self.ClearButton()
         pixmapList = self.data.GetPixmapList()
+        print("type pixmap")
         for i in range(addRowButtonCount):
             rowButtonList = []
             for j in range(addRowButtonCount):
