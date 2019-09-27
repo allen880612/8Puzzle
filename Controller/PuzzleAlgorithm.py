@@ -258,7 +258,7 @@ def GetMove(row, col, compareMatrix):
 
 
 class test_best_first_search():
-    def __init__(self, start, max_times=10000):
+    def __init__(self, start, max_times=50000):
         """輸入開始狀態產生結果"""
         print('start')
         print(start)

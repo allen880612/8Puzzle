@@ -3,6 +3,7 @@ from PyQt5.QtGui import QIcon
 from Controller import RandomPuzzle
 from Controller import FuntionTools
 from Controller import PuzzleAlgorithm as PA
+from Controller import RandomPuzzle as RP
 import threading
 import json
 
@@ -21,8 +22,15 @@ class GameWindow(object):
         self.movePath = None # 每步的移動
         self.nullBtnIndexRow, self.nullBtnIndexCol = 0, 0 #目前的空按鈕位置
 
-    def ReviceMessage(self, message):
-        return False
+    def ClearWindowsData(self):
+        self.puzzle.clear()
+        self.ClearButton()
+        self.bestSearch = None
+        self.puzzlePath = None
+        self.step = 0  # now step
+        self.totalStep = 0  # 演算法總共要走的步數
+        self.movePath = None  # 每步的移動
+        self.nullBtnIndexRow, self.nullBtnIndexCol = 0, 0  # 目前的空按鈕位置
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -135,11 +143,32 @@ class GameWindow(object):
 
     def UISetting(self):
         self.buttonSave.clicked.connect(self.ClickSaveButton)
+        self.buttonMenu.clicked.connect(self.ReturnMenu)
+        self.buttonRestart.clicked.connect(self.ReStart)
+
+    def ReturnMenu(self):
+        self.data.Clear()
+
+    def ReStart(self):
+        print("restart")
+        self.ClearWindowsData()
+        buttonCount, nullButtonIndex = self.data.GetButtonCount(), self.data.GetNowNullButtonIndex()
+        self.data.Clear()
+        puzzleControl = RP.RandomMatrix(self.data, buttonCount)
+        puzzleControl.ResetPuzzleBlankLocation(nullButtonIndex)
+        self.data.SetButtonCount(buttonCount)
+        self.data.SetNowNullButtonIndex(nullButtonIndex)
+        self.data.SetPuzzle(puzzleControl.GetPuzzle())
+        self.CreateRandomPuzzle()
+
+        self.buttonNextStep.setEnabled(True)
+        self.labelStep.setText("已用步數： 0")
 
     # Add
     def ReviceMessage(self, message):
         if message == "Goto3":
             print("Revice! " + message)
+            self.ClearWindowsData()
             self.CreateRandomPuzzle()
 
     #Add connect
@@ -163,11 +192,6 @@ class GameWindow(object):
         buttonCount = self.data.GetButtonCount()
         print(buttonCount)
         # region 接龍哥API
-        # matrix = [[2, 3, 12, 8],
-        #           [6, 13, 4, 5],
-        #           [0, 10, 7, 1],
-        #           [11, 14, 15, 9]]
-        # self.puzzle = matrix
         print("Random Puzzle : ", self.puzzle)
         buttonNullIndex = self.data.GetNowNullButtonIndex()
 
@@ -218,7 +242,6 @@ class GameWindow(object):
     def AddButtonList(self, addRowButtonCount):
         self.ClearButton()
         pixmapList = self.data.GetPixmapList()
-        print("type pixmap")
         for i in range(addRowButtonCount):
             rowButtonList = []
             for j in range(addRowButtonCount):

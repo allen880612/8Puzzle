@@ -14,22 +14,8 @@ class Signal(QtCore.QObject):
 
 class DataModel():
     def __init__(self, _rowButtonCount = 0, _movePath = None, _step = 0, _totalStep = 0):
-        self.rowButtonCount = _rowButtonCount # 每一列的button個數
-        self.nowNullButtonIndex = 0 # 空格按鈕的索引
         self.dataSignal = Signal() # 毫無反應 只是個信號
-
-        self.sourceImage = None
-        self.sourceQPixmap = None
-        self.pixmapList = False
-        self.imagePath = None
-
-        self.puzzle = None  # 依照再initWindow按下的按鈕，建立之puzzle
-
-        #save
-        self.puzzlePath = None # 儲存 - 生佬的路徑 (type of NPuzzle)
-        self.movePath = _movePath # 儲存 - 生佬的路徑 的 走法
-        self.step = _step # 儲存 - 現在的步數
-        self.totalStep = _totalStep # 儲存 - 總共會走得總步數
+        self.Clear()
 
     #json編碼  (概念: 編碼: 轉換函式換成字典 > 儲存成Json)
     #          (      解碼: 讀取Json > json.load換成字典 > 字典丟給dataModel.SetData 設置Data)
@@ -104,3 +90,20 @@ class DataModel():
     def SetData(self, dictionary):
         if isinstance(dictionary, dict):
             self.SaveData(dictionary["rowButtonCount"], dictionary["movePath"], dictionary["step"], dictionary["totalStep"])
+
+    def Clear(self):
+        self.rowButtonCount = 0 # 每一列的button個數
+        self.nowNullButtonIndex = 0 # 空格按鈕的索引
+
+        self.sourceImage = None
+        self.sourceQPixmap = None
+        self.pixmapList = False
+        self.imagePath = None
+
+        self.puzzle = None  # 依照再initWindow按下的按鈕，建立之puzzle
+
+        #save
+        self.puzzlePath = None # 儲存 - 生佬的路徑 (type of NPuzzle)
+        self.movePath = None # 儲存 - 生佬的路徑 的 走法
+        self.step = 0 # 儲存 - 現在的步數
+        self.totalStep = 0 # 儲存 - 總共會走得總步數
