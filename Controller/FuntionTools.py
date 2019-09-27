@@ -17,6 +17,27 @@ def FindNumberFormMatrix(matrix, number):
 def Swap(a, b):
     return b, a
 
+def IsAround(nullPos, comparePos):
+    return ((nullPos[0] == comparePos[0] and nullPos[1] == comparePos[1] - 1) or
+            (nullPos[0] == comparePos[0] and nullPos[1] == comparePos[1] + 1) or
+            (nullPos[0] == comparePos[0] - 1 and nullPos[1] == comparePos[1]) or
+            (nullPos[0] == comparePos[0] + 1 and nullPos[1] == comparePos[1]))
+
+#計算走的路徑
+def GetMove(nullPos, comparePos):
+    # 1, 1 null
+    # 0, 1 this up
+    move = "up"
+    if nullPos[0] == comparePos[0] + 1:
+        move = "up"
+    elif nullPos[0] == comparePos[0] - 1:
+        move = "down"
+    elif nullPos[1] == comparePos[1] + 1:
+        move = "left"
+    elif nullPos[1] == comparePos[1] - 1:
+        move = "right"
+    return move
+
 class UserJSONEncoder(json.JSONEncoder):
     def default(self, obj):
         if hasattr(obj, '__jsonencode__'):
