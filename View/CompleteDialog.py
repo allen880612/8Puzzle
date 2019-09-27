@@ -6,7 +6,7 @@ import sys
 class CompleteDialog(QDialog):
     def __init__(self):
         super(CompleteDialog, self).__init__()
-        self.ui = UI.Ui_Dialog()
+        self.ui = UI.CompleteDialog_ui()
         self.ui.setupUi(self)
 
         self.ui.buttonMenu.clicked.connect(self.Close)

@@ -1,36 +1,39 @@
-import sys
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QDialog, QApplication
+from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow
 
 from Controller import RandomPuzzle
 from Controller import FuntionTools
 from Controller import PuzzleAlgorithm as PA
 from Controller import RandomPuzzle as RP
 from View import CompleteDialog as CD
+from View import UI
 from threading import Timer
 import json
 
-class GameWindow(object):
+class GameWindow(QMainWindow):
     def __init__(self, data):
-        self.data = data
+        super(GameWindow, self).__init__()
+        self.ui = UI.Ui_GameWindow()
+        self.ui.setupUi(self)
         self.completeDialog = CD.CompleteDialog()
-        # self.completeDialog = QDialog()
-        self.data.dataSignal.signal.connect(self.ReviceMessage)
-        self.puzzle = [] #add
-        self.buttonList = [] #add
+        self.UISetting()
 
-        self.bestSearch = None # 生佬的函式
+        self.data = data
+        self.data.dataSignal.signal.connect(self.ReviceMessage)
+        self.puzzle = []  #add
+        self.buttonList = []  #add
+
+        self.bestSearch = None  # 生佬的函式
 
         self.puzzlePath = None
-        self.step = 0 # now step
-        self.totalStep = 0 # 演算法總共要走的步數
-        self.movePath = None # 每步的移動
-        self.nullBtnIndexRow, self.nullBtnIndexCol = 0, 0 #目前的空按鈕位置
+        self.step = 0  # now step
+        self.totalStep = 0  # 演算法總共要走的步數
+        self.movePath = None  # 每步的移動
+        self.nullBtnIndexRow, self.nullBtnIndexCol = 0, 0  #目前的空按鈕位置
 
         self.IsAutoFinishing = False
         self.auto_thread = Timer(0.05, self.AI_AutoComplete)
+
 
 
     def ClearWindowsData(self):
@@ -43,125 +46,18 @@ class GameWindow(object):
         self.movePath = None  # 每步的移動
         self.nullBtnIndexRow, self.nullBtnIndexCol = 0, 0  # 目前的空按鈕位置
 
-        self.buttonNextStep.setEnabled(True)
-        self.buttonAutoFinish.setEnabled(True)
-        self.buttonAutoFinish.setText("AI自動完成")
+        self.ui.buttonNextStep.setEnabled(True)
+        self.ui.buttonAutoFinish.setEnabled(True)
+        self.ui.buttonAutoFinish.setText("AI自動完成")
         self.IsAutoFinishing = False
-        self.labelStep.setText("已用步數： 0")
-
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(632, 477)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.gridLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.gridLayoutWidget.setGeometry(QtCore.QRect(20, 10, 401, 341))
-        self.gridLayoutWidget.setObjectName("gridLayoutWidget")
-        self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.gridLayout.setObjectName("gridLayout")
-        self.buttonAutoFinish = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonAutoFinish.setGeometry(QtCore.QRect(440, 100, 183, 51))
-        font = QtGui.QFont()
-        font.setFamily("微軟正黑體")
-        font.setPointSize(16)
-        font.setBold(True)
-        font.setWeight(75)
-        self.buttonAutoFinish.setFont(font)
-        self.buttonAutoFinish.setObjectName("buttonAutoFinish")
-        self.labelStep = QtWidgets.QLabel(self.centralwidget)
-        self.labelStep.setGeometry(QtCore.QRect(330, 380, 248, 50))
-        font = QtGui.QFont()
-        font.setFamily("微軟正黑體")
-        font.setPointSize(20)
-        font.setBold(True)
-        font.setWeight(75)
-        self.labelStep.setFont(font)
-        self.labelStep.setObjectName("labelStep")
-        self.buttonNextStep = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonNextStep.setGeometry(QtCore.QRect(440, 160, 183, 51))
-        font = QtGui.QFont()
-        font.setFamily("微軟正黑體")
-        font.setPointSize(16)
-        font.setBold(True)
-        font.setWeight(75)
-        self.buttonNextStep.setFont(font)
-        self.buttonNextStep.setObjectName("buttonNextStep")
-        self.labelHelp = QtWidgets.QLabel(self.centralwidget)
-        self.labelHelp.setGeometry(QtCore.QRect(480, 10, 80, 50))
-        font = QtGui.QFont()
-        font.setFamily("微軟正黑體")
-        font.setPointSize(24)
-        font.setBold(True)
-        font.setWeight(75)
-        self.labelHelp.setFont(font)
-        self.labelHelp.setObjectName("labelHelp")
-        self.buttonSave = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonSave.setGeometry(QtCore.QRect(20, 380, 93, 51))
-        font = QtGui.QFont()
-        font.setFamily("微軟正黑體")
-        font.setPointSize(20)
-        font.setBold(True)
-        font.setWeight(75)
-        self.buttonSave.setFont(font)
-        self.buttonSave.setObjectName("buttonSave")
-        self.buttonRestart = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonRestart.setGeometry(QtCore.QRect(140, 380, 141, 51))
-        font = QtGui.QFont()
-        font.setFamily("微軟正黑體")
-        font.setPointSize(20)
-        font.setBold(True)
-        font.setWeight(75)
-        self.buttonRestart.setFont(font)
-        self.buttonRestart.setObjectName("buttonRestart")
-        self.buttonMenu = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonMenu.setGeometry(QtCore.QRect(440, 300, 108, 51))
-        font = QtGui.QFont()
-        font.setFamily("微軟正黑體")
-        font.setPointSize(20)
-        font.setBold(True)
-        font.setWeight(75)
-        self.buttonMenu.setFont(font)
-        self.buttonMenu.setObjectName("buttonMenu")
-        self.buttonNextStep_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonNextStep_2.setGeometry(QtCore.QRect(440, 230, 183, 51))
-        font = QtGui.QFont()
-        font.setFamily("微軟正黑體")
-        font.setPointSize(16)
-        font.setBold(True)
-        font.setWeight(75)
-        self.buttonNextStep_2.setFont(font)
-        self.buttonNextStep_2.setObjectName("buttonNextStep_2")
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
-
-
-        self.buttonNextStep.clicked.connect(self.AI_NextStep)
-        self.buttonAutoFinish.clicked.connect(self.ClickAIAutoFinish)
-        self.retranslateUi(MainWindow)
-
-        self.UISetting()
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
-
-    def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.buttonAutoFinish.setText(_translate("MainWindow", "AI 自動完成"))
-        self.labelStep.setText(_translate("MainWindow", "已用步數：0"))
-        self.buttonNextStep.setText(_translate("MainWindow", "AI 解下一步"))
-        self.labelHelp.setText(_translate("MainWindow", "幫助"))
-        self.buttonSave.setText(_translate("MainWindow", "存檔"))
-        self.buttonRestart.setText(_translate("MainWindow", "重新開始"))
-        self.buttonMenu.setText(_translate("MainWindow", "回選單"))
-        self.buttonNextStep_2.setText(_translate("MainWindow", "演算法下一步"))
+        self.ui.labelStep.setText("已用步數： 0")
 
     def UISetting(self):
-        self.buttonSave.clicked.connect(self.ClickSaveButton)
-        self.buttonMenu.clicked.connect(self.ReturnMenu)
-        self.buttonRestart.clicked.connect(self.ReStart)
+        self.ui.buttonNextStep.clicked.connect(self.AI_NextStep)
+        self.ui.buttonAutoFinish.clicked.connect(self.ClickAIAutoFinish)
+        self.ui.buttonSave.clicked.connect(self.ClickSaveButton)
+        self.ui.buttonMenu.clicked.connect(self.ReturnMenu)
+        self.ui.buttonRestart.clicked.connect(self.ReStart)
         self.completeDialog.ui.buttonMenu.clicked.connect(self.ReturnMenu)
         self.completeDialog.ui.buttonRetry.clicked.connect(self.ReStart)
 
@@ -194,11 +90,11 @@ class GameWindow(object):
         self.UpdateButtonPosition()
         #QtWidgets.QApplication.processEvents()
         self.step += 1 #步數+1
-        self.labelStep.setText("已用步數： " + str(self.step))
+        self.ui.labelStep.setText("已用步數： " + str(self.step))
         # 完成Puzzle事件
         if self.IsFinished():
-            self.buttonNextStep.setEnabled(False)
-            self.buttonAutoFinish.setEnabled(False)
+            self.ui.buttonNextStep.setEnabled(False)
+            self.ui.buttonAutoFinish.setEnabled(False)
             print("Puzzle finished!")
             self.CompletePazzle()
             print("Really?")
@@ -206,9 +102,9 @@ class GameWindow(object):
     def ClickAIAutoFinish(self):
         self.IsAutoFinishing = not self.IsAutoFinishing
         if self.IsAutoFinishing:
-            self.buttonAutoFinish.setText("暫停AI自動完成")
+            self.ui.buttonAutoFinish.setText("暫停AI自動完成")
         else:
-            self.buttonAutoFinish.setText("AI自動完成")
+            self.ui.buttonAutoFinish.setText("AI自動完成")
 
         self.AI_AutoComplete()
         # self.AI_AutoComplete(0.05)
@@ -319,13 +215,13 @@ class GameWindow(object):
         font.setPointSize(20)
         font.setBold(True)
         font.setWeight(75)
-        newButton = QtWidgets.QPushButton(self.centralwidget)
+        newButton = QtWidgets.QPushButton(self.ui.centralwidget)
         newButton.setGeometry(QtCore.QRect(dButtonPos[0] + row * size, dButtonPos[1] + column * size, size, size))
         newButton.setText(str(buttonIndex))
         newButton.setObjectName(str(buttonIndex))
         newButton.setFont(font)
         newButton.setVisible(buttonIndex != 0)
-        newButton.clicked.connect(lambda :self.ClickImageButtion(buttonIndex))
+        newButton.clicked.connect(lambda: self.ClickImageButtion(buttonIndex))
         return newButton
 
     def AddButton(self, row, column, buttonIndex, pixmap):
@@ -335,7 +231,7 @@ class GameWindow(object):
         font.setPointSize(20)
         font.setBold(True)
         font.setWeight(75)
-        newButton = QtWidgets.QPushButton(self.centralwidget)
+        newButton = QtWidgets.QPushButton(self.ui.centralwidget)
         newButton.setGeometry(QtCore.QRect(dButtonPos[0] + row * size, dButtonPos[1] + column * size, size, size))
         # newButton.setText(str(buttonIndex))
         newButton.setObjectName(str(buttonIndex))
