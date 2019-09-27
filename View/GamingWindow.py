@@ -26,13 +26,17 @@ class GameWindow(QMainWindow):
         self.bestSearch = None  # 生佬的函式
 
         self.puzzlePath = None
+        self.storeStep = 0
         self.step = 0  # now step
         self.totalStep = 0  # 演算法總共要走的步數
         self.movePath = None  # 每步的移動
         self.nullBtnIndexRow, self.nullBtnIndexCol = 0, 0  #目前的空按鈕位置
 
         self.IsAutoFinishing = False
-        self.auto_thread = Timer(0.05, self.AI_AutoComplete)
+        self.delayTime = 0.05
+        self.auto_thread = Timer(self.delayTime, self.AI_AutoComplete)
+
+        self.IsUserPlayed = False
 
 
 
@@ -41,6 +45,7 @@ class GameWindow(QMainWindow):
         self.ClearButton()
         self.bestSearch = None
         self.puzzlePath = None
+        self.storeStep = 0
         self.step = 0  # now step
         self.totalStep = 0  # 演算法總共要走的步數
         self.movePath = None  # 每步的移動
@@ -51,6 +56,8 @@ class GameWindow(QMainWindow):
         self.ui.buttonAutoFinish.setText("AI自動完成")
         self.IsAutoFinishing = False
         self.ui.labelStep.setText("已用步數： 0")
+
+        self.IsUserPlayed = False
 
     def UISetting(self):
         self.ui.buttonNextStep.clicked.connect(self.AI_NextStep)
@@ -89,7 +96,7 @@ class GameWindow(QMainWindow):
         self.UpdateButtonPosition()
         #QtWidgets.QApplication.processEvents()
         self.step += 1 #步數+1
-        self.ui.labelStep.setText("已用步數： " + str(self.step))
+        self.ui.labelStep.setText("已用步數： " + str(self.storeStep + self.step))
         # 完成Puzzle事件
         if self.IsFinished():
             self.ui.buttonNextStep.setEnabled(False)
@@ -100,6 +107,9 @@ class GameWindow(QMainWindow):
 
     #Add connect
     def AI_NextStep(self):
+        if self.IsUserPlayed: #使用者曾經玩過
+            self.AI_ComputePath() #先重新算一次
+
         self.Move(self.movePath[self.step])
 
     def ClickAIAutoFinish(self):
@@ -121,7 +131,7 @@ class GameWindow(QMainWindow):
             print("...")
         elif self.IsAutoFinishing:
             self.AI_NextStep()
-            self.auto_thread = Timer(0.05, self.AI_AutoComplete)
+            self.auto_thread = Timer(self.delayTime, self.AI_AutoComplete)
             self.auto_thread.start()
 
     # def AI_AutoComplete(self, delayTime):
@@ -133,26 +143,31 @@ class GameWindow(QMainWindow):
     #         auto_thread.start()
     #         self.AI_NextStep()
 
-    # Add
-    def CreateRandomPuzzle(self):
-        buttonCount = self.data.GetButtonCount()
-        print(buttonCount)
-        # region 接龍哥API
-        print("Random Puzzle : ", self.puzzle)
-        buttonNullIndex = self.data.GetNowNullButtonIndex()
-
-        print("nullIndex: " + str(buttonNullIndex))
-        print("modori: ")
-        self.puzzle = self.data.GetPuzzle()
-        print(self.puzzle)
-        #endregion
-
-        #region 接生佬API 得到每步走法
+    #生佬演算法
+    def AI_ComputePath(self):
         self.nullBtnIndexRow, self.nullBtnIndexCol = FuntionTools.FindNumberFormMatrix(self.puzzle, 0)
         self.puzzlePath = PA.NPuzzle(self.nullBtnIndexCol, self.nullBtnIndexRow, self.puzzle)
         self.bestSearch = PA.test_best_first_search(self.puzzlePath)
         self.movePath = self.bestSearch.GetMovePath()
         self.totalStep = self.bestSearch.GetTotalStep()
+        self.storeStep += self.step
+        self.step = 0
+        self.IsUserPlayed = False
+
+    # Add
+    def CreateRandomPuzzle(self):
+        buttonCount = self.data.GetButtonCount()
+        print("button count: " + str(buttonCount))
+
+        # region 接龍哥API
+        buttonNullIndex = self.data.GetNowNullButtonIndex()
+        self.puzzle = self.data.GetPuzzle()
+        print("Random Puzzle : ")
+        print(self.puzzle)
+        #endregion
+
+        #region 接生佬API 得到每步走法
+        self.AI_ComputePath()
         #endregion
 
         self.AddButtonList(buttonCount)
@@ -219,6 +234,7 @@ class GameWindow(QMainWindow):
             #self.Move()
             movedir = FuntionTools.GetMove((self.nullBtnIndexRow, self.nullBtnIndexCol), (btnRow, btnCol))
             self.Move(movedir)
+            self.IsUserPlayed = True
 
     #test - no image
     def AddButton2(self, row, column, buttonIndex):
