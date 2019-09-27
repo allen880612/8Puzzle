@@ -1,16 +1,22 @@
+import sys
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QDialog, QApplication
+
 from Controller import RandomPuzzle
 from Controller import FuntionTools
 from Controller import PuzzleAlgorithm as PA
 from Controller import RandomPuzzle as RP
-from View import CompleteDialog
-import threading
+from View import CompleteDialog as CD
+from threading import Timer
 import json
 
 class GameWindow(object):
     def __init__(self, data):
         self.data = data
+        self.completeDialog = CD.CompleteDialog()
+        # self.completeDialog = QDialog()
         self.data.dataSignal.signal.connect(self.ReviceMessage)
         self.puzzle = [] #add
         self.buttonList = [] #add
@@ -24,6 +30,8 @@ class GameWindow(object):
         self.nullBtnIndexRow, self.nullBtnIndexCol = 0, 0 #目前的空按鈕位置
 
         self.IsAutoFinishing = False
+        self.auto_thread = Timer(0.05, self.AI_AutoComplete)
+
 
     def ClearWindowsData(self):
         self.puzzle.clear()
@@ -154,6 +162,8 @@ class GameWindow(object):
         self.buttonSave.clicked.connect(self.ClickSaveButton)
         self.buttonMenu.clicked.connect(self.ReturnMenu)
         self.buttonRestart.clicked.connect(self.ReStart)
+        self.completeDialog.ui.buttonMenu.clicked.connect(self.ReturnMenu)
+        self.completeDialog.ui.buttonRetry.clicked.connect(self.ReStart)
 
     def ReturnMenu(self):
         self.data.Clear()
@@ -185,8 +195,13 @@ class GameWindow(object):
         #QtWidgets.QApplication.processEvents()
         self.step += 1 #步數+1
         self.labelStep.setText("已用步數： " + str(self.step))
-        self.buttonNextStep.setEnabled(self.step != self.totalStep)
-        self.buttonAutoFinish.setEnabled(self.step != self.totalStep)
+        # 完成Puzzle事件
+        if self.IsFinished():
+            self.buttonNextStep.setEnabled(False)
+            self.buttonAutoFinish.setEnabled(False)
+            print("Puzzle finished!")
+            self.CompletePazzle()
+            print("Really?")
 
     def ClickAIAutoFinish(self):
         self.IsAutoFinishing = not self.IsAutoFinishing
@@ -195,14 +210,29 @@ class GameWindow(object):
         else:
             self.buttonAutoFinish.setText("AI自動完成")
 
-        self.AI_AutoComplete(0.05)
+        self.AI_AutoComplete()
+        # self.AI_AutoComplete(0.05)
 
-    def AI_AutoComplete(self, delayTime):
-        if self.IsAutoFinishing:
+    def AI_AutoComplete(self):
+        # print("Enter Auto")
+        # 停止 thread
+        if self.IsFinished():
+            print("stop it please")
+            self.auto_thread.cancel()
+            print("...")
+        elif self.IsAutoFinishing:
             self.AI_NextStep()
-            if self.step != self.totalStep:
-                threading.Timer(delayTime, lambda: self.AI_AutoComplete(delayTime)).start()
+            self.auto_thread = Timer(0.05, self.AI_AutoComplete)
+            self.auto_thread.start()
 
+    # def AI_AutoComplete(self, delayTime):
+    #     auto_thread = Timer(delayTime, lambda: self.AI_AutoComplete(delayTime))
+    #     if self.IsFinished():
+    #         auto_thread.cancel()
+    #         print("cancel thread")
+    #     if self.IsAutoFinishing:
+    #         auto_thread.start()
+    #         self.AI_NextStep()
 
     # Add
     def CreateRandomPuzzle(self):
@@ -340,3 +370,16 @@ class GameWindow(object):
         print(type(self.data.GetPuzzle()))
         print("Click save data")
         FuntionTools.writeJson("data.json", self.data)
+
+    # 完成Puzzle 之Dialog
+    def CompletePazzle(self):
+        print("CompletePazzle Begin")
+        # dialog_ui = CD.Ui_Dialog()
+        # dialog_ui.setupUi(self.completeDialog)
+        # self.completeDialog.exec_()
+        self.completeDialog.exec()
+        print("CompletePazzle End")
+
+
+    def IsFinished(self):
+        return self.step == self.totalStep

@@ -51,10 +51,7 @@ class Menu(object):
         self.menubar.addAction(self.menu8_Puzzle_Initilize.menuAction())
         self.menubar.addAction(self.menuRecord.menuAction())
 
-        #  自定義功能區
-        self.buttonStart.clicked.connect(self.Start)
-        self.buttonImportImage.clicked.connect(self.ImportImage)
-        self.labelPreviewImage.setScaledContents(True)  #  圖片能符合label大小ˋ
+
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -90,6 +87,11 @@ class Menu(object):
         self.lableGameLogo.setPixmap(QPixmap("Image/Cover.png"))
         self.lableGameLogo.setAutoFillBackground(True)
 
+        #  自定義功能區
+        self.buttonStart.clicked.connect(self.Start)
+        self.buttonImportImage.clicked.connect(self.ImportImage)
+        self.labelPreviewImage.setScaledContents(True)  # 圖片能符合label大小ˋ
+
     def ClickLoadButton(self):
         message = "Goto3"
         dataDict = FuntionTools.readJson("data.json")
@@ -120,15 +122,19 @@ class Menu(object):
         self.data.dataSignal.Shoot(message)
 
     def ImportImage(self):
-        #  強迫要選到圖
-        while True:
-            selectImage = self.fileDialog.openFileNameDialog()
-            print("開啟圖片 : " + str(selectImage))
-            if selectImage:
-                break
-        self.data.SetImagePath(selectImage)
-        self.imgCtrl.LoadImage(selectImage)
-        self.labelPreviewImage.setPixmap(self.data.GetPixmap())
+
+        selectImage = self.fileDialog.openFileNameDialog()
+        print("開啟圖片 : " + str(selectImage))
+        # 有選擇圖片
+        if selectImage:
+            self.imgCtrl.LoadImage(selectImage)
+            # 確認Load的是圖片
+            if self.imgCtrl.isloaded:
+                self.data.SetImagePath(selectImage)
+                self.labelPreviewImage.setPixmap(self.data.GetPixmap())
+        else:
+            print("取消選擇圖片")
+
 
     def GetInputNumber(self, inputString):
         try:

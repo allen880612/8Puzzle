@@ -50,7 +50,10 @@ def showAnotherWindow(openIndex, closeIndex):
     GameStates[openIndex].show()
     GameStates[closeIndex].hide()
 
+
+
 if __name__ == '__main__':
+
     data = DM.DataModel()
 
     GameStates = []
@@ -86,10 +89,12 @@ if __name__ == '__main__':
     preGamingWindow.buttonBack.clicked.connect(lambda: showAnotherWindow(0, 1))
     preGamingWindow.buttonDynamic.clicked.connect(lambda: showAnotherWindow(2, 1))
     gameWindow.buttonMenu.clicked.connect(lambda: showAnotherWindow(0, 2))
+    gameWindow.completeDialog.ui.buttonMenu.clicked.connect(lambda: showAnotherWindow(0, 2))
     #gameWindow.buttonAutoFinish.clicked.connect(cDialog.show())  # 暫時把它當作完成了的事件
 
 
     sys.exit(app.exec_())
+
 
 
 

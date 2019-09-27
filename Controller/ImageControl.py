@@ -12,9 +12,18 @@ class ImageControl():
         self.pixmapList = False
         self.data = dataModel
 
-    def LoadImage(self, image):
-        image = Image.open(image)
+        self.isloaded = False
 
+    def LoadImage(self, image):
+
+        try:
+            image = Image.open(image)
+        except Exception as e:
+            print("import image fail!!")
+            print(str(e))
+            return
+
+        self.isloaded = True
         #  補圖片正規劃
         box = (0, 0, 480, 480)
         cropPIL = image.crop(box)
@@ -59,6 +68,6 @@ class ImageControl():
 
     def SetImageList(self, count):
         # 確認有匯入過
-        if self.sourceImage:
+        if self.isloaded:
             self.pixmapList = self.cropImage(self.sourceImage, count)
             self.data.SetPixmapList(self.pixmapList)
