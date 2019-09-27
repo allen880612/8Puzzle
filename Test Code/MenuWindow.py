@@ -1,17 +1,16 @@
+import sys
+
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtGui import QIcon, QPixmap, QImage
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QIcon, QPixmap, QImage, QPalette
 from PIL import Image
-from Controller import FileDialog as FD
-from Controller import ImageControl as IMG_CONTROL
-from Controller import FuntionTools
-class Menu(object):
-    def __init__(self, _data):
+from PyQt5.QtWidgets import QApplication, QMainWindow
+
+
+class TestUI(object):
+    def __init__(self):
         self._isStart = False
         self.isOpen = False
-        self.data = _data
-        self.fileDialog = FD.FileControl()
-        self.imgCtrl = IMG_CONTROL.ImageControl(_data)
-        #self.signal = DM.Signal()
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -59,11 +58,11 @@ class Menu(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-        self.UISetting()
+        self.UISetting(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "8 Puzzle !"))
         self.lableGameLogo.setText(_translate("MainWindow", "Game cover image"))
         self.buttonStart.setText(_translate("MainWindow", "開始遊戲"))
         self.buttonImportImage.setText(_translate("MainWindow", "匯入圖片"))
@@ -73,7 +72,7 @@ class Menu(object):
         self.menuRecord.setTitle(_translate("MainWindow", "Record"))
 
 
-    def UISetting(self):
+    def UISetting(self, MainWindow):
         font = QtGui.QFont()
         font.setPointSize(20)
         font.setBold(True)
@@ -86,23 +85,21 @@ class Menu(object):
         self.buttonLoad.adjustSize()
         self.buttonLoad.clicked.connect(self.ClickLoadButton)
         self.buttonLoad.setVisible(True)
-        #  Cover
-        self.lableGameLogo.setPixmap(QPixmap("Image/Cover.png"))
-        self.lableGameLogo.setAutoFillBackground(True)
+
+        MainWindow.setWindowOpacity(0.9)  # 设置窗口透明度
+        # Ui_MainWindow3.setAttribute(QtCore.Qt.WA_TranslucentBackground) # 设置窗口背景透明
+        MainWindow.setWindowFlag(QtCore.Qt.FramelessWindowHint)  # 隐藏边框
+        pe = QPalette()
+        MainWindow.setAutoFillBackground(True)
+        pe.setColor(QPalette.Window, Qt.lightGray)  # 设置背景色
+        # pe.setColor(QPalette.Background,Qt.blue)
+        MainWindow.setPalette(pe)
+        MainWindow.setWindowIcon(QIcon("image/icon.png"))
+
 
     def ClickLoadButton(self):
         message = "Goto3"
-        dataDict = FuntionTools.readJson("data.json")
-        self.data.SetData(dataDict)
-        self.data.SetPuzzle(dataDict["puzzle"])
-        self.data.SetButtonCount(dataDict["rowButtonCount"])
-        #self.data.SetPixmapList(dataDict["pixmapList"])
-        self.data.SetImagePath(dataDict["imagePath"])
-        if self.data.GetImagePath():
-            self.imgCtrl.LoadImage(self.data.GetImagePath())
-        self.imgCtrl.SetImageList(self.data.GetButtonCount())
         print("Click load")
-        self.data.dataSignal.Shoot(message)
 
     def IsStart(self):
         return self._isStart
@@ -111,13 +108,8 @@ class Menu(object):
         message = "Goto2"
         matrixSize = self.GetInputNumber(self.textBoxPuzzleSize.toPlainText())
         self._isStart = True
-        self.data.SetButtonCount(matrixSize)
         print("Shoot!" + message + "\nsize: " + str(matrixSize))
-        try: #小防呆
-            self.imgCtrl.SetImageList(matrixSize)
-        except:
-            pass
-        self.data.dataSignal.Shoot(message)
+
 
     def ImportImage(self):
         #  強迫要選到圖
@@ -126,12 +118,28 @@ class Menu(object):
             print("開啟圖片 : " + str(selectImage))
             if selectImage:
                 break
-        self.data.SetImagePath(selectImage)
-        self.imgCtrl.LoadImage(selectImage)
-        self.labelPreviewImage.setPixmap(self.data.GetPixmap())
 
     def GetInputNumber(self, inputString):
         try:
             return int(inputString)
         except:
             return 3
+
+
+
+app = QApplication(sys.argv)
+
+
+mainWindow = QMainWindow()
+testWindow = TestUI()
+testWindow.setupUi(mainWindow)
+mainWindow.show()
+sys.exit(app.exec_())
+
+
+# myMainWindow = QMainWindow()
+# myUi = TestUI()
+# myUi.setupUi(myMainWindow)
+# myMainWindow.show()
+#
+# sys.exit(app.exec_())

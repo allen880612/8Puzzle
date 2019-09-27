@@ -279,7 +279,7 @@ class GameWindow(object):
         font.setWeight(75)
         newButton = QtWidgets.QPushButton(self.centralwidget)
         newButton.setGeometry(QtCore.QRect(dButtonPos[0] + row * size, dButtonPos[1] + column * size, size, size))
-        newButton.setText(str(buttonIndex))
+        # newButton.setText(str(buttonIndex))
         newButton.setFont(font)
         newButton.setAutoFillBackground(True)
         newButton.clicked.connect(lambda: self.ClickButton(buttonIndex))
