@@ -64,19 +64,16 @@ if __name__ == '__main__':
 
     # Menu Window
     menuWindow = MenuWindow.Menu(data)
-    menuWindow.setupUi(GameStates[0])
-
-    # test directly use QMainwindow instead of object as View
-    # GameStates[3] = mw2.Menu()
-    # GameStates[3].show()
+    GameStates[0] = menuWindow
+    # menuWindow.setupUi(GameStates[0])
 
     # Choose Begin Block Window
-    preGamingWindow = InitialWindow.PreGamingWindow(data)
-    preGamingWindow.setupUi(GameStates[1])
+    preGamingWindow = InitialWindow.PreGaming(data)
+    GameStates[1] = preGamingWindow
 
     # Gaming Window
     gameWindow = GamingWindow.GameWindow(data)
-    gameWindow.setupUi(GameStates[2])
+    GameStates[2] = gameWindow
 
     # Complete Dialog
     # cDialog = QDialog()
@@ -84,14 +81,12 @@ if __name__ == '__main__':
     # completeDialog.setupUi(cDialog)
 
     GameStates[0].show()
-    menuWindow.buttonStart.clicked.connect(lambda: showAnotherWindow(1, 0))
-    menuWindow.buttonLoad.clicked.connect(lambda: showAnotherWindow(2, 0))
-    preGamingWindow.buttonBack.clicked.connect(lambda: showAnotherWindow(0, 1))
-    preGamingWindow.buttonDynamic.clicked.connect(lambda: showAnotherWindow(2, 1))
-    gameWindow.buttonMenu.clicked.connect(lambda: showAnotherWindow(0, 2))
+    menuWindow.ui.buttonStart.clicked.connect(lambda: showAnotherWindow(1, 0))
+    menuWindow.ui.buttonLoad.clicked.connect(lambda: showAnotherWindow(2, 0))
+    preGamingWindow.ui.buttonBack.clicked.connect(lambda: showAnotherWindow(0, 1))
+    preGamingWindow.ui.buttonDynamic.clicked.connect(lambda: showAnotherWindow(2, 1))
+    gameWindow.ui.buttonMenu.clicked.connect(lambda: showAnotherWindow(0, 2))
     gameWindow.completeDialog.ui.buttonMenu.clicked.connect(lambda: showAnotherWindow(0, 2))
-    #gameWindow.buttonAutoFinish.clicked.connect(cDialog.show())  # 暫時把它當作完成了的事件
-
 
     sys.exit(app.exec_())
 

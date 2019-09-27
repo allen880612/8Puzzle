@@ -1,60 +1,24 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIcon, QPixmap, QImage
 from PIL import Image
+from PyQt5.QtWidgets import QMainWindow
 from Controller import FileDialog as FD
 from Controller import ImageControl as IMG_CONTROL
 from Controller import FuntionTools
-class Menu(object):
+from View import UI
+
+class Menu(QMainWindow):
     def __init__(self, _data):
+        super(Menu, self).__init__()
         self._isStart = False
         self.isOpen = False
         self.data = _data
         self.fileDialog = FD.FileControl()
         self.imgCtrl = IMG_CONTROL.ImageControl(_data)
         #self.signal = DM.Signal()
+        self.ui = UI.Ui_Menu()
+        self.ui.setupUi(self)
 
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(640, 480)
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.lableGameLogo = QtWidgets.QLabel(self.centralwidget)
-        self.lableGameLogo.setGeometry(QtCore.QRect(20, 20, 350, 250))
-        self.lableGameLogo.setObjectName("lableGameLogo")
-        self.textBoxPuzzleSize = QtWidgets.QPlainTextEdit(self.centralwidget)
-        self.textBoxPuzzleSize.setGeometry(QtCore.QRect(220, 390, 101, 31))
-        self.textBoxPuzzleSize.setObjectName("textBoxPuzzleSize")
-        self.buttonStart = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonStart.setGeometry(QtCore.QRect(360, 320, 230, 100))
-        self.buttonStart.setObjectName("buttonStart")
-        self.buttonImportImage = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonImportImage.setGeometry(QtCore.QRect(510, 250, 81, 31))
-        self.buttonImportImage.setObjectName("buttonImportImage")
-        self.labelPreviewImage = QtWidgets.QLabel(self.centralwidget)
-        self.labelPreviewImage.setGeometry(QtCore.QRect(420, 50, 180, 180))
-        self.labelPreviewImage.setObjectName("labelPreviewImage")
-        self.labelTip = QtWidgets.QLabel(self.centralwidget)
-        self.labelTip.setGeometry(QtCore.QRect(20, 400, 161, 21))
-        self.labelTip.setObjectName("labelTip")
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 640, 21))
-        self.menubar.setObjectName("menubar")
-        self.menu8_Puzzle_Initilize = QtWidgets.QMenu(self.menubar)
-        self.menu8_Puzzle_Initilize.setObjectName("menu8_Puzzle_Initilize")
-        self.menuRecord = QtWidgets.QMenu(self.menubar)
-        self.menuRecord.setObjectName("menuRecord")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
-        self.menubar.addAction(self.menu8_Puzzle_Initilize.menuAction())
-        self.menubar.addAction(self.menuRecord.menuAction())
-
-
-
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
         self.UISetting()
 
@@ -69,28 +33,27 @@ class Menu(object):
         self.menu8_Puzzle_Initilize.setTitle(_translate("MainWindow", "File"))
         self.menuRecord.setTitle(_translate("MainWindow", "Record"))
 
-
     def UISetting(self):
-        font = QtGui.QFont()
-        font.setPointSize(20)
-        font.setBold(True)
-        font.setWeight(75)
-        self.buttonLoad = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonLoad.objectName = "buttonLoad"
-        self.buttonLoad.setGeometry(QtCore.QRect(20, 300, 50, 50))
-        self.buttonLoad.setText("讀檔")
-        self.buttonLoad.setFont(font)
-        self.buttonLoad.adjustSize()
-        self.buttonLoad.clicked.connect(self.ClickLoadButton)
-        self.buttonLoad.setVisible(True)
+        # font = QtGui.QFont()
+        # font.setPointSize(20)
+        # font.setBold(True)
+        # font.setWeight(75)
+        # self.buttonLoad = QtWidgets.QPushButton(self.centralwidget)
+        # self.buttonLoad.objectName = "buttonLoad"
+        # self.buttonLoad.setGeometry(QtCore.QRect(20, 300, 50, 50))
+        # self.buttonLoad.setText("讀檔")
+        # self.buttonLoad.setFont(font)
+        self.ui.buttonLoad.adjustSize()
+        self.ui.buttonLoad.clicked.connect(self.ClickLoadButton)
+        self.ui.buttonLoad.setVisible(True)
         #  Cover
-        self.lableGameLogo.setPixmap(QPixmap("Image/Cover.png"))
-        self.lableGameLogo.setAutoFillBackground(True)
+        self.ui.lableGameLogo.setPixmap(QPixmap("Image/Cover.png"))
+        self.ui.lableGameLogo.setAutoFillBackground(True)
 
         #  自定義功能區
-        self.buttonStart.clicked.connect(self.Start)
-        self.buttonImportImage.clicked.connect(self.ImportImage)
-        self.labelPreviewImage.setScaledContents(True)  # 圖片能符合label大小ˋ
+        self.ui.buttonStart.clicked.connect(self.Start)
+        self.ui.buttonImportImage.clicked.connect(self.ImportImage)
+        self.ui.labelPreviewImage.setScaledContents(True)  # 圖片能符合label大小ˋ
 
     def ClickLoadButton(self):
         message = "Goto3"
@@ -111,7 +74,7 @@ class Menu(object):
 
     def Start(self):
         message = "Goto2"
-        matrixSize = self.GetInputNumber(self.textBoxPuzzleSize.toPlainText())
+        matrixSize = self.GetInputNumber(self.ui.textBoxPuzzleSize.toPlainText())
         self._isStart = True
         self.data.SetButtonCount(matrixSize)
         print("Shoot!" + message + "\nsize: " + str(matrixSize))
@@ -131,7 +94,7 @@ class Menu(object):
             # 確認Load的是圖片
             if self.imgCtrl.isloaded:
                 self.data.SetImagePath(selectImage)
-                self.labelPreviewImage.setPixmap(self.data.GetPixmap())
+                self.ui.labelPreviewImage.setPixmap(self.data.GetPixmap())
         else:
             print("取消選擇圖片")
 
