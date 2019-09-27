@@ -4,6 +4,7 @@ from Controller import RandomPuzzle
 from Controller import FuntionTools
 from Controller import PuzzleAlgorithm as PA
 from Controller import RandomPuzzle as RP
+from View import CompleteDialog
 import threading
 import json
 
@@ -22,6 +23,8 @@ class GameWindow(object):
         self.movePath = None # 每步的移動
         self.nullBtnIndexRow, self.nullBtnIndexCol = 0, 0 #目前的空按鈕位置
 
+        self.IsAutoFinishing = False
+
     def ClearWindowsData(self):
         self.puzzle.clear()
         self.ClearButton()
@@ -31,6 +34,12 @@ class GameWindow(object):
         self.totalStep = 0  # 演算法總共要走的步數
         self.movePath = None  # 每步的移動
         self.nullBtnIndexRow, self.nullBtnIndexCol = 0, 0  # 目前的空按鈕位置
+
+        self.buttonNextStep.setEnabled(True)
+        self.buttonAutoFinish.setEnabled(True)
+        self.buttonAutoFinish.setText("AI自動完成")
+        self.IsAutoFinishing = False
+        self.labelStep.setText("已用步數： 0")
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -122,7 +131,7 @@ class GameWindow(object):
 
 
         self.buttonNextStep.clicked.connect(self.AI_NextStep)
-        self.buttonAutoFinish.clicked.connect(lambda: self.AI_AutoComplete(0.05))
+        self.buttonAutoFinish.clicked.connect(self.ClickAIAutoFinish)
         self.retranslateUi(MainWindow)
 
         self.UISetting()
@@ -161,9 +170,6 @@ class GameWindow(object):
         self.data.SetPuzzle(puzzleControl.GetPuzzle())
         self.CreateRandomPuzzle()
 
-        self.buttonNextStep.setEnabled(True)
-        self.labelStep.setText("已用步數： 0")
-
     # Add
     def ReviceMessage(self, message):
         if message == "Goto3":
@@ -180,12 +186,24 @@ class GameWindow(object):
         self.step += 1 #步數+1
         self.labelStep.setText("已用步數： " + str(self.step))
         self.buttonNextStep.setEnabled(self.step != self.totalStep)
+        self.buttonAutoFinish.setEnabled(self.step != self.totalStep)
+
+
+    def ClickAIAutoFinish(self):
+        self.IsAutoFinishing = not self.IsAutoFinishing
+        if self.IsAutoFinishing:
+            self.buttonAutoFinish.setText("暫停AI自動完成")
+        else:
+            self.buttonAutoFinish.setText("AI自動完成")
+
+        self.AI_AutoComplete(0.05)
 
     def AI_AutoComplete(self, delayTime):
-        self.AI_NextStep()
-        if self.step != self.totalStep:
-            threading.Timer(delayTime, lambda: self.AI_AutoComplete(delayTime)).start()
-            # print("Fuck Qt")
+        if self.IsAutoFinishing:
+            self.AI_NextStep()
+            if self.step != self.totalStep:
+                threading.Timer(delayTime, lambda: self.AI_AutoComplete(delayTime)).start()
+
 
     # Add
     def CreateRandomPuzzle(self):
