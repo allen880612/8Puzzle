@@ -35,7 +35,6 @@ class GameWindow(QMainWindow):
         self.auto_thread = Timer(0.05, self.AI_AutoComplete)
 
 
-
     def ClearWindowsData(self):
         self.puzzle.clear()
         self.ClearButton()
@@ -83,10 +82,9 @@ class GameWindow(QMainWindow):
             self.ClearWindowsData()
             self.CreateRandomPuzzle()
 
-    #Add connect
-    def AI_NextStep(self):
-        #print(self.nullBtnIndexRow, self.nullBtnIndexCol)
-        self.nullBtnIndexRow, self.nullBtnIndexCol = self.MoveButton(self.nullBtnIndexRow, self.nullBtnIndexCol, self.movePath[self.step])
+    def Move(self, moveStep):
+        # print(self.nullBtnIndexRow, self.nullBtnIndexCol)
+        self.nullBtnIndexRow, self.nullBtnIndexCol = self.MoveButton(self.nullBtnIndexRow, self.nullBtnIndexCol, moveStep)
         self.UpdateButtonPosition()
         #QtWidgets.QApplication.processEvents()
         self.step += 1 #步數+1
@@ -98,6 +96,10 @@ class GameWindow(QMainWindow):
             print("Puzzle finished!")
             self.CompletePazzle()
             print("Really?")
+
+    #Add connect
+    def AI_NextStep(self):
+        self.Move(self.movePath[self.step])
 
     def ClickAIAutoFinish(self):
         self.IsAutoFinishing = not self.IsAutoFinishing
@@ -159,18 +161,22 @@ class GameWindow(QMainWindow):
         # print(moveStep)
         if moveStep == "up":
             self.buttonList[nullRow][nullCol], self.buttonList[nullRow - 1][nullCol] = self.buttonList[nullRow - 1][nullCol], self.buttonList[nullRow][nullCol]
+            self.puzzle[nullRow][nullCol], self.puzzle[nullRow - 1][nullCol] = self.puzzle[nullRow - 1][nullCol], self.puzzle[nullRow][nullCol]
             return nullRow - 1, nullCol
 
         elif moveStep == "down":
             self.buttonList[nullRow][nullCol], self.buttonList[nullRow + 1][nullCol] = self.buttonList[nullRow + 1][nullCol], self.buttonList[nullRow][nullCol]
+            self.puzzle[nullRow][nullCol], self.puzzle[nullRow + 1][nullCol] = self.puzzle[nullRow + 1][nullCol], self.puzzle[nullRow][nullCol]
             return nullRow + 1, nullCol
 
         elif moveStep == "left":
             self.buttonList[nullRow][nullCol], self.buttonList[nullRow][nullCol - 1] = self.buttonList[nullRow][nullCol - 1], self.buttonList[nullRow][nullCol]
+            self.puzzle[nullRow][nullCol], self.puzzle[nullRow][nullCol - 1] = self.puzzle[nullRow][nullCol - 1], self.puzzle[nullRow][nullCol]
             return nullRow, nullCol - 1
 
         elif moveStep == "right":
             self.buttonList[nullRow][nullCol], self.buttonList[nullRow][nullCol + 1] = self.buttonList[nullRow][nullCol + 1], self.buttonList[nullRow][nullCol]
+            self.puzzle[nullRow][nullCol], self.puzzle[nullRow][nullCol + 1] = self.puzzle[nullRow][nullCol + 1], self.puzzle[nullRow][nullCol]
             return nullRow, nullCol + 1
 
     def UpdateButtonPosition(self):
@@ -197,15 +203,21 @@ class GameWindow(QMainWindow):
 
             self.buttonList.append(rowButtonList)
 
-    def ClickImageButtion(self, buttonIndex):
-        buttonPuzzle = []
-        for i in self.buttonList:
-            btnl = []
-            for j in i:
-                btnl.append(j.objectName())
-            buttonPuzzle.append(btnl)
-        btnRow, btnCol = FuntionTools.FindNumberFormMatrix()
-        print("{%d, %d}" %(self.nullBtnIndexRow, self.nullBtnIndexCol))
+    def ClickImageButtion(self, button):
+        # buttonPuzzle = []
+        # for i in self.buttonList:
+        #     btnl = []
+        #     for j in i:
+        #         btnl.append(j.name())
+        #     buttonPuzzle.append(btnl)
+        size = 100
+        posx, posy = button.pos().x(), button.pos().y()
+        btnRow, btnCol = posy // size, posx // size
+        print("{%d, %d}" % (btnRow, btnCol))
+        if FuntionTools.IsAround((self.nullBtnIndexRow, self.nullBtnIndexCol), (btnRow, btnCol)):
+            #self.Move()
+            movedir = FuntionTools.GetMove((self.nullBtnIndexRow, self.nullBtnIndexCol), (btnRow, btnCol))
+            self.Move(movedir)
 
     #test - no image
     def AddButton2(self, row, column, buttonIndex):
@@ -221,7 +233,7 @@ class GameWindow(QMainWindow):
         newButton.setObjectName(str(buttonIndex))
         newButton.setFont(font)
         newButton.setVisible(buttonIndex != 0)
-        newButton.clicked.connect(lambda: self.ClickImageButtion(buttonIndex))
+        newButton.clicked.connect(lambda :self.ClickImageButtion(newButton))
         return newButton
 
     def AddButton(self, row, column, buttonIndex, pixmap):
@@ -237,7 +249,7 @@ class GameWindow(QMainWindow):
         newButton.setObjectName(str(buttonIndex))
         newButton.setFont(font)
         newButton.setAutoFillBackground(True)
-        newButton.clicked.connect(lambda: self.ClickImageButtion(buttonIndex))
+        newButton.clicked.connect(lambda: self.ClickImageButtion(newButton))
         newButton.setFlat(True)
 
         colNum = self.data.GetButtonCount()
@@ -278,4 +290,4 @@ class GameWindow(QMainWindow):
 
 
     def IsFinished(self):
-        return self.step == self.totalStep
+        return self.puzzle == self.bestSearch.GetGoal()

@@ -297,6 +297,8 @@ class test_best_first_search():
         except:
             return self.path[-1].matrix
 
+    def GetGoal(self):
+        return self.path[0].goal.matrix
 # In[55]:
 #test_best_first_search(puzzle)
 '''
