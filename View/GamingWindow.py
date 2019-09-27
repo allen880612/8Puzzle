@@ -39,7 +39,6 @@ class GameWindow(QMainWindow):
         self.IsUserPlayed = False
 
 
-
     def ClearWindowsData(self):
         self.puzzle.clear()
         self.ClearButton()

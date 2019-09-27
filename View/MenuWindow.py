@@ -34,15 +34,6 @@ class Menu(QMainWindow):
         self.menuRecord.setTitle(_translate("MainWindow", "Record"))
 
     def UISetting(self):
-        # font = QtGui.QFont()
-        # font.setPointSize(20)
-        # font.setBold(True)
-        # font.setWeight(75)
-        # self.buttonLoad = QtWidgets.QPushButton(self.centralwidget)
-        # self.buttonLoad.objectName = "buttonLoad"
-        # self.buttonLoad.setGeometry(QtCore.QRect(20, 300, 50, 50))
-        # self.buttonLoad.setText("讀檔")
-        # self.buttonLoad.setFont(font)
         self.ui.buttonLoad.adjustSize()
         self.ui.buttonLoad.clicked.connect(self.ClickLoadButton)
         self.ui.buttonLoad.setVisible(True)
@@ -54,6 +45,7 @@ class Menu(QMainWindow):
         self.ui.buttonStart.clicked.connect(self.Start)
         self.ui.buttonImportImage.clicked.connect(self.ImportImage)
         self.ui.labelPreviewImage.setScaledContents(True)  # 圖片能符合label大小ˋ
+        self.ui.lableGameLogo.setScaledContents(True)  # 圖片能符合label大小ˋ
 
     def ClickLoadButton(self):
         message = "Goto3"

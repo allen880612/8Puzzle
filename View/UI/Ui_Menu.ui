@@ -30,8 +30,8 @@
    <widget class="QPlainTextEdit" name="textBoxPuzzleSize">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>390</y>
+      <x>150</x>
+      <y>400</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -40,8 +40,8 @@
    <widget class="QPushButton" name="buttonStart">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>380</y>
+      <x>450</x>
+      <y>390</y>
       <width>136</width>
       <height>48</height>
      </rect>
@@ -94,8 +94,8 @@
    <widget class="QLabel" name="labelTip">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>390</y>
+      <x>40</x>
+      <y>400</y>
       <width>93</width>
       <height>26</height>
      </rect>
@@ -115,8 +115,8 @@
    <widget class="QPushButton" name="buttonLoad">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>380</y>
+      <x>290</x>
+      <y>390</y>
       <width>136</width>
       <height>48</height>
      </rect>
