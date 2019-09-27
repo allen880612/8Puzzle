@@ -188,7 +188,6 @@ class GameWindow(object):
         self.buttonNextStep.setEnabled(self.step != self.totalStep)
         self.buttonAutoFinish.setEnabled(self.step != self.totalStep)
 
-
     def ClickAIAutoFinish(self):
         self.IsAutoFinishing = not self.IsAutoFinishing
         if self.IsAutoFinishing:
@@ -272,6 +271,16 @@ class GameWindow(object):
 
             self.buttonList.append(rowButtonList)
 
+    def ClickImageButtion(self, buttonIndex):
+        buttonPuzzle = []
+        for i in self.buttonList:
+            btnl = []
+            for j in i:
+                btnl.append(j.name())
+            buttonPuzzle.append(btnl)
+        btnRow, btnCol = FuntionTools.FindNumberFormMatrix()
+        print("{%d, %d}" %(self.nullBtnIndexRow, self.nullBtnIndexCol))
+
     #test - no image
     def AddButton2(self, row, column, buttonIndex):
         size = 100
@@ -283,9 +292,10 @@ class GameWindow(object):
         newButton = QtWidgets.QPushButton(self.centralwidget)
         newButton.setGeometry(QtCore.QRect(dButtonPos[0] + row * size, dButtonPos[1] + column * size, size, size))
         newButton.setText(str(buttonIndex))
+        newButton.setObjectName(str(buttonIndex))
         newButton.setFont(font)
         newButton.setVisible(buttonIndex != 0)
-        #newButton.clicked.connect(lambda: self.ClickButton(buttonIndex))
+        newButton.clicked.connect(lambda :self.ClickImageButtion(buttonIndex))
         return newButton
 
     def AddButton(self, row, column, buttonIndex, pixmap):
@@ -298,9 +308,10 @@ class GameWindow(object):
         newButton = QtWidgets.QPushButton(self.centralwidget)
         newButton.setGeometry(QtCore.QRect(dButtonPos[0] + row * size, dButtonPos[1] + column * size, size, size))
         # newButton.setText(str(buttonIndex))
+        newButton.setObjectName(str(buttonIndex))
         newButton.setFont(font)
         newButton.setAutoFillBackground(True)
-        newButton.clicked.connect(lambda: self.ClickButton(buttonIndex))
+        newButton.clicked.connect(lambda: self.ClickImageButtion(buttonIndex))
         newButton.setFlat(True)
 
         colNum = self.data.GetButtonCount()
