@@ -74,12 +74,14 @@ class GameWindow(QMainWindow):
         print("restart")
         self.ClearWindowsData()
         buttonCount, nullButtonIndex = self.data.GetButtonCount(), self.data.GetNowNullButtonIndex()
-        self.data.Clear()
+        #imagePath = self.data.GetImagePath()
+        #self.data.Clear()
         puzzleControl = RP.RandomMatrix(self.data, buttonCount)
         puzzleControl.ResetPuzzleBlankLocation(nullButtonIndex)
-        self.data.SetButtonCount(buttonCount)
-        self.data.SetNowNullButtonIndex(nullButtonIndex)
+        #self.data.SetButtonCount(buttonCount)
+        #self.data.SetNowNullButtonIndex(nullButtonIndex)
         self.data.SetPuzzle(puzzleControl.GetPuzzle())
+        #self.data.SetImagePath(imagePath)
         self.CreateRandomPuzzle()
 
     # Add
@@ -306,4 +308,7 @@ class GameWindow(QMainWindow):
 
 
     def IsFinished(self):
-        return self.puzzle == self.bestSearch.GetGoal()
+        try:
+            return self.puzzle == self.bestSearch.GetGoal()
+        except:
+            return False
