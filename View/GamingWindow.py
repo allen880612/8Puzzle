@@ -50,8 +50,8 @@ class GameWindow(QMainWindow):
         self.movePath = None  # 每步的移動
         self.nullBtnIndexRow, self.nullBtnIndexCol = 0, 0  # 目前的空按鈕位置
 
-        self.ui.buttonNextStep.setEnabled(True)
         self.ui.buttonAutoFinish.setEnabled(True)
+        self.SetButtonEnable(True)
         self.ui.buttonAutoFinish.setText("AI自動完成")
         self.IsAutoFinishing = False
         self.ui.labelStep.setText("已用步數： 0")
@@ -115,6 +115,7 @@ class GameWindow(QMainWindow):
 
     def ClickAIAutoFinish(self):
         self.IsAutoFinishing = not self.IsAutoFinishing
+        self.SetButtonEnable( not self.IsAutoFinishing)
         if self.IsAutoFinishing:
             self.ui.buttonAutoFinish.setText("暫停AI自動完成")
         else:
@@ -236,6 +237,13 @@ class GameWindow(QMainWindow):
             movedir = FuntionTools.GetMove((self.nullBtnIndexRow, self.nullBtnIndexCol), (btnRow, btnCol))
             self.Move(movedir)
             self.IsUserPlayed = True
+
+    def SetButtonEnable(self, flag):
+        self.ui.buttonMenu.setEnabled(flag)
+        self.ui.buttonNextStep.setEnabled(flag)
+        self.ui.buttonNextStep_2.setEnabled(flag)
+        self.ui.buttonRestart.setEnabled(flag)
+        self.ui.buttonSave.setEnabled(flag)
 
     #test - no image
     def AddButton2(self, row, column, buttonIndex):
