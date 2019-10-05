@@ -4,53 +4,9 @@ from View import MenuWindow, InitialWindow, GamingWindow, CompleteDialog
 from View import MenuWindow2 as mw2
 from Model import DataModel as DM
 
-class First(QMainWindow):
-
-    def __init__(self):
-        super().__init__()
-
-        self.initUI()
-
-    def initUI(self):
-        self.btn = QPushButton("to Second", self)
-        self.btn.move(30, 50)
-
-        self.setGeometry(300, 300, 500, 500)
-        self.setWindowTitle('8 Puzzle! - Initialize')
-        self.show()
-
-
-class Second(QMainWindow):
-    def __init__(self):
-        super().__init__()
-
-        self.initUI()
-
-    def initUI(self):
-        self.btn = QPushButton("to third", self)
-        self.btn.move(30, 50)
-        self.setGeometry(300, 300, 290, 150)
-        self.setWindowTitle('8 puzzle - Beginning')
-
-
-class Third(QMainWindow):
-    def __init__(self):
-        super().__init__()
-
-        self.initUI()
-
-    def initUI(self):
-        self.btn = QPushButton("to First", self)
-        self.btn.move(30, 50)
-        self.setGeometry(300, 300, 290, 150)
-        self.setWindowTitle('8 puzzle - Gaming')
-
-
 def showAnotherWindow(openIndex, closeIndex):
     GameStates[openIndex].show()
     GameStates[closeIndex].hide()
-
-
 
 if __name__ == '__main__':
 
@@ -74,11 +30,6 @@ if __name__ == '__main__':
     # Gaming Window
     gameWindow = GamingWindow.GameWindow(data)
     GameStates[2] = gameWindow
-
-    # Complete Dialog
-    # cDialog = QDialog()
-    # completeDialog = CompleteDialog.CompleteDialog()
-    # completeDialog.setupUi(cDialog)
 
     GameStates[0].show()
     menuWindow.ui.buttonStart.clicked.connect(lambda: showAnotherWindow(1, 0))

@@ -63,7 +63,7 @@ class ImageControl():
         index = 0
         for im in imageList:
             # cv2.imwrite(str(index) + ".png", im)
-            im.save(os.path.join(os.getcwd(), "subImage", str(index) + ".jpg"))
+            im.save(os.path.join(os.getcwd(), "subImage", str(index) + ".png"))
             index += 1
 
     def SetImageList(self, count):

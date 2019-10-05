@@ -38,7 +38,12 @@ class Menu(QMainWindow):
         self.ui.buttonLoad.clicked.connect(self.ClickLoadButton)
         self.ui.buttonLoad.setVisible(True)
         #  Cover
-        self.ui.lableGameLogo.setPixmap(QPixmap("Image/Cover.png"))
+        imagePIL = Image.open("./Image/Cover.png")
+        imgRGB = imagePIL.convert("RGB")
+        imgByte = imgRGB.tobytes("raw", "RGB")
+        qImage = QImage(imgByte, imgRGB.size[0], imgRGB.size[1], QtGui.QImage.Format_RGB888)
+        self.ui.lableGameLogo.setPixmap(QPixmap(qImage))
+        # self.ui.lableGameLogo.setPixmap(QPixmap("./Image/Cover.png"))
         self.ui.lableGameLogo.setAutoFillBackground(True)
 
         #  自定義功能區

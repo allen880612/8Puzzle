@@ -76,7 +76,7 @@ class GameWindow(QMainWindow):
         buttonCount, nullButtonIndex = self.data.GetButtonCount(), self.data.GetNowNullButtonIndex()
         #imagePath = self.data.GetImagePath()
         #self.data.Clear()
-        puzzleControl = RP.RandomMatrix(self.data, buttonCount)
+        puzzleControl = RP.RandomMatrix(buttonCount)
         puzzleControl.ResetPuzzleBlankLocation(nullButtonIndex)
         #self.data.SetButtonCount(buttonCount)
         #self.data.SetNowNullButtonIndex(nullButtonIndex)
@@ -282,9 +282,9 @@ class GameWindow(QMainWindow):
         lastIndex = ((colNum ** 2) - 1)
         newButton.setStyleSheet('QPushButton{border: 0px solid;}')
         if buttonIndex != 0:
-            newButton.setStyleSheet("border-image: url(subImage/" + str(buttonIndex - 1) + ".jpg);")
+            newButton.setStyleSheet("border-image: url(subImage/" + str(buttonIndex - 1) + ".png);")
         else:
-            newButton.setStyleSheet("border-image: url(subImage/" + str(lastIndex) + ".jpg);")
+            newButton.setStyleSheet("border-image: url(subImage/" + str(lastIndex) + ".png);")
         newButton.setVisible(buttonIndex != 0)
         newButton.setEnabled(buttonIndex != 0)
 

@@ -1,4 +1,5 @@
 import random
+import copy
 
 # # using this class like this
 # puzzle = RandomMatrix(4, 12)
@@ -88,15 +89,25 @@ class RandomMatrix(object):
     def GetPuzzle(self):
         return self.puzzle
 
+    def GetStringPuzzle(self):
+        stringPuzzle = copy.deepcopy(self.puzzle)
+        return self.CovertIntegerToDtring(stringPuzzle)
+    
     def SetPuzzle(self, puzzle):
         self.puzzle = puzzle
 
+    def CovertIntegerToDtring(self, intPuzzle):
+        strPuzzle = intPuzzle
+        size = len(intPuzzle)
+        for row in range(size):
+            for col in range(size):
+                strPuzzle[row][col] = str(intPuzzle[row][col])
+        return strPuzzle
 
-
-# using this class like this
-puzzle = RandomMatrix(3)
-puzzle.ResetPuzzleBlankLocation(4)
-
-for row in puzzle.GetPuzzle():
-    print(row)
+# test = RandomMatrix(3)
+# print(test.GetStringPuzzle())
+# for row in test.GetStringPuzzle():
+#     print(row)
+#
+# print(FuntionTools.FindNumberFormMatrix(puzzle, 0))
 

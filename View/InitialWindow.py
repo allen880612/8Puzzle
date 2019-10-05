@@ -73,7 +73,7 @@ class PreGaming(QMainWindow):
         newButton.setFlat(True)
 
         newButton.setStyleSheet('QPushButton{border: 0px solid;}')
-        newButton.setStyleSheet("border-image: url(subImage/" + str(buttonIndex) + ".jpg);")
+        newButton.setStyleSheet("border-image: url(subImage/" + str(buttonIndex) + ".png);")
 
         return newButton
 
