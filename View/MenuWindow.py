@@ -6,6 +6,7 @@ from Controller import FileDialog as FD
 from Controller import ImageControl as IMG_CONTROL
 from Controller import FuntionTools
 from View import UI
+import os
 
 class Menu(QMainWindow):
     def __init__(self, _data):
@@ -38,11 +39,18 @@ class Menu(QMainWindow):
         self.ui.buttonLoad.clicked.connect(self.ClickLoadButton)
         self.ui.buttonLoad.setVisible(True)
         #  Cover
-        imagePIL = Image.open("./Image/Cover.png")
-        imgRGB = imagePIL.convert("RGB")
-        imgByte = imgRGB.tobytes("raw", "RGB")
-        qImage = QImage(imgByte, imgRGB.size[0], imgRGB.size[1], QtGui.QImage.Format_RGB888)
-        self.ui.lableGameLogo.setPixmap(QPixmap(qImage))
+        try:
+
+            #os.chdir("D:\\NTUT\\AI Practice\\8Puzzle")
+            imagePIL = Image.open(os.path.join(os.getcwd(), "Image", "Cover.png"))
+            imgRGB = imagePIL.convert("RGB")
+            imgByte = imgRGB.tobytes("raw", "RGB")
+            qImage = QImage(imgByte, imgRGB.size[0], imgRGB.size[1], QtGui.QImage.Format_RGB888)
+            self.ui.lableGameLogo.setPixmap(QPixmap(qImage))
+        except:
+            print("PIL??")
+        print(os.getcwd())
+
         # self.ui.lableGameLogo.setPixmap(QPixmap("./Image/Cover.png"))
         self.ui.lableGameLogo.setAutoFillBackground(True)
 

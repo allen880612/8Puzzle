@@ -6,12 +6,10 @@ import random
 #     print(i)
 
 class RandomMatrix(object):
-    def __init__(self, dataModel, rowNum):
-        self.data = dataModel
+    def __init__(self, rowNum):
         self.rowNum = rowNum
         self.nowBlankIndex = 0
         self.puzzle = self.RandomPuzzle(rowNum)  # 先存沒有指定空白位置的Matrix
-        self.SetPuzzle(self.puzzle)
 
     def RandomPuzzle(self, n):
         puzzle = [[] for i in range(n)]
@@ -87,11 +85,10 @@ class RandomMatrix(object):
         self.SetPuzzle(puzzle)
 
     def GetPuzzle(self):
-        return self.data.GetPuzzle()
+        return self.puzzle
 
     def SetPuzzle(self, puzzle):
         self.puzzle = puzzle
-        self.data.SetPuzzle(puzzle)
 
 # puzzle = RandomMatrix(4)
 # puzzle.SetBlank(5)

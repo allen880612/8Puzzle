@@ -38,7 +38,6 @@ if __name__ == '__main__':
     preGamingWindow.ui.buttonDynamic.clicked.connect(lambda: showAnotherWindow(2, 1))
     gameWindow.ui.buttonMenu.clicked.connect(lambda: showAnotherWindow(0, 2))
     gameWindow.completeDialog.ui.buttonMenu.clicked.connect(lambda: showAnotherWindow(0, 2))
-
     sys.exit(app.exec_())
 
 

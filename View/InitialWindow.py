@@ -18,7 +18,7 @@ class PreGaming(QMainWindow):
         self.puzzleControl = None
 
     def SetUI(self):
-        self.ui.labelHint.adjustSize();  # QLabel 自適應大小
+        self.ui.labelHint.adjustSize()  # QLabel 自適應大小
         self.ui.buttonDynamic.setVisible(False)
 
     def ReviceMessage(self, message):
@@ -26,7 +26,7 @@ class PreGaming(QMainWindow):
             print("Revice! " + message)
             colNum = self.data.GetButtonCount()
             self.AddButtonList(colNum)
-            self.puzzleControl = RP.RandomMatrix(self.data, colNum)
+            self.puzzleControl = RP.RandomMatrix(colNum)
 
     def AddButtonList(self, addRowButtonCount):
         totalButtonCount = addRowButtonCount ** 2

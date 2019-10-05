@@ -42,7 +42,7 @@ class Ui_CompleteDialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "恭喜完成"))
         self.labelCongratulations.setText(_translate("Dialog", "Puzzle Solve !"))
         self.buttonRetry.setText(_translate("Dialog", "再來一局"))
         self.buttonMenu.setText(_translate("Dialog", "回主畫面"))
@@ -60,7 +60,7 @@ class Ui_Menu(object):
         self.textBoxPuzzleSize.setGeometry(QtCore.QRect(150, 400, 101, 31))
         self.textBoxPuzzleSize.setObjectName("textBoxPuzzleSize")
         self.buttonStart = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonStart.setGeometry(QtCore.QRect(450, 390, 136, 48))
+        self.buttonStart.setGeometry(QtCore.QRect(460, 390, 157, 56))
         font = QtGui.QFont()
         font.setFamily("微軟正黑體")
         font.setPointSize(22)
@@ -89,7 +89,7 @@ class Ui_Menu(object):
         self.labelTip.setFont(font)
         self.labelTip.setObjectName("labelTip")
         self.buttonLoad = QtWidgets.QPushButton(self.centralwidget)
-        self.buttonLoad.setGeometry(QtCore.QRect(290, 390, 136, 48))
+        self.buttonLoad.setGeometry(QtCore.QRect(290, 390, 157, 56))
         font = QtGui.QFont()
         font.setFamily("微軟正黑體")
         font.setPointSize(22)
@@ -116,7 +116,7 @@ class Ui_Menu(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Welcome to play 8 Puzzle!"))
         self.lableGameLogo.setText(_translate("MainWindow", "Game cover image"))
         self.buttonStart.setText(_translate("MainWindow", "開始遊戲"))
         self.buttonImportImage.setText(_translate("MainWindow", "匯入圖片"))
@@ -219,7 +219,7 @@ class Ui_GameWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Let's solve it!"))
         self.buttonAutoFinish.setText(_translate("MainWindow", "AI 自動完成"))
         self.labelStep.setText(_translate("MainWindow", "已用步數：20"))
         self.buttonNextStep.setText(_translate("MainWindow", "AI 解下一步"))
@@ -276,7 +276,7 @@ class Ui_PreGaming(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Ready to start the game?"))
         self.buttonDynamic.setText(_translate("MainWindow", "PushButton"))
         self.labelHint.setText(_translate("MainWindow", "點擊任意一格來開始遊戲!"))
         self.buttonBack.setText(_translate("MainWindow", "Back"))

@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow
 from Controller import RandomPuzzle
 from Controller import FuntionTools
 from Controller import PuzzleAlgorithm as PA
+from Controller import AStar
 from Controller import RandomPuzzle as RP
 from View import CompleteDialog as CD
 from View import UI
