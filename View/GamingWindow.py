@@ -186,7 +186,10 @@ class GameWindow(QMainWindow):
 
         #region 接生佬API 得到每步走法
         self.AI_ComputePath()
-        self.AStar_ComputePath()
+        if buttonCount <= 3:
+            self.AStar_ComputePath()
+        else:
+            self.ui.buttonNextStep_2.setEnabled(False)
         #endregion
 
         self.AddButtonList(buttonCount)
@@ -258,7 +261,7 @@ class GameWindow(QMainWindow):
     def SetButtonEnable(self, flag):
         self.ui.buttonMenu.setEnabled(flag)
         self.ui.buttonNextStep.setEnabled(flag)
-        self.ui.buttonNextStep_2.setEnabled(flag)
+        self.ui.buttonNextStep_2.setEnabled(flag and self.data.GetButtonCount() <= 3)
         self.ui.buttonRestart.setEnabled(flag)
         self.ui.buttonSave.setEnabled(flag)
 
