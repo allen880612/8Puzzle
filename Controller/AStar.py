@@ -156,11 +156,16 @@ class Puzzle:
         # for step in path:
         #     print(step)
 
+        print("steps = %d" % (len(path) - 1))
         # 算走法
         movePath = []
         for step in range(1, len(path)):
             startRow, startColumn, moveStep = FuntionTools.GetMove(startRow, startColumn, path[step].data)
             movePath.append(moveStep)
+
+            print("A* step: %d" % step)
+            for row in path[step].data:
+                print(row)
 
         return path, movePath
 

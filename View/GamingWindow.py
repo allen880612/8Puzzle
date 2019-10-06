@@ -59,6 +59,9 @@ class GameWindow(QMainWindow):
         self.IsAutoFinishing = False
         self.ui.labelStep.setText("已用步數： 0")
 
+        self.completeDialog = CD.CompleteDialog()
+        self.DialogSetting()
+
         self.IsUserPlayed = False
 
     def UISetting(self):
@@ -67,9 +70,12 @@ class GameWindow(QMainWindow):
         self.ui.buttonSave.clicked.connect(self.ClickSaveButton)
         self.ui.buttonMenu.clicked.connect(self.ReturnMenu)
         self.ui.buttonRestart.clicked.connect(self.ReStart)
+        self.ui.buttonNextStep_2.clicked.connect(self.AStar_NextStep)
+        self.DialogSetting()
+
+    def DialogSetting(self):
         self.completeDialog.ui.buttonMenu.clicked.connect(self.ReturnMenu)
         self.completeDialog.ui.buttonRetry.clicked.connect(self.ReStart)
-        self.ui.buttonNextStep_2.clicked.connect(self.AStar_NextStep)
 
     def ReturnMenu(self):
         self.data.Clear()
@@ -323,10 +329,9 @@ class GameWindow(QMainWindow):
     # 完成Puzzle 之Dialog
     def CompletePazzle(self):
         print("CompletePazzle Begin")
-        # dialog_ui = CD.Ui_Dialog()
-        # dialog_ui.setupUi(self.completeDialog)
-        # self.completeDialog.exec_()
-        self.completeDialog.exec()
+        # self.completeDialog = CD.CompleteDialog()
+        # self.DialogSetting()
+        self.completeDialog.exec_()
         print("CompletePazzle End")
 
 

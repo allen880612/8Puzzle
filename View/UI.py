@@ -36,7 +36,6 @@ class Ui_CompleteDialog(object):
         font.setWeight(75)
         self.buttonMenu.setFont(font)
         self.buttonMenu.setObjectName("buttonMenu")
-
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
