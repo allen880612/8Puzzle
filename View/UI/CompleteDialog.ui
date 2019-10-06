@@ -54,7 +54,7 @@
     <string>再來一局</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="buttonMenu">
+  <widget class="QPushButton" name="buttonConfirm">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -72,7 +72,7 @@
     </font>
    </property>
    <property name="text">
-    <string>回主畫面</string>
+    <string>確定</string>
    </property>
   </widget>
  </widget>

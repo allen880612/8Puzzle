@@ -74,7 +74,6 @@ class GameWindow(QMainWindow):
         self.DialogSetting()
 
     def DialogSetting(self):
-        self.completeDialog.ui.buttonMenu.clicked.connect(self.ReturnMenu)
         self.completeDialog.ui.buttonRetry.clicked.connect(self.ReStart)
 
     def ReturnMenu(self):
@@ -110,11 +109,13 @@ class GameWindow(QMainWindow):
         self.ui.labelStep.setText("已用步數： " + str(self.storeStep + self.step))
         # 完成Puzzle事件
         if self.IsFinished():
+            self.SetButtonEnable(True)
             self.ui.buttonNextStep.setEnabled(False)
             self.ui.buttonAutoFinish.setEnabled(False)
+            self.ui.buttonNextStep_2.setEnabled(False)
             print("Puzzle finished!")
             self.CompletePazzle()
-            print("Really?")
+            print("Complete Dialog closed")
 
     #Add connect
     def AI_NextStep(self):
@@ -125,7 +126,7 @@ class GameWindow(QMainWindow):
 
     def ClickAIAutoFinish(self):
         self.IsAutoFinishing = not self.IsAutoFinishing
-        self.SetButtonEnable( not self.IsAutoFinishing)
+        self.SetButtonEnable(not self.IsAutoFinishing)
         if self.IsAutoFinishing:
             self.ui.buttonAutoFinish.setText("暫停AI自動完成")
         else:
@@ -135,12 +136,9 @@ class GameWindow(QMainWindow):
         # self.AI_AutoComplete(0.05)
 
     def AI_AutoComplete(self):
-        # print("Enter Auto")
         # 停止 thread
         if self.IsFinished():
-            print("stop it please")
             self.auto_thread.cancel()
-            print("...")
         elif self.IsAutoFinishing:
             self.AI_NextStep()
             self.auto_thread = Timer(self.delayTime, self.AI_AutoComplete)
@@ -333,7 +331,6 @@ class GameWindow(QMainWindow):
         # self.DialogSetting()
         self.completeDialog.exec_()
         print("CompletePazzle End")
-
 
     def IsFinished(self):
         try:

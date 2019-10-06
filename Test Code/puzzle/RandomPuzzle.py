@@ -104,10 +104,10 @@ class RandomMatrix(object):
                 strPuzzle[row][col] = str(intPuzzle[row][col])
         return strPuzzle
 
-test = RandomMatrix(3)
-print(test.GetStringPuzzle())
-for row in test.GetStringPuzzle():
-    print(row)
+# test = RandomMatrix(4)
+# print(test.GetStringPuzzle())
+# for row in test.GetStringPuzzle():
+#     print(row)
 
 #
 # print(FuntionTools.FindNumberFormMatrix(puzzle, 0))

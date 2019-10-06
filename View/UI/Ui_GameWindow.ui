@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>632</width>
-    <height>477</height>
+    <width>740</width>
+    <height>529</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
      <rect>
       <x>20</x>
       <y>10</y>
-      <width>401</width>
-      <height>341</height>
+      <width>511</width>
+      <height>431</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout"/>
@@ -28,8 +28,8 @@
    <widget class="QPushButton" name="buttonAutoFinish">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>100</y>
+      <x>540</x>
+      <y>90</y>
       <width>183</width>
       <height>51</height>
      </rect>
@@ -49,8 +49,8 @@
    <widget class="QLabel" name="labelStep">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>380</y>
+      <x>310</x>
+      <y>450</y>
       <width>248</width>
       <height>50</height>
      </rect>
@@ -64,14 +64,14 @@
      </font>
     </property>
     <property name="text">
-     <string>已用步數：20</string>
+     <string>已用步數：1000</string>
     </property>
    </widget>
    <widget class="QPushButton" name="buttonNextStep">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>160</y>
+      <x>540</x>
+      <y>150</y>
       <width>183</width>
       <height>51</height>
      </rect>
@@ -91,8 +91,8 @@
    <widget class="QLabel" name="labelHelp">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>10</y>
+      <x>580</x>
+      <y>30</y>
       <width>80</width>
       <height>50</height>
      </rect>
@@ -113,7 +113,7 @@
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>380</y>
+      <y>450</y>
       <width>93</width>
       <height>51</height>
      </rect>
@@ -134,7 +134,7 @@
     <property name="geometry">
      <rect>
       <x>140</x>
-      <y>380</y>
+      <y>450</y>
       <width>141</width>
       <height>51</height>
      </rect>
@@ -154,8 +154,8 @@
    <widget class="QPushButton" name="buttonMenu">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>300</y>
+      <x>540</x>
+      <y>450</y>
       <width>108</width>
       <height>51</height>
      </rect>
@@ -175,8 +175,8 @@
    <widget class="QPushButton" name="buttonNextStep_2">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>230</y>
+      <x>540</x>
+      <y>220</y>
       <width>183</width>
       <height>51</height>
      </rect>

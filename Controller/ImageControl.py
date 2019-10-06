@@ -61,9 +61,12 @@ class ImageControl():
 
     def save_img(self, imageList):
         index = 0
+        basepath = os.path.join(os.getcwd(), "subImage")
+        if not os.path.isdir(basepath):
+            print("路徑不存在, 自動建立")
+            os.mkdir(basepath)
         for im in imageList:
-            # cv2.imwrite(str(index) + ".png", im)
-            im.save(os.path.join(os.getcwd(), "subImage", str(index) + ".png"))
+            im.save(os.path.join(basepath, str(index) + ".png"))
             index += 1
 
     def SetImageList(self, count):

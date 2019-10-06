@@ -140,8 +140,10 @@ class Puzzle:
             del self.open[0]
             """ sort the opne list based on f value """
             self.open.sort(key=lambda x: x.fval, reverse=False)
-            #for i in self.open:
-               # print(i.data,i.fval,i.level)
+
+            for i in self.open:
+                print(i.data, i.fval, i.level)
+
         while(cur != start):
             path.append(cur)
             cur = cur.parent
@@ -151,11 +153,6 @@ class Puzzle:
         startRow, startColumn = FuntionTools.FindNumberFormMatrix(path[0].data, 0)
         print("where zero at beginning?")
         print(startRow, startColumn)
-
-        # print("print step")
-        # for step in path:
-        #     print(step)
-
         print("steps = %d" % (len(path) - 1))
         # 算走法
         movePath = []

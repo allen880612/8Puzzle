@@ -9,6 +9,6 @@ class CompleteDialog(QDialog):
         self.ui = UI.Ui_CompleteDialog()
         self.ui.setupUi(self)
 
-        self.ui.buttonMenu.clicked.connect(self.close)
+        self.ui.buttonConfirm.clicked.connect(self.close)
         self.ui.buttonRetry.clicked.connect(self.close)
 
