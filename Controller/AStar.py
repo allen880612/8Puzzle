@@ -141,8 +141,8 @@ class Puzzle:
             """ sort the opne list based on f value """
             self.open.sort(key=lambda x: x.fval, reverse=False)
 
-            for i in self.open:
-                print(i.data, i.fval, i.level)
+            # for i in self.open:
+            #     print(i.data, i.fval, i.level)
 
         while(cur != start):
             path.append(cur)

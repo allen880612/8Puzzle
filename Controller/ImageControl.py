@@ -24,16 +24,25 @@ class ImageControl():
             return
 
         self.isloaded = True
-        #  補圖片正規劃
-        box = (0, 0, 480, 480)
-        cropPIL = image.crop(box)
 
+        cropPIL = self.NormalizeImage(image)
         # cropPIL.show()
         self.sourceImage = cropPIL
         self.sourceQPixmap = self.ConvertPILtoPixmap(cropPIL)
 
         self.data.SetSourceImage(cropPIL)
         self.data.SetPixmap(self.sourceQPixmap)
+
+    def NormalizeImage(self, orginImg):
+        img = orginImg
+        baseHeight = 480
+        # 以寬為基準，resize為 480 * 480
+        hpercent = (baseHeight / float(img.size[1]))
+        wsize = int((float(img.size[0]) * float(hpercent)))
+        img = img.resize((wsize, baseHeight), Image.ANTIALIAS)
+        box = (0, 0, 480, 480)
+        return img.crop(box)
+
 
     def ConvertPILtoQImage(self, imagePIL):
         imgRGB = imagePIL.convert("RGB")
