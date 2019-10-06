@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow
 from Controller import RandomPuzzle
 from Controller import FuntionTools
 from Controller import PuzzleAlgorithm as PA
-from Controller import AStar
+from Controller import AStar as AS
 from Controller import RandomPuzzle as RP
 from View import CompleteDialog as CD
 from View import UI
@@ -25,6 +25,7 @@ class GameWindow(QMainWindow):
         self.buttonList = []  #add
 
         self.bestSearch = None  # 生佬的函式
+        self.aStar = None  # 綱老函式
 
         self.puzzlePath = None
         self.storeStep = 0
@@ -44,6 +45,7 @@ class GameWindow(QMainWindow):
         self.puzzle.clear()
         self.ClearButton()
         self.bestSearch = None
+        self.aStar = None
         self.puzzlePath = None
         self.storeStep = 0
         self.step = 0  # now step
@@ -67,6 +69,7 @@ class GameWindow(QMainWindow):
         self.ui.buttonRestart.clicked.connect(self.ReStart)
         self.completeDialog.ui.buttonMenu.clicked.connect(self.ReturnMenu)
         self.completeDialog.ui.buttonRetry.clicked.connect(self.ReStart)
+        self.ui.buttonNextStep_2.clicked.connect(self.AStar_NextStep)
 
     def ReturnMenu(self):
         self.data.Clear()
@@ -137,22 +140,30 @@ class GameWindow(QMainWindow):
             self.auto_thread = Timer(self.delayTime, self.AI_AutoComplete)
             self.auto_thread.start()
 
-    # def AI_AutoComplete(self, delayTime):
-    #     auto_thread = Timer(delayTime, lambda: self.AI_AutoComplete(delayTime))
-    #     if self.IsFinished():
-    #         auto_thread.cancel()
-    #         print("cancel thread")
-    #     if self.IsAutoFinishing:
-    #         auto_thread.start()
-    #         self.AI_NextStep()
-
-    #生佬演算法
+    # 生佬演算法
     def AI_ComputePath(self):
         self.nullBtnIndexRow, self.nullBtnIndexCol = FuntionTools.FindNumberFormMatrix(self.puzzle, 0)
         self.puzzlePath = PA.NPuzzle(self.nullBtnIndexCol, self.nullBtnIndexRow, self.puzzle)
         self.bestSearch = PA.test_best_first_search(self.puzzlePath)
         self.movePath = self.bestSearch.GetMovePath()
         self.totalStep = self.bestSearch.GetTotalStep()
+        self.storeStep += self.step
+        self.step = 0
+        self.IsUserPlayed = False
+
+    def AStar_NextStep(self):
+        if self.IsUserPlayed: #使用者曾經玩過
+            self.AStar_ComputePath() #先重新算一次
+
+        self.Move(self.movePath[self.step])
+
+    # 綱老A*
+    def AStar_ComputePath(self):
+        self.aStar = AS.Puzzle(self.puzzle)
+        self.nullBtnIndexRow, self.nullBtnIndexCol = FuntionTools.FindNumberFormMatrix(self.puzzle, 0)
+        self.puzzlePath = self.aStar.GetPath()
+        self.totalStep = self.aStar.GetTotalStep()
+        self.movePath = self.aStar.GetMovePath()
         self.storeStep += self.step
         self.step = 0
         self.IsUserPlayed = False
@@ -171,6 +182,7 @@ class GameWindow(QMainWindow):
 
         #region 接生佬API 得到每步走法
         self.AI_ComputePath()
+        self.AStar_ComputePath()
         #endregion
 
         self.AddButtonList(buttonCount)
@@ -235,7 +247,7 @@ class GameWindow(QMainWindow):
         print("{%d, %d}" % (btnRow, btnCol))
         if FuntionTools.IsAround((self.nullBtnIndexRow, self.nullBtnIndexCol), (btnRow, btnCol)):
             #self.Move()
-            movedir = FuntionTools.GetMove((self.nullBtnIndexRow, self.nullBtnIndexCol), (btnRow, btnCol))
+            movedir = FuntionTools.GetPlayerMove((self.nullBtnIndexRow, self.nullBtnIndexCol), (btnRow, btnCol))
             self.Move(movedir)
             self.IsUserPlayed = True
 
@@ -299,7 +311,9 @@ class GameWindow(QMainWindow):
 
     def ClickSaveButton(self):
         self.data.SaveData(self.puzzlePath, self.movePath, self.step, self.totalStep)
-        self.data.SetPuzzle(self.bestSearch.GetNowPuzzleState(self.step))
+        self.data.SetPuzzle(self.puzzle)
+        # self.data.SetPuzzle(self.bestSearch.GetNowPuzzleState(self.step))
+        # self.data.SetPuzzle(self.aStar.GetStateFromStates(self.step))
         print("test")
         print(self.data.GetPuzzle())
         print(type(self.data.GetPuzzle()))

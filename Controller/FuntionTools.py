@@ -24,7 +24,7 @@ def IsAround(nullPos, comparePos):
             (nullPos[0] == comparePos[0] + 1 and nullPos[1] == comparePos[1]))
 
 #計算走的路徑
-def GetMove(nullPos, comparePos):
+def GetPlayerMove(nullPos, comparePos):
     # 1, 1 null
     # 0, 1 this up
     move = "up"
@@ -37,6 +37,20 @@ def GetMove(nullPos, comparePos):
     elif nullPos[1] == comparePos[1] - 1:
         move = "right"
     return move
+
+#計算走法
+def GetMove(row, col, compareMatrix):
+    zeroRow, zeroCol = FindNumberFormMatrix(compareMatrix, 0)
+    move = "up"
+    if zeroRow == row - 1:
+        move = "up"
+    elif zeroRow == row + 1:
+        move = "down"
+    elif zeroCol == col - 1:
+        move = "left"
+    elif zeroCol == col + 1:
+        move = "right"
+    return zeroRow, zeroCol, move
 
 class UserJSONEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -59,3 +73,12 @@ def readJson(loadPath):
     jsonData = json.load(open(loadPath))
     print("load json")
     return jsonData
+
+
+def CovertIntegerToDtring(intPuzzle):
+    strPuzzle = intPuzzle
+    size = len(intPuzzle)
+    for row in range(size):
+        for col in range(size):
+            strPuzzle[row][col] = str(intPuzzle[row][col])
+    return strPuzzle

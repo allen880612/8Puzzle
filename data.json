@@ -1,1 +1,1 @@
-{"rowButtonCount": 3, "puzzle": [[1, 4, 3], [8, 6, 0], [7, 5, 2]], "movePath": [], "step": 51, "totalStep": 0, "imagePath": "D:/Puzzle/Image/crop_img.png"}
+{"rowButtonCount": 3, "puzzle": [[1, 2, 3], [7, 4, 6], [0, 5, 8]], "movePath": ["left", "up", "left", "down", "down", "right", "up", "right", "up", "left", "left", "down", "right", "right", "down", "left", "left", "up", "right", "down", "right"], "step": 17, "totalStep": 21, "imagePath": null}

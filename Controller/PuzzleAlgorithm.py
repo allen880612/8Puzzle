@@ -229,7 +229,7 @@ def best_first_search(start, max_times):
 
     #算走法
     for step in range(1, len(path)):
-        startRow, startColumn, moveStep = GetMove(startRow, startColumn, path[step].matrix)
+        startRow, startColumn, moveStep = FuntionTools.GetMove(startRow, startColumn, path[step].matrix)
         movePath.append(moveStep)
 
     # for state in movePath:
@@ -241,21 +241,6 @@ def best_first_search(start, max_times):
 # 用來測試算法的函式
 
 # In[81]:
-
-#計算走法
-def GetMove(row, col, compareMatrix):
-    zeroRow, zeroCol = FuntionTools.FindNumberFormMatrix(compareMatrix, 0)
-    move = "up"
-    if zeroRow == row - 1:
-        move = "up"
-    elif zeroRow == row + 1:
-        move = "down"
-    elif zeroCol == col - 1:
-        move = "left"
-    elif zeroCol == col + 1:
-        move = "right"
-    return zeroRow, zeroCol, move
-
 
 class test_best_first_search():
     def __init__(self, start, max_times=50000):
