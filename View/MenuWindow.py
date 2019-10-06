@@ -40,7 +40,6 @@ class Menu(QMainWindow):
         self.ui.buttonLoad.setVisible(True)
         #  Cover
         try:
-
             #os.chdir("D:\\NTUT\\AI Practice\\8Puzzle")
             imagePIL = Image.open(os.path.join(os.getcwd(), "Image", "Cover.png"))
             imgRGB = imagePIL.convert("RGB")
@@ -59,6 +58,15 @@ class Menu(QMainWindow):
         self.ui.buttonImportImage.clicked.connect(self.ImportImage)
         self.ui.labelPreviewImage.setScaledContents(True)  # 圖片能符合label大小ˋ
         self.ui.lableGameLogo.setScaledContents(True)  # 圖片能符合label大小ˋ
+
+        self.ui.buttonStart.resize(self.ui.buttonLoad.size())
+        self.ui.buttonImportImage.resize(self.ui.buttonLoad.size())
+        self.ui.buttonImportImage.move(460, 300)
+        qfont = QtGui.QFont()
+        qfont.setPointSize(20)
+        qfont.setBold(True)
+        qfont.setFamily("微軟正黑體")
+        self.ui.buttonImportImage.setFont(qfont)
 
     def ClickLoadButton(self):
         message = "Goto3"
