@@ -25,37 +25,25 @@
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\__init__.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.appdirs',
+  ('pkg_resources._vendor.packaging.specifiers',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\appdirs.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
    'PYMODULE'),
-  ('ctypes',
+  ('pkg_resources._vendor.packaging.version',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\__init__.py',
-   'PYMODULE'),
-  ('ctypes._endian',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\_endian.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging._structures',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging.utils',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
-   'PYMODULE'),
-  ('pkg_resources._vendor.packaging',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__init__.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
    'PYMODULE'),
   ('pkg_resources._vendor.six',
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\six.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.__about__',
+  ('pkg_resources._vendor.packaging._structures',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__init__.py',
    'PYMODULE'),
   ('pkg_resources._vendor.pyparsing',
    'c:\\users\\izayoi '
@@ -89,29 +77,41 @@
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\macholib\\framework.py',
    'PYMODULE'),
-  ('pkg_resources._vendor',
+  ('ctypes',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\__init__.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\__init__.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging._compat',
+  ('ctypes._endian',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_compat.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\ctypes\\_endian.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.version',
+  ('pkg_resources._vendor.packaging.requirements',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\version.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging.__about__',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\__about__.py',
    'PYMODULE'),
   ('pkg_resources._vendor.packaging.markers',
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\markers.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.specifiers',
+  ('pkg_resources._vendor.appdirs',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\specifiers.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\appdirs.py',
    'PYMODULE'),
-  ('pkg_resources._vendor.packaging.requirements',
+  ('pkg_resources._vendor.packaging.utils',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\requirements.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\utils.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor.packaging._compat',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\packaging\\_compat.py',
+   'PYMODULE'),
+  ('pkg_resources._vendor',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\pkg_resources\\_vendor\\__init__.py',
    'PYMODULE'),
   ('__main__',
    'C:\\Users\\Izayoi '
@@ -781,13 +781,13 @@
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\typing.py',
    'PYMODULE'),
-  ('stringprep',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\stringprep.py',
-   'PYMODULE'),
   ('_py_abc',
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\_py_abc.py',
+   'PYMODULE'),
+  ('stringprep',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\stringprep.py',
    'PYMODULE'),
   ('fnmatch',
    'c:\\users\\izayoi '
@@ -1279,125 +1279,113 @@
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\Image.py',
    'PYMODULE'),
-  ('PIL.PalmImagePlugin',
+  ('PIL.Hdf5StubImagePlugin',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\PalmImagePlugin.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\Hdf5StubImagePlugin.py',
    'PYMODULE'),
   ('PIL.ImageFile',
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\ImageFile.py',
    'PYMODULE'),
-  ('PIL.FliImagePlugin',
+  ('PIL.GribStubImagePlugin',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\FliImagePlugin.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\GribStubImagePlugin.py',
    'PYMODULE'),
-  ('PIL.BlpImagePlugin',
+  ('PIL.PcxImagePlugin',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\BlpImagePlugin.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\PcxImagePlugin.py',
    'PYMODULE'),
-  ('PIL.SunImagePlugin',
+  ('PIL.IptcImagePlugin',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\SunImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.IcnsImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\IcnsImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.TgaImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\TgaImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.MpegImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\MpegImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.FpxImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\FpxImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.EpsImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\EpsImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.Jpeg2KImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\Jpeg2KImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.PixarImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\PixarImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.McIdasImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\McIdasImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.GbrImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\GbrImagePlugin.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\IptcImagePlugin.py',
    'PYMODULE'),
   ('PIL.DcxImagePlugin',
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\DcxImagePlugin.py',
    'PYMODULE'),
-  ('PIL.DdsImagePlugin',
+  ('PIL.FpxImagePlugin',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\DdsImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.SgiImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\SgiImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.XpmImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\XpmImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.BufrStubImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\BufrStubImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.PsdImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\PsdImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.WebPImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\WebPImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.SpiderImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\SpiderImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.ImageTk',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\ImageTk.py',
-   'PYMODULE'),
-  ('PIL.FtexImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\FtexImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.MpoImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\MpoImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.XbmImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\XbmImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.XVThumbImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\XVThumbImagePlugin.py',
-   'PYMODULE'),
-  ('PIL.IcoImagePlugin',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\IcoImagePlugin.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\FpxImagePlugin.py',
    'PYMODULE'),
   ('PIL.FitsStubImagePlugin',
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\FitsStubImagePlugin.py',
    'PYMODULE'),
+  ('PIL.SunImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\SunImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.IcoImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\IcoImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.XpmImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\XpmImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.EpsImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\EpsImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.FliImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\FliImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.PixarImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\PixarImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.BlpImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\BlpImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.McIdasImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\McIdasImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.CurImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\CurImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.GbrImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\GbrImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.WebPImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\WebPImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.TgaImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\TgaImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.DdsImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\DdsImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.Jpeg2KImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\Jpeg2KImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.IcnsImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\IcnsImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.MicImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\MicImagePlugin.py',
+   'PYMODULE'),
   ('PIL.WmfImagePlugin',
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\WmfImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.PcdImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\PcdImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.PsdImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\PsdImagePlugin.py',
    'PYMODULE'),
   ('PIL.PdfImagePlugin',
    'c:\\users\\izayoi '
@@ -1411,9 +1399,21 @@
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\ImageSequence.py',
    'PYMODULE'),
-  ('PIL.ImtImagePlugin',
+  ('PIL.XVThumbImagePlugin',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\ImtImagePlugin.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\XVThumbImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.BufrStubImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\BufrStubImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.SpiderImagePlugin',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\SpiderImagePlugin.py',
+   'PYMODULE'),
+  ('PIL.ImageTk',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\ImageTk.py',
    'PYMODULE'),
   ('PIL.MspImagePlugin',
    'c:\\users\\izayoi '
@@ -1423,33 +1423,33 @@
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\ImImagePlugin.py',
    'PYMODULE'),
-  ('PIL.PcdImagePlugin',
+  ('PIL.ImtImagePlugin',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\PcdImagePlugin.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\ImtImagePlugin.py',
    'PYMODULE'),
-  ('PIL.IptcImagePlugin',
+  ('PIL.FtexImagePlugin',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\IptcImagePlugin.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\FtexImagePlugin.py',
    'PYMODULE'),
-  ('PIL.PcxImagePlugin',
+  ('PIL.SgiImagePlugin',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\PcxImagePlugin.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\SgiImagePlugin.py',
    'PYMODULE'),
-  ('PIL.CurImagePlugin',
+  ('PIL.XbmImagePlugin',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\CurImagePlugin.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\XbmImagePlugin.py',
    'PYMODULE'),
-  ('PIL.MicImagePlugin',
+  ('PIL.MpoImagePlugin',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\MicImagePlugin.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\MpoImagePlugin.py',
    'PYMODULE'),
-  ('PIL.GribStubImagePlugin',
+  ('PIL.MpegImagePlugin',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\GribStubImagePlugin.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\MpegImagePlugin.py',
    'PYMODULE'),
-  ('PIL.Hdf5StubImagePlugin',
+  ('PIL.PalmImagePlugin',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\Hdf5StubImagePlugin.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PIL\\PalmImagePlugin.py',
    'PYMODULE'),
   ('PIL.TiffImagePlugin',
    'c:\\users\\izayoi '
@@ -1663,30 +1663,6 @@
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools\\__init__.py',
    'PYMODULE'),
-  ('setuptools._vendor.packaging.utils',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools\\_vendor\\packaging\\utils.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.requirements',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools\\_vendor\\packaging\\requirements.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging._compat',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools\\_vendor\\packaging\\_compat.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.version',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools\\_vendor\\packaging\\version.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.markers',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools\\_vendor\\packaging\\markers.py',
-   'PYMODULE'),
-  ('setuptools._vendor.packaging.specifiers',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools\\_vendor\\packaging\\specifiers.py',
-   'PYMODULE'),
   ('setuptools._vendor.packaging',
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools\\_vendor\\packaging\\__init__.py',
@@ -1695,9 +1671,33 @@
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools\\_vendor\\six.py',
    'PYMODULE'),
+  ('setuptools._vendor.packaging.version',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools\\_vendor\\packaging\\version.py',
+   'PYMODULE'),
   ('setuptools._vendor.pyparsing',
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools\\_vendor\\pyparsing.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.utils',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools\\_vendor\\packaging\\utils.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.requirements',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools\\_vendor\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._structures',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools\\_vendor\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.markers',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools\\_vendor\\packaging\\markers.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._compat',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools\\_vendor\\packaging\\_compat.py',
    'PYMODULE'),
   ('setuptools._vendor',
    'c:\\users\\izayoi '
@@ -1707,9 +1707,9 @@
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools\\_vendor\\packaging\\__about__.py',
    'PYMODULE'),
-  ('setuptools._vendor.packaging._structures',
+  ('setuptools._vendor.packaging.specifiers',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools\\_vendor\\packaging\\_structures.py',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\setuptools\\_vendor\\packaging\\specifiers.py',
    'PYMODULE'),
   ('setuptools.msvc',
    'c:\\users\\izayoi '
@@ -2491,37 +2491,37 @@
   ('View.InitialWindow', 'D:\\Puzzle\\View\\InitialWindow.py', 'PYMODULE'),
   ('View.MenuWindow', 'D:\\Puzzle\\View\\MenuWindow.py', 'PYMODULE'),
   ('View', 'D:\\Puzzle\\View\\__init__.py', 'PYMODULE')],
- [('python37.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\python37.dll',
-   'BINARY'),
-  ('api-ms-win-crt-locale-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-crt-locale-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-runtime-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-crt-runtime-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-heap-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-crt-heap-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-crt-stdio-l1-1-0.dll',
+ [('api-ms-win-crt-stdio-l1-1-0.dll',
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-crt-stdio-l1-1-0.dll',
-   'BINARY'),
-  ('VCRUNTIME140.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\VCRUNTIME140.dll',
    'BINARY'),
   ('api-ms-win-crt-math-l1-1-0.dll',
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-crt-math-l1-1-0.dll',
    'BINARY'),
-  ('api-ms-win-crt-filesystem-l1-1-0.dll',
+  ('VCRUNTIME140.dll',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-crt-filesystem-l1-1-0.dll',
+   'hayato\\appdata\\local\\programs\\python\\python37\\VCRUNTIME140.dll',
+   'BINARY'),
+  ('api-ms-win-crt-locale-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-crt-locale-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-heap-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-crt-heap-l1-1-0.dll',
+   'BINARY'),
+  ('python37.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\python37.dll',
+   'BINARY'),
+  ('api-ms-win-crt-runtime-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-crt-runtime-l1-1-0.dll',
+   'BINARY'),
+  ('ucrtbase.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\ucrtbase.dll',
    'BINARY'),
   ('api-ms-win-crt-convert-l1-1-0.dll',
    'c:\\users\\izayoi '
@@ -2531,13 +2531,13 @@
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-crt-string-l1-1-0.dll',
    'BINARY'),
-  ('api-ms-win-crt-process-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-crt-process-l1-1-0.dll',
-   'BINARY'),
   ('api-ms-win-crt-conio-l1-1-0.dll',
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-crt-conio-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-process-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-crt-process-l1-1-0.dll',
    'BINARY'),
   ('api-ms-win-crt-environment-l1-1-0.dll',
    'c:\\users\\izayoi '
@@ -2547,189 +2547,189 @@
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-crt-time-l1-1-0.dll',
    'BINARY'),
-  ('ucrtbase.dll',
+  ('api-ms-win-crt-filesystem-l1-1-0.dll',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\ucrtbase.dll',
-   'BINARY'),
-  ('api-ms-win-core-localization-l1-2-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-localization-l1-2-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-interlocked-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-interlocked-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-libraryloader-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-libraryloader-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-heap-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-heap-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-handle-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-handle-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-synch-l1-2-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-synch-l1-2-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-datetime-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-datetime-l1-1-0.dll',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-crt-filesystem-l1-1-0.dll',
    'BINARY'),
   ('api-ms-win-core-file-l1-2-0.dll',
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-file-l1-2-0.dll',
    'BINARY'),
-  ('api-ms-win-core-sysinfo-l1-1-0.dll',
+  ('api-ms-win-core-interlocked-l1-1-0.dll',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-sysinfo-l1-1-0.dll',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-interlocked-l1-1-0.dll',
    'BINARY'),
-  ('api-ms-win-core-rtlsupport-l1-1-0.dll',
+  ('api-ms-win-core-datetime-l1-1-0.dll',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-rtlsupport-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-synch-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-synch-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-debug-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-debug-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-processenvironment-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-processenvironment-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-processthreads-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-processthreads-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-profile-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-profile-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-util-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-util-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-processthreads-l1-1-1.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-processthreads-l1-1-1.dll',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-datetime-l1-1-0.dll',
    'BINARY'),
   ('api-ms-win-core-string-l1-1-0.dll',
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-string-l1-1-0.dll',
    'BINARY'),
-  ('api-ms-win-core-namedpipe-l1-1-0.dll',
+  ('api-ms-win-core-libraryloader-l1-1-0.dll',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-namedpipe-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-file-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-file-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-file-l2-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-file-l2-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-console-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-console-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-memory-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-memory-l1-1-0.dll',
-   'BINARY'),
-  ('api-ms-win-core-errorhandling-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-errorhandling-l1-1-0.dll',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-libraryloader-l1-1-0.dll',
    'BINARY'),
   ('api-ms-win-core-timezone-l1-1-0.dll',
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-timezone-l1-1-0.dll',
    'BINARY'),
-  ('PyQt5\\Qt\\plugins\\platforms\\qminimal.dll',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\platforms\\qminimal.dll',
+  ('api-ms-win-core-processenvironment-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-processenvironment-l1-1-0.dll',
    'BINARY'),
-  ('PyQt5\\Qt\\plugins\\imageformats\\qwebp.dll',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\imageformats\\qwebp.dll',
+  ('api-ms-win-core-file-l2-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-file-l2-1-0.dll',
    'BINARY'),
-  ('PyQt5\\Qt\\plugins\\imageformats\\qtga.dll',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\imageformats\\qtga.dll',
+  ('api-ms-win-core-profile-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-profile-l1-1-0.dll',
    'BINARY'),
-  ('PyQt5\\Qt\\bin\\libEGL.dll',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\libEGL.dll',
+  ('api-ms-win-core-errorhandling-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-errorhandling-l1-1-0.dll',
    'BINARY'),
-  ('PyQt5\\Qt\\plugins\\imageformats\\qgif.dll',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\imageformats\\qgif.dll',
+  ('api-ms-win-core-sysinfo-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-sysinfo-l1-1-0.dll',
    'BINARY'),
-  ('PyQt5\\Qt\\plugins\\imageformats\\qico.dll',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\imageformats\\qico.dll',
+  ('api-ms-win-core-util-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-util-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-synch-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-synch-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-localization-l1-2-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-localization-l1-2-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-handle-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-handle-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-processthreads-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-processthreads-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-processthreads-l1-1-1.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-processthreads-l1-1-1.dll',
+   'BINARY'),
+  ('api-ms-win-core-file-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-file-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-rtlsupport-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-rtlsupport-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-namedpipe-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-namedpipe-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-console-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-console-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-debug-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-debug-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-memory-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-memory-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-heap-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-heap-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-synch-l1-2-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-core-synch-l1-2-0.dll',
    'BINARY'),
   ('PyQt5\\Qt\\plugins\\platforms\\qoffscreen.dll',
    'C:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\platforms\\qoffscreen.dll',
    'BINARY'),
-  ('PyQt5\\Qt\\plugins\\imageformats\\qicns.dll',
+  ('PyQt5\\Qt\\plugins\\platforms\\qwebgl.dll',
    'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\imageformats\\qicns.dll',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\platforms\\qwebgl.dll',
    'BINARY'),
-  ('PyQt5\\Qt\\plugins\\imageformats\\qsvg.dll',
+  ('PyQt5\\Qt\\plugins\\imageformats\\qwebp.dll',
    'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\imageformats\\qsvg.dll',
-   'BINARY'),
-  ('PyQt5\\Qt\\plugins\\platforms\\qwindows.dll',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\platforms\\qwindows.dll',
-   'BINARY'),
-  ('PyQt5\\Qt\\plugins\\imageformats\\qwbmp.dll',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\imageformats\\qwbmp.dll',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\imageformats\\qwebp.dll',
    'BINARY'),
   ('PyQt5\\Qt\\plugins\\styles\\qwindowsvistastyle.dll',
    'C:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\styles\\qwindowsvistastyle.dll',
    'BINARY'),
-  ('PyQt5\\Qt\\plugins\\platformthemes\\qxdgdesktopportal.dll',
+  ('PyQt5\\Qt\\bin\\libEGL.dll',
    'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\platformthemes\\qxdgdesktopportal.dll',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\libEGL.dll',
    'BINARY'),
-  ('PyQt5\\Qt\\plugins\\platforms\\qwebgl.dll',
+  ('PyQt5\\Qt\\bin\\d3dcompiler_47.dll',
    'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\platforms\\qwebgl.dll',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\d3dcompiler_47.dll',
    'BINARY'),
-  ('PyQt5\\Qt\\plugins\\imageformats\\qjpeg.dll',
+  ('PyQt5\\Qt\\plugins\\platforms\\qminimal.dll',
    'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\imageformats\\qjpeg.dll',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\platforms\\qminimal.dll',
    'BINARY'),
-  ('PyQt5\\Qt\\plugins\\imageformats\\qtiff.dll',
+  ('PyQt5\\Qt\\plugins\\platforms\\qwindows.dll',
    'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\imageformats\\qtiff.dll',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\platforms\\qwindows.dll',
    'BINARY'),
-  ('PyQt5\\Qt\\bin\\libGLESv2.dll',
+  ('PyQt5\\Qt\\plugins\\imageformats\\qsvg.dll',
    'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\libGLESv2.dll',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\imageformats\\qsvg.dll',
    'BINARY'),
   ('PyQt5\\Qt\\plugins\\iconengines\\qsvgicon.dll',
    'C:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\iconengines\\qsvgicon.dll',
    'BINARY'),
+  ('PyQt5\\Qt\\plugins\\imageformats\\qtiff.dll',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\imageformats\\qtiff.dll',
+   'BINARY'),
   ('PyQt5\\Qt\\bin\\opengl32sw.dll',
    'C:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\opengl32sw.dll',
    'BINARY'),
-  ('PyQt5\\Qt\\bin\\d3dcompiler_47.dll',
+  ('PyQt5\\Qt\\plugins\\imageformats\\qgif.dll',
    'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\d3dcompiler_47.dll',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\imageformats\\qgif.dll',
+   'BINARY'),
+  ('PyQt5\\Qt\\plugins\\platformthemes\\qxdgdesktopportal.dll',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\platformthemes\\qxdgdesktopportal.dll',
+   'BINARY'),
+  ('PyQt5\\Qt\\plugins\\imageformats\\qico.dll',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\imageformats\\qico.dll',
+   'BINARY'),
+  ('PyQt5\\Qt\\plugins\\imageformats\\qicns.dll',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\imageformats\\qicns.dll',
+   'BINARY'),
+  ('PyQt5\\Qt\\plugins\\imageformats\\qtga.dll',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\imageformats\\qtga.dll',
+   'BINARY'),
+  ('PyQt5\\Qt\\plugins\\imageformats\\qjpeg.dll',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\imageformats\\qjpeg.dll',
+   'BINARY'),
+  ('PyQt5\\Qt\\bin\\libGLESv2.dll',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\libGLESv2.dll',
+   'BINARY'),
+  ('PyQt5\\Qt\\plugins\\imageformats\\qwbmp.dll',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\plugins\\imageformats\\qwbmp.dll',
    'BINARY'),
   ('_ctypes',
    'c:\\users\\izayoi '
@@ -2855,37 +2855,21 @@
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\QtWidgets.pyd',
    'EXTENSION'),
-  ('Qt5Core.dll',
+  ('api-ms-win-crt-utility-l1-1-0.dll',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\qt5core.dll',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-crt-utility-l1-1-0.dll',
    'BINARY'),
   ('Qt5Gui.dll',
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\qt5gui.dll',
    'BINARY'),
-  ('api-ms-win-crt-utility-l1-1-0.dll',
+  ('Qt5Core.dll',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-crt-utility-l1-1-0.dll',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\qt5core.dll',
    'BINARY'),
-  ('libGLESv2.dll',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\libGLESv2.dll',
-   'BINARY'),
-  ('Qt5Svg.dll',
+  ('Qt5Quick.dll',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\qt5svg.dll',
-   'BINARY'),
-  ('MSVCP140.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\msvcp140.dll',
-   'BINARY'),
-  ('Qt5Widgets.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\qt5widgets.dll',
-   'BINARY'),
-  ('Qt5DBus.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\qt5dbus.dll',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\qt5quick.dll',
    'BINARY'),
   ('Qt5WebSockets.dll',
    'c:\\users\\izayoi '
@@ -2895,9 +2879,25 @@
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\qt5network.dll',
    'BINARY'),
-  ('Qt5Quick.dll',
+  ('MSVCP140.dll',
    'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\qt5quick.dll',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\msvcp140.dll',
+   'BINARY'),
+  ('Qt5Widgets.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\qt5widgets.dll',
+   'BINARY'),
+  ('libGLESv2.dll',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\libGLESv2.dll',
+   'BINARY'),
+  ('Qt5Svg.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\qt5svg.dll',
+   'BINARY'),
+  ('Qt5DBus.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\qt5dbus.dll',
    'BINARY'),
   ('libssl-1_1.dll',
    'c:\\users\\izayoi '
@@ -2915,129 +2915,129 @@
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\numpy\\.libs\\libopenblas.txa6yqsd3gcqqc22geq54j2udcxdxhwn.gfortran-win_amd64.dll',
    'BINARY'),
-  ('api-ms-win-crt-multibyte-l1-1-0.dll',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-crt-multibyte-l1-1-0.dll',
-   'BINARY'),
   ('Qt5Qml.dll',
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\bin\\Qt5Qml.dll',
+   'BINARY'),
+  ('api-ms-win-crt-multibyte-l1-1-0.dll',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\api-ms-win-crt-multibyte-l1-1-0.dll',
    'BINARY')],
  [],
  [],
  [('base_library.zip',
    'D:\\Puzzle\\build\\8_PuzzleGame\\base_library.zip',
    'DATA'),
-  ('lib2to3\\tests\\data\\README',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\lib2to3\\tests\\data\\README',
-   'DATA'),
-  ('PyQt5\\translations\\qtbase_ca.qm',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_ca.qm',
-   'DATA'),
-  ('PyQt5\\translations\\qtbase_gd.qm',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_gd.qm',
-   'DATA'),
-  ('PyQt5\\translations\\qtbase_pl.qm',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_pl.qm',
-   'DATA'),
   ('PyQt5\\translations\\qtbase_sk.qm',
    'C:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_sk.qm',
-   'DATA'),
-  ('PyQt5\\translations\\qtbase_fi.qm',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_fi.qm',
-   'DATA'),
-  ('PyQt5\\translations\\qtbase_fr.qm',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_fr.qm',
-   'DATA'),
-  ('lib2to3\\Grammar.txt',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\lib2to3\\Grammar.txt',
-   'DATA'),
-  ('PyQt5\\translations\\qtbase_it.qm',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_it.qm',
-   'DATA'),
-  ('PyQt5\\translations\\qtbase_hu.qm',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_hu.qm',
-   'DATA'),
-  ('PyQt5\\translations\\qtbase_es.qm',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_es.qm',
-   'DATA'),
-  ('PyQt5\\translations\\qtbase_ar.qm',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_ar.qm',
-   'DATA'),
-  ('lib2to3\\Grammar3.7.4.final.0.pickle',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\lib2to3\\Grammar3.7.4.final.0.pickle',
-   'DATA'),
-  ('PyQt5\\translations\\qtbase_uk.qm',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_uk.qm',
-   'DATA'),
-  ('PyQt5\\translations\\qtbase_en.qm',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_en.qm',
-   'DATA'),
-  ('PyQt5\\translations\\qtbase_ja.qm',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_ja.qm',
-   'DATA'),
-  ('PyQt5\\translations\\qtbase_zh_TW.qm',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_zh_TW.qm',
-   'DATA'),
-  ('PyQt5\\translations\\qtbase_de.qm',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_de.qm',
-   'DATA'),
-  ('PyQt5\\translations\\qtbase_lv.qm',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_lv.qm',
-   'DATA'),
-  ('PyQt5\\translations\\qtbase_ko.qm',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_ko.qm',
-   'DATA'),
-  ('PyQt5\\translations\\qtbase_bg.qm',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_bg.qm',
-   'DATA'),
-  ('PyQt5\\translations\\qtbase_ru.qm',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_ru.qm',
-   'DATA'),
-  ('lib2to3\\PatternGrammar.txt',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\lib2to3\\PatternGrammar.txt',
-   'DATA'),
-  ('lib2to3\\PatternGrammar3.7.4.final.0.pickle',
-   'c:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\lib2to3\\PatternGrammar3.7.4.final.0.pickle',
-   'DATA'),
-  ('PyQt5\\translations\\qtbase_da.qm',
-   'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_da.qm',
    'DATA'),
   ('PyQt5\\translations\\qtbase_cs.qm',
    'C:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_cs.qm',
    'DATA'),
-  ('PyQt5\\translations\\qtbase_he.qm',
+  ('PyQt5\\translations\\qtbase_ca.qm',
    'C:\\users\\izayoi '
-   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_he.qm',
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_ca.qm',
+   'DATA'),
+  ('PyQt5\\translations\\qtbase_en.qm',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_en.qm',
+   'DATA'),
+  ('PyQt5\\translations\\qtbase_bg.qm',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_bg.qm',
+   'DATA'),
+  ('PyQt5\\translations\\qtbase_lv.qm',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_lv.qm',
+   'DATA'),
+  ('PyQt5\\translations\\qtbase_da.qm',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_da.qm',
+   'DATA'),
+  ('lib2to3\\Grammar.txt',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\lib2to3\\Grammar.txt',
+   'DATA'),
+  ('PyQt5\\translations\\qtbase_pl.qm',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_pl.qm',
+   'DATA'),
+  ('lib2to3\\PatternGrammar.txt',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\lib2to3\\PatternGrammar.txt',
+   'DATA'),
+  ('PyQt5\\translations\\qtbase_de.qm',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_de.qm',
+   'DATA'),
+  ('PyQt5\\translations\\qtbase_ar.qm',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_ar.qm',
+   'DATA'),
+  ('PyQt5\\translations\\qtbase_es.qm',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_es.qm',
    'DATA'),
   ('Include\\pyconfig.h',
    'c:\\users\\izayoi '
    'hayato\\appdata\\local\\programs\\python\\python37\\Include\\pyconfig.h',
+   'DATA'),
+  ('PyQt5\\translations\\qtbase_fi.qm',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_fi.qm',
+   'DATA'),
+  ('PyQt5\\translations\\qtbase_hu.qm',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_hu.qm',
+   'DATA'),
+  ('PyQt5\\translations\\qtbase_ko.qm',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_ko.qm',
+   'DATA'),
+  ('PyQt5\\translations\\qtbase_fr.qm',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_fr.qm',
+   'DATA'),
+  ('PyQt5\\translations\\qtbase_ru.qm',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_ru.qm',
+   'DATA'),
+  ('PyQt5\\translations\\qtbase_ja.qm',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_ja.qm',
+   'DATA'),
+  ('lib2to3\\Grammar3.7.4.final.0.pickle',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\lib2to3\\Grammar3.7.4.final.0.pickle',
+   'DATA'),
+  ('PyQt5\\translations\\qtbase_gd.qm',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_gd.qm',
+   'DATA'),
+  ('PyQt5\\translations\\qtbase_uk.qm',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_uk.qm',
+   'DATA'),
+  ('lib2to3\\tests\\data\\README',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\lib2to3\\tests\\data\\README',
+   'DATA'),
+  ('PyQt5\\translations\\qtbase_it.qm',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_it.qm',
+   'DATA'),
+  ('PyQt5\\translations\\qtbase_zh_TW.qm',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_zh_TW.qm',
+   'DATA'),
+  ('PyQt5\\translations\\qtbase_he.qm',
+   'C:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\site-packages\\PyQt5\\Qt\\translations\\qtbase_he.qm',
+   'DATA'),
+  ('lib2to3\\PatternGrammar3.7.4.final.0.pickle',
+   'c:\\users\\izayoi '
+   'hayato\\appdata\\local\\programs\\python\\python37\\lib\\lib2to3\\PatternGrammar3.7.4.final.0.pickle',
    'DATA')],
  [])

@@ -74,6 +74,9 @@ class DataModel():
     def GetPuzzle(self):
         return self.puzzle
 
+    def GetStep(self):
+        return self.step
+
     def SaveData(self, _puzzlePath, _movePath, _step, _totalStep):
         print("fuck")
         #region 上面四個參數

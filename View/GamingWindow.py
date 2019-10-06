@@ -47,7 +47,7 @@ class GameWindow(QMainWindow):
         self.bestSearch = None
         self.aStar = None
         self.puzzlePath = None
-        self.storeStep = 0
+        self.storeStep = self.data.GetStep()
         self.step = 0  # now step
         self.totalStep = 0  # 演算法總共要走的步數
         self.movePath = None  # 每步的移動
@@ -57,7 +57,7 @@ class GameWindow(QMainWindow):
         self.SetButtonEnable(True)
         self.ui.buttonAutoFinish.setText("AI自動完成")
         self.IsAutoFinishing = False
-        self.ui.labelStep.setText("已用步數： 0")
+        self.ui.labelStep.setText("已用步數： " + str(self.storeStep))
 
         self.completeDialog = CD.CompleteDialog()
         self.DialogSetting()
@@ -317,7 +317,7 @@ class GameWindow(QMainWindow):
         self.buttonList.clear()
 
     def ClickSaveButton(self):
-        self.data.SaveData(self.puzzlePath, self.movePath, self.step, self.totalStep)
+        self.data.SaveData(self.puzzlePath, self.movePath, self.step + self.storeStep, self.totalStep)
         self.data.SetPuzzle(self.puzzle)
         # self.data.SetPuzzle(self.bestSearch.GetNowPuzzleState(self.step))
         # self.data.SetPuzzle(self.aStar.GetStateFromStates(self.step))
