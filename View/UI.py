@@ -42,7 +42,7 @@ class Ui_CompleteDialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        Dialog.setWindowTitle(_translate("Dialog", "Congratulations to you!"))
         self.labelCongratulations.setText(_translate("Dialog", "Puzzle Solve !"))
         self.buttonRetry.setText(_translate("Dialog", "再來一局"))
         self.buttonConfirm.setText(_translate("Dialog", "確定"))
@@ -219,7 +219,7 @@ class Ui_GameWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Let's solve it!"))
         self.buttonAutoFinish.setText(_translate("MainWindow", "AI 自動完成"))
         self.labelStep.setText(_translate("MainWindow", "已用步數：1000"))
         self.buttonNextStep.setText(_translate("MainWindow", "AI 解下一步"))
