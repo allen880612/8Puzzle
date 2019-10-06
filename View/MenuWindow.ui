@@ -61,15 +61,16 @@
    <widget class="QPushButton" name="buttonImportImage">
     <property name="geometry">
      <rect>
-      <x>510</x>
+      <x>460</x>
       <y>300</y>
-      <width>75</width>
-      <height>23</height>
+      <width>136</width>
+      <height>48</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <family>微軟正黑體</family>
+      <pointsize>22</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
